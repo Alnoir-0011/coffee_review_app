@@ -1,5 +1,9 @@
 # [珈琲レビュアーズ]
 
+
+## ER図
+[URL](https://gyazo.com/b2e98951a255c23950b8e47e574e5d46)
+
 ## 画面遷移図
 [figma](https://www.figma.com/file/frDfOydyzsAVZaFIgzxdCp/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=Epi3OEB0cMYuXvA5-1)
 
