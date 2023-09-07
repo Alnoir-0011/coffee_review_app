@@ -1,7 +1,10 @@
 # [珈琲レビュアーズ]
 
+## 画面遷移図
+[figma](https://www.figma.com/file/frDfOydyzsAVZaFIgzxdCp/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=Epi3OEB0cMYuXvA5-1)
+
 ## サービス概要
-短い文章でサービスの概要（提供価値）を説明します。
+短い文章でサービスの概要（提供価値）を説明します。  
 珈琲レビュアーズは買ったコーヒー豆を記録し、それを使って淹れたコーヒーのレビューを投稿できるサービスです
 
 ##　想定されるユーザー層
