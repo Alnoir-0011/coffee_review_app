@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/slim-template/html2slim.git
+  revision: 6a08e416e4cd0e1b0804bfda5a9296ff7371e549
+  specs:
+    html2slim (0.2.0)
+      hpricot
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -127,8 +134,6 @@ GEM
       railties (>= 5.1, < 7.1)
     hashie (5.0.0)
     hpricot (0.8.6)
-    html2slim (0.2.0)
-      hpricot
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
@@ -348,7 +353,7 @@ DEPENDENCIES
   enum_help
   factory_bot_rails
   gretel
-  html2slim
+  html2slim!
   jbuilder
   jsbundling-rails
   letter_opener_web
