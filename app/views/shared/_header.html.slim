@@ -1,0 +1,18 @@
+header
+  nav.navbar.navbar-expand-lg.bg-dark data-bs-theme="dark"
+    .container-fluid
+      = link_to 'Coffee Brew Lab.', root_path, class: "navbar-brand fs-3"
+      button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+        span.navbar-toggler-icon
+      .collapse.navbar-collapse#navbarNavDropdown
+        ul.navbar-nav.ms-auto.me-auto
+          li.nav-item
+            a.nav-link.active.fs-4 aria-current="page" href="#" Shops
+        ul.navbar-nav
+          li.nav-item.dropdown
+            a.nav-link.dropdown-toggle.active.fs-4 href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" Dropdown link
+            ul.dropdown-menu
+              li
+                = link_to 'Mypage', '#', class: 'dropdown-item'
+              li
+                = link_to 'Logout', '#', data: { turbo_method: :delete }, class: 'dropdown-item'
