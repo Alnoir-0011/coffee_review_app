@@ -3,10 +3,12 @@ RUN apt-get update -qq \
  && apt-get install -y nodejs postgresql-client npm vim \
  && rm -rf /var/lib/apt/lists/* \
  && npm install --global yarn
+RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
+ADD . /myapp
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
