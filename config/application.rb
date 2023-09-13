@@ -21,5 +21,6 @@ module Myapp
 
     config.i18n.default_locale = :ja
     # config.eager_load_paths << Rails.root.join("extras")
+    config.generators.template_engine = :slim
   end
 end
