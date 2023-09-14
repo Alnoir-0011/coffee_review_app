@@ -1,6 +1,7 @@
 class Bean < ApplicationRecord
   has_many :dealers, dependent: :destroy
   has_many :shops, through: :dealers
+  has_many :purchases, dependent: :destroy
   belongs_to :region
   
   validates :name, presence: true, length: { maximum: 255 }
