@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_14_125629) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_14_130249) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,10 +18,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_125629) do
     t.string "name", null: false
     t.integer "roast", default: 0, null: false
     t.integer "fineness", default: 0, null: false
-    t.bigint "regions_id", null: false
+    t.bigint "region_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["regions_id"], name: "index_beans_on_regions_id"
+    t.index ["region_id"], name: "index_beans_on_region_id"
   end
 
   create_table "brewing_methods", force: :cascade do |t|
@@ -31,11 +31,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_125629) do
     t.index ["name"], name: "index_brewing_methods_on_name", unique: true
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
+  create_table "dealers", force: :cascade do |t|
+    t.bigint "bean_id", null: false
+    t.bigint "shop_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["bean_id", "shop_id"], name: "index_dealers_on_bean_id_and_shop_id", unique: true
+    t.index ["bean_id"], name: "index_dealers_on_bean_id"
+    t.index ["shop_id"], name: "index_dealers_on_shop_id"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -64,5 +67,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_125629) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "beans", "regions", column: "regions_id"
+  add_foreign_key "beans", "regions"
+  add_foreign_key "dealers", "beans"
+  add_foreign_key "dealers", "shops"
 end
