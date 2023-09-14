@@ -1,0 +1,13 @@
+.container
+  .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+    h1.mt-5.mb-3 Test
+    = search_form_for @q, class: 'input-group' do |f|
+      = f.text_field :name_cont, class: 'form-control', placeholder: 'name'
+      = f.submit 'search', class: 'btn btn-secondary'
+    br
+    #beans-list
+      - if @beans.present?
+        = render @beans
+      - else
+        = render 'bean'
+        / | No Beans here
