@@ -13,5 +13,7 @@ html
       = render 'shared/header'
     - else
       = render 'shared/before_login_header'
+    #flash
+      = render 'shared/flash'
     = yield
     = render 'shared/footer'

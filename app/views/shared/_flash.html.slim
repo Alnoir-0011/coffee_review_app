@@ -1,0 +1,11 @@
+- flash.each do |message_type, message|
+  div.alert.alert-dismissible[class="alert-#{message_type}"]
+    button.btn-close[type="button" data-bs-dismiss="alert"]
+    = message
+  / .toast[class="border-#{message_type}" role="alert" aria-live="assertive" aria-atomic="true"]
+    .toast-header
+      img.rounded.me-2[src="..." alt="..."]
+      strong.me-auto = message_type
+      button.btn-close[type="button" data-bs-dismiss="toast" aria-label="Close"]
+    .toast-body
+      | = message
