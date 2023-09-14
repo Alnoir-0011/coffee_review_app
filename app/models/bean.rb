@@ -1,6 +1,7 @@
 class Bean < ApplicationRecord
-  
-  belongs_to :regions
+  has_many :dealers, dependent: :destroy
+  has_many :shops, through: :dealers
+  belongs_to :region
   
   validates :name, presence: true, length: { maximum: 255 }
   
@@ -13,6 +14,6 @@ class Bean < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    authorizable_ransackable_attributes
+    authorizable_ransackable_associations
   end
 end
