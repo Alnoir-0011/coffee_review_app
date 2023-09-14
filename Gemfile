@@ -52,7 +52,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem 'sorcery'
-gem 'ransack', '3.0.0'
+gem 'ransack'
 gem 'active_decorator'
 gem 'enum_help'
 gem 'factory_bot_rails'

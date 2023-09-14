@@ -1,4 +1,6 @@
 class Bean < ApplicationRecord
+  authorizable_ransackable_attributes
+  
   belongs_to :regions
 
   validates :name, presence: true, length: { maximum: 255 }
