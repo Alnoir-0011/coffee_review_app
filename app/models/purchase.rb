@@ -2,6 +2,7 @@ class Purchase < ApplicationRecord
   belongs_to :user
   belongs_to :bean
   belongs_to :shop
+  has_many :reviews, dependent: :destroy
 
   validate :future_dates_cannot
 
