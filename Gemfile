@@ -95,3 +95,4 @@ group :test do
 end
 
 gem 'dotenv-rails'
+gem 'bootstrap_form'

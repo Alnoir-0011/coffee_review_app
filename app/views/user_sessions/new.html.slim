@@ -1,14 +1,10 @@
 .container
-  .col-md-8.offset-md-2.col-lg-6.offset-lg-3
+  .col-md-8.offset-md-2.col-lg-6.offset-lg-3.col-xl-4.offset-xl-4
     h1.mb-3.mt-5 Login
-    = form_with model: @user, url: login_path, local: true do |f|
-      .form-group.mb-3
-        = f.label :email, class: 'form-label'
-        = f.email_field :email, class: 'form-control'
-      .form-group.mb-3
-        = f.label :password, class: 'form-label'
-        = f.password_field :password, class: 'form-control'
-      = f.submit 'login', class: 'btn btn-primary mb-3'
+    = bootstrap_form_with model: @user, url: login_path do |f|
+      = f.email_field :email, class: 'form-control'
+      = f.password_field :password, class: 'form-control'
+      = f.submit 'login'
     .d-flex.justify-content-around
       = link_to 'Signup', new_user_path
       = link_to 'Forgot password?', '#'
