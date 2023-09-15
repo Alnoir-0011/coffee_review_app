@@ -295,6 +295,9 @@ GEM
     rspec-support (3.12.1)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    seed-fu (2.3.9)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -385,6 +388,7 @@ DEPENDENCIES
   rails-i18n
   ransack
   rspec-rails
+  seed-fu
   selenium-webdriver
   slim-rails
   sorcery

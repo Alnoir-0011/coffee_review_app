@@ -61,6 +61,7 @@ gem 'slim-rails'
 gem 'rails-i18n'
 gem 'html2slim', github: "slim-template/html2slim"
 gem 'kaminari'
+gem 'seed-fu'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
