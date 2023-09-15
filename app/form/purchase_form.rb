@@ -15,7 +15,8 @@ class PurchaseForm
   validate :product_does_not_exist
   validate :shop_does_not_exist
   validate :future_dates_cannot, unless: -> { purchase_at.nil? }
-  validate :prohibited_before_roasting, unless: -> { Bean.find_by(name: bean_name).nil? }
+  validate :roast_status, unless: -> { Bean.find_by(name: bean_name).nil? }
+  validate :grind_status,  unless: -> { Bean.find_by(name: bean_name).nil? }
 
   def save
     return false if invalid?
@@ -37,23 +38,27 @@ class PurchaseForm
                   bean_id: Bean.find_by(name: bean_name, shop_id: Shop.find_by(name: shop_name)))
   end
 
-  
-
   private
 
   def future_dates_cannot
     errors.add(:purchase_at, "は未来の日付は登録できません") if self.purchase_at.after? Date.today
   end
 
-  def prohibited_before_roasting
-    if Bean.find_by(name: self.bean_name).roast_raw? && self.store_roast_option == 'roasted'
+  def roast_status
+    bean = Bean.find_by(name: self.bean_name)
+    if bean.roast_raw? && self.store_roast_option == 'roasted'
       errors.add(:store_roast_option, "このコーヒー豆は焙煎前で登録できません")
+    elsif !bean.roast_raw? && !self.store_roast_option == 'roasted'
+      errors.add(:store_roast_option, "このコーヒー豆は焙煎済みです")
     end
   end
 
-  def cannot_grind_again
-    unless Bean.find_by(name: self.bean_name).fineness_beans? || self.store_grind_option == 'grinded'
+  def grind_status
+    bean = Bean.find_by(name: self.bean_name)
+    if !bean.fineness_beans? && !self.store_grind_option == 'grinded'
       errors.add(:store_grind_option, "このコーヒー豆は粉砕済みです")
+    elsif bean.fineness_beans? && self.store_grind_option == 'grinded'
+      errors.add(:store_roast_option, 'このコーヒー豆は粉砕前です')
     end
   end
 
