@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_15_201726) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_15_221645) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,6 +60,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_201726) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_regions_on_name", unique: true
+  end
+
+  create_table "review_tools", force: :cascade do |t|
+    t.bigint "review_id", null: false
+    t.bigint "tool_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id", "tool_id"], name: "index_review_tools_on_review_id_and_tool_id", unique: true
+    t.index ["review_id"], name: "index_review_tools_on_review_id"
+    t.index ["tool_id"], name: "index_review_tools_on_tool_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -117,6 +127,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_201726) do
   add_foreign_key "purchases", "beans"
   add_foreign_key "purchases", "shops"
   add_foreign_key "purchases", "users"
+  add_foreign_key "review_tools", "reviews"
+  add_foreign_key "review_tools", "tools"
   add_foreign_key "reviews", "brewing_methods"
   add_foreign_key "reviews", "purchases"
   add_foreign_key "user_tools", "tools"
