@@ -1,15 +1,15 @@
-.card.mb-3
+= link_to '#', class: 'card mb-3' do
   .row.g-0
     .col-sm-3
       = image_tag 'sample300.png', class:'img-fluid rounded-start'
     .col-sm-9
       .card-body
-        h5.card-title.mb-1  bean.name
-        h6.card-text.mb-1 shopnames
+        h5.card-title.mb-1  = bean.name
+        h6.card-text.mb-1 = bean.shops.first
         p.card-text.mb-1 avarage
         .bg-body-secondary
-          / - bean.purchases.review.limit(3).each do |review|
+          - bean.purchases.review.limit(3).each do |review|
             p.card-text = review.title
-          p.card-text.mb-0 review
-          p.card-text.mb-0 review
-          p.card-text.mb-0 review
+          / p.card-text.mb-0 review
+          / p.card-text.mb-0 review
+          / p.card-text.mb-0 review
