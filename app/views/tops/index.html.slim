@@ -10,16 +10,8 @@
     .d-flex.justify-content-between
       .col-8.me-1
         = turbo_frame_tag 'top_list' do
-          - if !@beans.present?
-            = link_to '#', class: 'card mb-3' do
-              .row.g-0
-                .col-sm-3
-                  = image_tag 'sample300.png', class:'img-fluid rounded-start'
-                .col-sm-9
-                  .card-body
-                    h5.card-title.mb-1 bean.name
-                    h6.card-text.mb-1 bean.shops.first
-                    p.card-text.mb-1 avarage
+          - if @beans.present?
+            = render partial: 'beans/bean', collection: @beans
           - else
             h2.ms-4 No bean here :-(
       .col-4

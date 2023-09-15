@@ -53,7 +53,7 @@ gem "bootsnap", require: false
 
 gem 'sorcery'
 gem 'ransack'
-gem 'active_decorator'
+gem 'draper'
 gem 'enum_help'
 gem 'factory_bot_rails'
 gem 'gretel'

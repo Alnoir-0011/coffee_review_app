@@ -8,8 +8,8 @@
         h6.card-text.mb-1 = bean.shops.first
         p.card-text.mb-1 avarage
         .bg-body-secondary
-          - bean.purchases.review.limit(3).each do |review|
-            p.card-text = review.title
-          / p.card-text.mb-0 review
-          / p.card-text.mb-0 review
-          / p.card-text.mb-0 review
+          - if bean.reviews.present?
+            - bean.reviews.limit(3).each do |review|
+              p.card-text = review.title
+          - else
+            p any review here

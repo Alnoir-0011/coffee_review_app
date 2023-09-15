@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   root to: 'tops#index'
 
   resources :beans, only: %i[index]
+  namespace :mypage do
+    resources :purchases, only: %i[index new create]
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

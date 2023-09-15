@@ -1,0 +1,21 @@
+.container
+  .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+    = render 'shared/current_user_profile'
+    = render 'shared/tab_buttons'
+    = search_form_for @q, url: mypage_purchases_path,
+                      html: { data: { turbo_frame: "purchases-list" } },
+                      class: 'input-group mb-3' do |f|
+      = f.text_field :bean_name_cont, class: 'form-control', placeholder: 'bean name'
+      = f.text_field :shop_name_cont, class: 'form-control', placeholder: 'shop name'
+      = f.select :store_roast_option_eq, Purchase.store_roast_options.keys.to_a, prompt: 'roast',class: 'form-control'
+      = f.select :store_grind_option_eq, Purchase.store_grind_options.keys.to_a, prompt: 'fineness',class: 'form-control'
+      = f.submit '検索', class: 'btn btn-secondary'
+
+    = link_to 'add new record', new_mypage_purchase_path, class: 'btn btn-outline-dark col-12 mb-3'
+    = turbo_frame_tag 'purchases-list' do
+      - if @purchases.present?
+        .accordion#accordionPurchases
+          = render @purchases
+        = paginate @purchases
+      - else
+        h3.col-10.offset-1 No record here :-(
