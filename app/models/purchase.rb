@@ -6,8 +6,8 @@ class Purchase < ApplicationRecord
 
   validate :future_dates_cannot
 
-  enum :store_roast_option, { light: 0, chinamon: 10, medium: 20, high: 30, city: 40, fullcity: 50, fremch: 60, italian: 70 }, prefix: true
-  enum :store_grind_option, { beans: 0, coarsely: 10, medium: 20, medium_fine: 30, fine: 40, superfine: 50 }, prefix: true
+  enum :store_roast_option, { roasted: 0, light: 10, chinamon: 20, medium: 30, high: 40, city: 50, fullcity: 60, fremch: 70, italian: 80 }, prefix: true
+  enum :store_grind_option, { grinded: 0, beans: 10, coarsely: 20, medium: 30, medium_fine: 40, fine: 50, superfine: 60 }, prefix: true
 
   private
 
