@@ -1,0 +1,5 @@
+.d-flex.border-bottom.border-2.border-black.text-center.align-items-center.mb-3
+  .col-6.border-black.border-end.border-2.pt-2.pb-2[class="#{bg_if('mypage/purchases')}"]
+    = link_to '購入記録', mypage_purchases_path, class: "text-decoration-none #{link_color_if('mypage/purchases')}"
+  .col-6[class="#{bg_if('mypage/reviews')}"]
+    = link_to '投稿レビュー一覧', '#', class: "text-decoration-none #{link_color_if('mypage/reviews')}"

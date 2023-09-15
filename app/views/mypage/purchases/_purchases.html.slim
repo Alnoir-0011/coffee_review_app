@@ -1,0 +1,29 @@
+= turbo_flame_tag purchase do
+  .accordion-item
+    h2.accordion-header
+      button.d-flex.justify-content-between.accordion-button[type="button" data-bs-toggle="collapse" data-bs-target="#collapse#{purchase.id}" aria-expanded="true" aria-controls="collapse#{purchase.id}"]
+        ul.d-flex
+          li = purchase.bean
+          li = purchase.shop
+        ul.d-flex
+          li
+            = link_to 'レビューする', '#', class: 'btn btn-secondary'
+          li
+            = link_to '#' do
+              i.bi.bistar
+    .accordion-collapse.collapse.show[id="collaps#{purchase.id}" data-bs-parent="#accordionPurchases"]
+      .accordion-body.d-flex.col-8
+        div
+          p 焙煎度合い
+          p 細かさ
+          p 購入日
+        div
+          p = purchase.decorate.roast_situation
+          p = purchase.decorate.grind_situation
+          p = purchase.purchase_at
+      .col-4.d-flex.justify-content-end.align-items-end
+        = link_to edit_mypage_purchase_path(purchase) do
+          i.bi.bi-pencil
+        = link_to mypage_purchase_path(purchase), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }
+          i.bi.bi-trash
+
