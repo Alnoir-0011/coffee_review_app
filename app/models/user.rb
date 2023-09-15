@@ -2,6 +2,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   has_many :purchases, dependent: :destroy
+  has_many :user_tools, dependent: :destroy
+  has_many :tools, through: :user_tools
 
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
