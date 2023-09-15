@@ -1,0 +1,17 @@
+.container
+  .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+    h1.mt-5.mb-3 = @region.name
+    = search_form_for @q, url: beans_path(region: @region),
+                      html: { data: { turbo_frame: "bean-list" } }, class: 'input-group' do |f|
+      = f.text_field :name_cont, class: 'form-control', placeholder: 'name'
+      = f.select :roast_eq, Bean.roasts.keys.to_a, prompt: 'roast',class: 'form-control'
+      = f.select :fineness_eq, Bean.finenesses.keys.to_a, prompt: 'fineness',class: 'form-control'
+      = f.submit 'search', class: 'btn btn-secondary'
+    br
+    = turbo_frame_tag "bean-list" do
+      - if @beans.present?
+        = render @beans
+        = paginate @beans
+      - else
+        / = render 'bean'
+        | No Beans here
