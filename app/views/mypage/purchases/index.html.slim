@@ -14,8 +14,9 @@
     = link_to 'add new record', new_mypage_purchase_path, class: 'btn btn-outline-dark col-12 mb-3'
     = turbo_frame_tag 'purchases-list' do
       - if @purchases.present?
-        .accordion#accordionPurchases
+        .accordion.accordion-flush#accordionPurchases
           = render @purchases
+          / = render 'purchase'
         = paginate @purchases
       - else
         h3.col-10.offset-1 No record here :-(
