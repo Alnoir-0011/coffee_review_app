@@ -7,6 +7,7 @@ class PurchaseForm
   attribute :store_roast_option, :string
   attribute :store_grind_option, :string
   attribute :purchase_at, :date
+  attribute :user_id, :integer
 
   with_options presence: true do
     validates :shop_name, :bean_name, :store_roast_option, :store_grind_option, :purchase_at
@@ -24,14 +25,14 @@ class PurchaseForm
     ActiveRecord::Base.transaction do
       purchase.save!
 
-      unless purchase.bean.include?(purchase.shop.beans)
-        purchase.shop.bean << purchase.bean
+      unless purchase.shop.beans.include?(purchase.bean)
+        purchase.shop.beans << purchase.bean
       end
     end
   rescue StandardError
     false
   end
-  
+
   def purchase
     @purchase ||= current_user.purchases.new(store_roast_option: store_roast_option,
                   store_grind_option: store_grind_option,purchase_at: purchase_at,
@@ -58,7 +59,7 @@ class PurchaseForm
     if !bean.fineness_beans? && !self.store_grind_option == 'grinded'
       errors.add(:store_grind_option, "このコーヒー豆は粉砕済みです")
     elsif bean.fineness_beans? && self.store_grind_option == 'grinded'
-      errors.add(:store_roast_option, 'このコーヒー豆は粉砕前です')
+      errors.add(:store_grind_option, 'このコーヒー豆は粉砕前です')
     end
   end
 
