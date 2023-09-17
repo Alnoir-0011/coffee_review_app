@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
   root to: 'tops#index'
 
-  resources :beans, only: %i[index]
+  resources :beans, only: %i[index new create]
   namespace :mypage do
     root to: redirect('mypage/purchases')
     resources :purchases, only: %i[index new create edit update destroy]

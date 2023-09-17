@@ -1,0 +1,11 @@
+.container
+  .col-md-10.offset-md-1.col-lg-8.offset-lg-2.col-xl-6.offset-xl-3
+    .d-flex.justify-content-between.mb-3.mt-5
+      h1 コーヒー豆登録
+      = link_to 'キャンセル', mypage_purchases_path
+    = bootstrap_form_with model: @bean do |f|
+      = f.text_field :name
+      = f.select :roast, Bean.roasts.keys, prompt: '焙煎度合い'
+      = f.select :fineness, Bean.finenesses.keys, prompt: '粉の細かさ'
+      = f.select :region_id, Region.pluck(:name, :id), prompt: '産地'
+      = f.submit
