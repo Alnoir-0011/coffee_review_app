@@ -1,6 +1,6 @@
 class Mypage::PurchasesController < ApplicationController
   before_action :set_purchases, only: %i[edit update destroy]
-  before_action :set_purchase_form, only: %i[edit update]
+  before_action :set_purchase_form, only: %i[edit]
 
   def index
     @q = current_user.purchases.ransack(params[:q])
@@ -14,6 +14,7 @@ class Mypage::PurchasesController < ApplicationController
   def create
     @purchase_form = PurchaseForm.new(purchase_form_params)
     if @purchase_form.save
+      # binding.pry
       redirect_to mypage_purchases_path, success: '購入記録を作成しました'
     else
       render :new, status: :unprocessable_entity
@@ -23,8 +24,8 @@ class Mypage::PurchasesController < ApplicationController
   def edit; end
 
   def update
-    @purchase_form.assign_attributes(purchase_form_params)
-    if @purchase_form.save
+    @purchase_form = PurchaseForm.new(purchase_form_params, purchase: @purchase)
+    if @purchase_form.update
       redirect_to mypage_purchases_path, success: '購入記録を更新しました'
     else
       render :edit, status: :unprocessable_entity
@@ -39,7 +40,7 @@ class Mypage::PurchasesController < ApplicationController
   private
 
   def purchase_form_params
-    params.require(:purchase_form).permit(:shop_name, :bean_name,
+    params.require(:purchase).permit(:shop_name, :bean_name,
       :store_roast_option, :store_grind_option, :purchase_at).merge(user_id: current_user.id)
   end
 
@@ -48,8 +49,6 @@ class Mypage::PurchasesController < ApplicationController
   end
 
   def set_purchase_form
-    @purchase_form = PurchaseForm.new(shop_name: @purchase.shop.name, bean_name: @purchase.bean.name,
-                     store_roast_option: @purchase.store_roast_option, store_grind_option: @purchase.store_grind_option,
-                     purchase_at: @purchase.purchase_at)
+    @purchase_form = PurchaseForm.new(purchase: @purchase)
   end
 end
