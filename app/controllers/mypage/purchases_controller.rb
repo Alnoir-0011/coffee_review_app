@@ -35,21 +35,21 @@ class Mypage::PurchasesController < ApplicationController
     @purchase.destroy!
     flash.now[:success] = '購入記録を削除しました'
   end
-  
+
   private
-  
+
   def purchase_form_params
     params.require(:purchase_form).permit(:shop_name, :bean_name,
-      :store_roast_option, :store_grind_option, :purchase_at)
+      :store_roast_option, :store_grind_option, :purchase_at).merge(user_id: current_user.id)
   end
-    
+
   def set_purchases
-    @purchase = current_user.purchase.find(params[:id])
+    @purchase = current_user.purchases.find(params[:id])
   end
 
   def set_purchase_form
-    @purchase_form = PurchaseForm.build(shop_name: @purchase.shop.name, bean_name: @purchase.bean.name,
-                     shop_roast_option: @purchase.shop_roast_option, shop_grind_option: @purchase.shop_grind_option,
+    @purchase_form = PurchaseForm.new(shop_name: @purchase.shop.name, bean_name: @purchase.bean.name,
+                     store_roast_option: @purchase.store_roast_option, store_grind_option: @purchase.store_grind_option,
                      purchase_at: @purchase.purchase_at)
   end
 end
