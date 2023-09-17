@@ -2,14 +2,9 @@
   .accordion-item.border-top.border-bottom.border-dark.mb-2
     .accordion-header[id="heading#{purchase.id}"]
       button.pe-4.accordion-button.collapsed[type="button" data-bs-toggle="collapse" data-bs-target="#collapse#{purchase.id}" aria-expanded="true" aria-controls="collapse#{purchase.id}"]
-        .d-flex.justify-content-between.col-12
-          .d-flex
-            p.me-1 = purchase.bean.name
-            p = purchase.shop.name
-          .d-flex.ms-auto.me-3.align-items-center
-            = link_to 'レビューする', new_mypage_purchase_path, class: 'btn btn-secondary me-2', data: { bs_toggle: 'collapse', bs_target: '' }
-            = link_to '#', class: 'link-dark ps-1 pe-1' do
-              i.bi.bi-star.fs-4
+        .d-flex.justify-content-start.col-12.align-items-center
+          h5.me-3.mb-0 = purchase.bean.name
+          h6.mb-0 = purchase.shop.name
     .accordion-collapse.col-12.collapse[id="collapse#{purchase.id}" aria-labelledby="heading#{purchase.id}" data-bs-parent="#accordionPurchases"]
       .accordion-body
         .d-flex
@@ -21,8 +16,11 @@
             p = purchase.roast_status
             p = purchase.grind_situation
             p = purchase.purchase_at
-          .d-flex.justify-content-end.align-items-end.ms-auto.fs-4
-            = link_to edit_mypage_purchase_path(purchase), class: 'link-dark me-2', data: { turbo_frame: "_top" } do
-              i.bi.bi-pencil
-            = link_to mypage_purchase_path(purchase), class: 'link-dark', data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }
-              i.bi.bi-trash
+          .ms-auto
+            .d-flex.ms-auto.align-items-center.mb-5
+              = link_to 'レビューする', new_mypage_review_path, class: 'btn btn-secondary me-2', data: { turbo_frame: "_top" }
+            .d-flex.justify-content-end.ms-auto.fs-4.me-1
+              = link_to edit_mypage_purchase_path(purchase), class: 'link-dark me-3', data: { turbo_frame: "_top" } do
+                i.bi.bi-pencil
+              = link_to mypage_purchase_path(purchase), class: 'link-dark', data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }
+                i.bi.bi-trash
