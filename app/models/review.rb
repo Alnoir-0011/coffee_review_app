@@ -18,4 +18,26 @@ class Review < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     authorizable_ransackable_associations
   end
+
+  def grind_status
+    if fineness_grinded?
+      purchase.grind_situation
+    else
+      fineness
+    end
+  end
+
+  def save_with_tools(tool_ids:)
+    ActiveRecord::Base.transaction do
+      self.tools = tool_ids.reject(&:empty?).map { |id| Tool.find(id) }
+      save!
+    end
+    true
+  rescue StandardError
+    false
+  end
+
+  def tool_ids
+    tools.ids
+  end
 end

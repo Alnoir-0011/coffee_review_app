@@ -18,7 +18,7 @@
             p = purchase.purchase_at
           .ms-auto
             .d-flex.ms-auto.align-items-center.mb-5
-              = link_to 'レビューする', new_mypage_review_path, class: 'btn btn-secondary me-2', data: { turbo_frame: "_top" }
+              = link_to 'レビューする', new_mypage_review_path(purchase: purchase), class: 'btn btn-secondary me-2', data: { turbo_frame: "_top" }
             .d-flex.justify-content-end.ms-auto.fs-4.me-1
               = link_to edit_mypage_purchase_path(purchase), class: 'link-dark me-3', data: { turbo_frame: "_top" } do
                 i.bi.bi-pencil
