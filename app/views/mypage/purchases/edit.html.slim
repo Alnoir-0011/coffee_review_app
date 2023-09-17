@@ -3,16 +3,4 @@
     .d-flex.justify-content-between.mb-3.mt-5
       h1 購入記録編集
       = link_to 'キャンセル', mypage_purchases_path
-    = bootstrap_form_with model: @purchase_form, url: mypage_purchase_path(@purchase), data: { turbo_method: :patch } do |f|
-      .d-flex.align-items-center.justify-content-around
-        p.mb-0 店舗がありませんか？
-        = link_to '店舗を登録する', '#', class: 'btn btn-outline-secondary'
-      = f.text_field :shop_name
-      .d-flex.align-items-center.justify-content-around
-        p.mb-0 コーヒー豆がありませんか？
-        = link_to 'コーヒー豆を登録する', '#', class: 'btn btn-outline-secondary'
-      = f.text_field :bean_name
-      = f.select :store_roast_option, Purchase.store_roast_options.keys.to_a, prompt: 'roast'
-      = f.select :store_grind_option, Purchase.store_grind_options.keys.to_a, prompt: 'fineness'
-      = f.date_field :purchase_at
-      = f.submit
+    = render 'form', { purchase_form: @purchase_form, url: mypage_purchase_path(@purchase) }
