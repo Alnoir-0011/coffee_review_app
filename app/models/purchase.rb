@@ -21,6 +21,22 @@ class Purchase < ApplicationRecord
     authorizable_ransackable_associations
   end
 
+  def roast_status
+    if store_roast_option_roasted?
+      bean.roast
+    else
+      store_roast_option
+    end
+  end
+
+  def grind_situation
+    if store_grind_option_grinded?
+      bean.fineness
+    else
+      store_grind_option
+    end
+  end
+
   private
 
   def future_dates_cannot

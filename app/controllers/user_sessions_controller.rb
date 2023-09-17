@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-  skip_before_action :require_login, only: %i[destroy]
+  skip_before_action :require_login, only: %i[new create]
 
   def new; end
 
@@ -17,6 +17,6 @@ class UserSessionsController < ApplicationController
   def destroy
     logout
     flash[:success] = 'Logut successful'
-    redirect_to login_path
+    redirect_to login_path, status: :see_other
   end
 end

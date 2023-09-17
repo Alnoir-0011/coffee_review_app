@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :purchases, dependent: :destroy
   has_many :user_tools, dependent: :destroy
   has_many :tools, through: :user_tools
+  has_many :reviews, through: :purchases
 
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

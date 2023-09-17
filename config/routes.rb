@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   resources :beans, only: %i[index]
   namespace :mypage do
-    resources :purchases, only: %i[index new create]
+    root to: redirect('mypage/purchases')
+    resources :purchases, only: %i[index new create edit update destroy]
+    resources :reviews, only: %i[index new create edit update destroy]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,11 +1,11 @@
 = link_to '#', class: 'card mb-3' do
   .row.g-0
-    .col-sm-3
+    .col-xl-3.col-lg-4
       = image_tag 'sample300.png', class:'img-fluid rounded-start'
-    .col-sm-9
+    .col-md-12.col-xl-9.col-lg-8
       .card-body
         h5.card-title.mb-1  = bean.name
-        h6.card-text.mb-1 = bean.shops.first
+        h6.card-text.mb-1 = bean.shops.first.name
         p.card-text.mb-1 avarage
         .bg-body-secondary
           - if bean.reviews.present?

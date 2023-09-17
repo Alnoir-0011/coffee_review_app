@@ -75,6 +75,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-doc'
   gem 'pry-rails'
+  gem 'pry-remote'
 end
 
 group :development do
