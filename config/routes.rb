@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     root to: redirect('mypage/purchases')
     resources :purchases, only: %i[index new create edit update destroy]
     resources :reviews, only: %i[index new create edit update destroy]
+    resource :profile, only: %i[show edit update]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
