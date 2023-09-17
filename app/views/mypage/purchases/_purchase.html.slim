@@ -16,10 +16,14 @@
             p = purchase.roast_status
             p = purchase.grind_situation
             p = purchase.purchase_at
-          .ms-auto
-            .d-flex.ms-auto.align-items-center.mb-5
-              = link_to 'レビューする', new_mypage_review_path(purchase: purchase), class: 'btn btn-secondary me-2', data: { turbo_frame: "_top" }
-            .d-flex.justify-content-end.ms-auto.fs-4.me-1
+          .ms-auto.d-flex.flex-column
+            - if purchase.review.present?
+              .d-flex.ms-auto.align-items-center.mb-5
+                .btn.btn-secondary.me-2.disabled レビュー投稿済み
+            - else
+              .d-flex.ms-auto.align-items-center.mb-5
+                = link_to 'レビューする', new_mypage_review_path(purchase: purchase), class: 'btn btn-secondary me-2', data: { turbo_frame: "_top" }
+            .d-flex.justify-content-end.ms-auto.fs-4.me-1.mt-auto
               = link_to edit_mypage_purchase_path(purchase), class: 'link-dark me-3', data: { turbo_frame: "_top" } do
                 i.bi.bi-pencil
               = link_to mypage_purchase_path(purchase), class: 'link-dark', data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }
