@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_15_221645) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_17_170736) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_221645) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_brewing_methods_on_name", unique: true
+  end
+
+  create_table "brewing_prefences", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "brewing_method_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brewing_method_id"], name: "index_brewing_prefences_on_brewing_method_id"
+    t.index ["user_id", "brewing_method_id"], name: "index_brewing_prefences_on_user_id_and_brewing_method_id", unique: true
+    t.index ["user_id"], name: "index_brewing_prefences_on_user_id"
   end
 
   create_table "dealers", force: :cascade do |t|
@@ -122,6 +132,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_221645) do
   end
 
   add_foreign_key "beans", "regions"
+  add_foreign_key "brewing_prefences", "brewing_methods"
+  add_foreign_key "brewing_prefences", "users"
   add_foreign_key "dealers", "beans"
   add_foreign_key "dealers", "shops"
   add_foreign_key "purchases", "beans"
