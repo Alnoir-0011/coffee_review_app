@@ -8,4 +8,12 @@ class UserDecorator < Draper::Decorator
       '未登録'
     end
   end
+
+  def brewing_method_names
+    if self.brewing_methods.present?
+      self.brewing_methods.pluck(:name).join(" ")
+    else
+      '未登録'
+    end
+  end
 end

@@ -1,0 +1,16 @@
+= turbo_frame_tag 'profile' do
+  .card.mb-3.mt-3.pb-3
+    .col-10.offset-1
+      = bootstrap_form_with model: @user, url: mypage_profile_path do |f|
+        .d-flex.align-items-center.mb-3.mt-3
+          div
+            = image_tag 'sample300.png', class: 'rounded-circle me-3',size: '100x100'
+          = f.text_field :name
+          = link_to 'キャンセル', mypage_profile_path, class: 'badge rounded-pill text-bg-secondary fs-5 ms-auto', data: { turbo_frame: 'profile'}
+        = f.email_field :email
+        = f.label :tools
+        = f.collection_check_boxes :tool_ids, Tool.all, :id, :name, inline: true, hide_label: true
+        = f.label :brewing_method
+        = f.collection_check_boxes :brewing_method_ids, BrewingMethod.all, :id, :name, inline: true, hide_label: true
+        / = f.select :brewing_method, BrewingMethod.pluck(:name, :id)
+        = f.submit
