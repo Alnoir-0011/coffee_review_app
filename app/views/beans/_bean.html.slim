@@ -5,11 +5,11 @@
     .col-sm-9
       .card-body
         h5.card-title.mb-1  = bean.name
-        h6.card-text.mb-1 = bean.shops.first
+        h6.card-text.mb-1 = bean.shops.first.name
         p.card-text.mb-1 avarage
         .bg-body-secondary
           - if bean.reviews.present?
-            - bean.reviews.limit(3).each do |review|
-              p.card-text = review.title
+            - bean.purchases.limit(3).each do |purchases|
+              p.card-text = purchase.review.title
           - else
             p any review here
