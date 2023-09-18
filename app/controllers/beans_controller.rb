@@ -27,4 +27,3 @@ class BeansController < ApplicationController
     params.require(:bean).permit(:name, :roast, :fineness, :region_id)
   end
 end
-
