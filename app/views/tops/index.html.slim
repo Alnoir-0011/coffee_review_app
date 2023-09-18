@@ -4,8 +4,8 @@
     = search_form_for @q, url: root_path, html: { data: { turbo_frame: "top-list" } },
                       class: 'input-group mb-4 col-lg-10' do |f|
       = f.text_field :name_cont, class: 'form-control', placeholder: 'name'
-      = f.select :roast_eq, Bean.roasts.keys.to_a, prompt: 'roast',class: 'form-control'
-      = f.select :fineness_eq, Bean.finenesses.keys.to_a, prompt: 'fineness',class: 'form-control'
+      = f.select :roast_eq, Bean.roasts, prompt: 'roast',class: 'form-control'
+      = f.select :fineness_eq, Bean.finenesses, prompt: 'fineness',class: 'form-control'
       = f.submit 'search', class: 'btn btn-secondary'
     .d-flex.justify-content-between
       .col-8.me-1

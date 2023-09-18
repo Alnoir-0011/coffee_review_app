@@ -7,7 +7,9 @@ class Bean < ApplicationRecord
   
   validates :name, presence: true, length: { maximum: 255 }
   
-  enum :roast, { raw: 0, light: 10, chinamon: 20, medium: 30, high: 40, city: 50, fullcity: 60, fremch: 70, italian: 80 }, prefix: true
+  validate :raw_cannot_grind
+  
+  enum :roast, { raw: 0, light: 10, chinamon: 20, medium: 30, high: 40, city: 50, fullcity: 60, french: 70, italian: 80 }, prefix: true
   
   enum :fineness, { beans: 0, coarsely: 10, medium: 20, medium_fine: 30, fine: 40, superfine: 50 }, prefix: true
   
@@ -17,5 +19,13 @@ class Bean < ApplicationRecord
 
   def self.ransackable_associations(auth_object = nil)
     authorizable_ransackable_associations
+  end
+
+  private
+
+  def raw_cannot_grind
+    if roast_raw? && !fineness_beans?
+      errors.add(:fineness, '焙煎前のコーヒー豆は粉砕済みでは登録できません')
+    end
   end
 end
