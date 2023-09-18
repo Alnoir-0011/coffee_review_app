@@ -5,7 +5,7 @@
   = f.text_field :shop_name
   .d-flex.align-items-center.justify-content-around
     p.mb-0 コーヒー豆がありませんか？
-    = link_to 'コーヒー豆を登録する', '#', class: 'btn btn-outline-secondary'
+    = link_to 'コーヒー豆を登録する', new_bean_path, class: 'btn btn-outline-secondary'
   = f.text_field :bean_name
   = f.select :store_roast_option, Purchase.store_roast_options.keys.to_a, prompt: 'roast'
   = f.select :store_grind_option, Purchase.store_grind_options.keys.to_a, prompt: 'fineness'
