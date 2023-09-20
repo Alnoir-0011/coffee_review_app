@@ -4,10 +4,10 @@
     = render 'shared/tab_buttons'
     = search_form_for @q, url: mypage_reviews_path,
                       html: { data: { turbo_frame: "reviews-list" } },
-                      class: 'input-group mb-3' do |f|
-      = f.text_field :title_cont, class: 'form-control', placeholder: 'title'
-      = f.text_field :purchase_bean_name_cont, class: 'form-control', placeholder: 'bean name'
-      = f.select :tools_name_eq, Tool.pluck(:name), prompt: '使用器具',class: 'form-control'
+                      class: 'row row-cols row-cols-md-2 row-cols-xl-5 input-group mb-3 ms-0' do |f|
+      = f.text_field :title_cont, class: 'col form-control', placeholder: 'title'
+      = f.text_field :purchase_bean_name_cont, class: 'col form-control', placeholder: 'bean name'
+      = f.select :tools_name_eq, Tool.pluck(:name), prompt: '使用器具',class: 'col form-select'
       = f.submit '検索', class: 'btn btn-secondary'
 
     = turbo_frame_tag 'reviews-list' do
