@@ -3,10 +3,10 @@
     h1.mt-5.mb-3 = @region.name
     = search_form_for @q, url: beans_path(region: @region),
                       html: { data: { turbo_frame: "bean-list" } }, class: 'input-group' do |f|
-      = f.hidden_field :region_id, value: @region.id
       = f.text_field :name_cont, class: 'form-control', placeholder: 'name'
       = f.select :roast_eq, Bean.roasts, prompt: 'roast',class: 'form-control'
       = f.select :fineness_eq, Bean.finenesses, prompt: 'fineness',class: 'form-control'
+      = f.hidden_field :region_id, value: @region.id
       = f.submit 'search', class: 'btn btn-secondary'
     br
     = turbo_frame_tag "bean-list" do

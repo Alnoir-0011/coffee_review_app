@@ -7,6 +7,7 @@ CarrierWave.configure do |config|
     config.storage :fog
     config.fog_provider = 'fog/aws'
     config.fog_directory  = 'coffee-stack-log' # バケット名
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/coffee-stack-log'
     config.fog_public = false
     config.fog_credentials = {
       provider: 'AWS',
