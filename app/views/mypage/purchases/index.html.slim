@@ -4,11 +4,11 @@
     = render 'shared/tab_buttons'
     = search_form_for @q, url: mypage_purchases_path,
                       html: { data: { turbo_frame: "purchases-list" } },
-                      class: 'input-group mb-3' do |f|
-      = f.text_field :bean_name_cont, class: 'form-control', placeholder: 'bean name'
-      = f.text_field :shop_name_cont, class: 'form-control', placeholder: 'shop name'
-      = f.select :store_roast_option_eq, Purchase.store_roast_options, prompt: 'roast',class: 'form-control'
-      = f.select :store_grind_option_eq, Purchase.store_grind_options, prompt: 'fineness',class: 'form-control'
+                      class: 'row row-cols row-cols-md-2 row-cols-xl-5 input-group mb-3 ms-0' do |f|
+      = f.text_field :bean_name_cont, class: 'col form-control', placeholder: 'bean name'
+      = f.text_field :shop_name_cont, class: 'col form-control', placeholder: 'shop name'
+      = f.select :store_roast_option_eq, Purchase.store_roast_options, prompt: 'roast', class: 'col form-select'
+      = f.select :store_grind_option_eq, Purchase.store_grind_options, prompt: 'fineness', class: 'col form-select'
       = f.submit '検索', class: 'btn btn-secondary'
 
     = link_to 'add new record', new_mypage_purchase_path, class: 'btn btn-outline-dark col-12 mb-3'

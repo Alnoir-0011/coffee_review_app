@@ -64,6 +64,8 @@ gem 'kaminari'
 gem 'seed-fu'
 gem 'trestle'
 gem 'trestle-auth'
+gem 'carrierwave'
+gem 'fog-aws'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
