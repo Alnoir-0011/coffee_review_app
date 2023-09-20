@@ -1,4 +1,6 @@
 class Bean < ApplicationRecord
+  mount_uploader :image, ImageUploader
+
   belongs_to :region
   has_many :dealers, dependent: :destroy
   has_many :shops, through: :dealers

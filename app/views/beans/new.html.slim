@@ -8,4 +8,5 @@
       = f.select :roast, Bean.roasts.keys, prompt: '焙煎度合い'
       = f.select :fineness, Bean.finenesses.keys, prompt: '粉の細かさ'
       = f.select :region_id, Region.pluck(:name, :id), prompt: '産地'
+      = f.file_field :image
       = f.submit
