@@ -1,8 +1,9 @@
 header
   nav.navbar.navbar-expand-lg data-bs-theme="dark"
     .container-fluid
-      = link_to 'Coffee Brew Lab.', root_path, class: "navbar-brand fs-3"
-      button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+      = link_to root_path, class: "navbar-brand" do
+        = image_tag 'Logo.png', width: '240'
+      button.navbar-toggler.ms-auto type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
         span.navbar-toggler-icon
       .collapse.navbar-collapse#navbarNavDropdown
         ul.navbar-nav.me-auto.ms-auto
