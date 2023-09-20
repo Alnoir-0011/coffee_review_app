@@ -24,6 +24,6 @@ class BeansController < ApplicationController
   private
 
   def bean_params
-    params.require(:bean).permit(:name, :roast, :fineness, :region_id)
+    params.require(:bean).permit(:name, :roast, :fineness, :region_id, :image)
   end
 end

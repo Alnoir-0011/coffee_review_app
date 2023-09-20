@@ -1,13 +1,13 @@
-= link_to '#', class: 'card mb-3' do
+= link_to '#', class: 'card mb-3 text-decoration-none' do
   .row.g-0
-    .col-xl-3.col-lg-4
-      = image_tag 'sample300.png', class:'img-fluid rounded-start'
-    .col-md-12.col-xl-9.col-lg-8
+    .col-xl-4.col-lg-5
+      = image_tag bean.image.url, class:'img-fluid rounded-start'
+    .col-md-12.col-xl-8.col-lg-7
       .card-body
         h5.card-title.mb-1  = bean.name
-        h6.card-text.mb-1 = bean.shops.present? ? bean.shops.first.name : ''
+        h6.card-text.mb-1 = bean.shops.present? ? bean.shops.first.name : '店舗が登録されていません'
         .d-flex
-          i.bi.bistar
+          i.bi.bi-star
           p.card-text.mb-1 = 
         .bg-body-secondary
           - if bean.reviews.present?
