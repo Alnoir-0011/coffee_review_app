@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: 'tops#index'
 
   resources :beans, only: %i[index new create]
+  resources :shops, only: %i[new create]
   namespace :mypage do
     root to: redirect('mypage/purchases')
     resources :purchases, only: %i[index new create edit update destroy]

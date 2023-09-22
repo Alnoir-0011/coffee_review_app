@@ -1,7 +1,7 @@
 = bootstrap_form_with model: purchase_form, url: url do |f|
   .d-flex.align-items-center.justify-content-around
     p.mb-0 店舗がありませんか？
-    = link_to '店舗を登録する', '#', class: 'btn btn-outline-secondary'
+    = link_to '店舗を登録する', new_shop_path, class: 'btn btn-outline-secondary'
   = f.text_field :shop_name
   .d-flex.align-items-center.justify-content-around
     p.mb-0 コーヒー豆がありませんか？
