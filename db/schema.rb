@@ -109,12 +109,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_184407) do
 
   create_table "shops", force: :cascade do |t|
     t.string "name", null: false
-    t.string "adress"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "telephone_number"
-    t.float "latutude"
-    t.float "longitude"
+    t.string "place_id", null: false
     t.index ["name"], name: "index_shops_on_name", unique: true
   end
 
