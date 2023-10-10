@@ -111,7 +111,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_184407) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.integer "telephone_number"
     t.string "place_id", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["name"], name: "index_shops_on_name", unique: true
   end
 
