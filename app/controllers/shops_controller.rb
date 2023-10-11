@@ -1,4 +1,14 @@
 class ShopsController < ApplicationController
+  
+  def index
+    @q = Shop.ransack(params[:q])
+    # if params[:current_location].empty?
+    @shops = @q.result
+    # else
+    #   @shop = Shop.near(params[:current_location], 10, units: :km)
+    # end
+  end
+
   def new
     @shop = Shop.new
   end
@@ -16,6 +26,6 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :place_id)
+    params.require(:shop).permit(:name, :place_id, :address, :phone_number, :latitude, :longitude)
   end
 end
