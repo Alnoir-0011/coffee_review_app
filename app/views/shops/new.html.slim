@@ -8,69 +8,19 @@
         .alert.alert-danger
           = 'マップから位置情報を入力してください'
       = text_field :search, :search, id: 'pac-input', class: 'form-control'
-      #map.mb-3
-      #infowindow-content
-        span#place-name
-        span#place-address
+
+      #map-new.mb-3
 
       = f.text_field :name, id: 'form-name', placeholder: 'チェーン店は店舗名を最後まで入力してください'
       = f.hidden_field :place_id, id: 'form-place-id'
+      = f.hidden_field :address, id: 'form-address'
+      = f.hidden_field :phone_number, id: 'form-phonenumber'
+      = f.hidden_field :latitude, id: 'form-lat'
+      = f.hidden_field :longitude, id: 'form-lng'
 
       css:
-        #map {
+        #map-new {
           height: 400px;
         }
-
-      javascript:
-        let map
-        let geocoder
-
-        function initMap(){
-          geocoder = new google.maps.Geocoder()
-
-          map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 35.6809591, lng:139.7673068},
-            zoom: 12,
-          });
-          const input = document.getElementById("pac-input");
-          const formName = document.getElementById("form-name")
-          const formPlaceId = document.getElementById("form-place-id");
-          const options = {
-            componentRestrictions: { country: "jp" },
-            fields: ["place_id", "geometry", "name"],
-            strictBounds: false,
-          };
-          const autocomplete = new google.maps.places.Autocomplete(input, options);
-          autocomplete.bindTo("bounds", map);
-          const infowindow = new google.maps.InfoWindow();
-          const infowindowContent = document.getElementById("infowindow-content");
-          infowindow.setContent(infowindowContent);
-          const marker = new google.maps.Marker({
-            map,
-            anchorPoint: new google.maps.Point(0, -29),
-          });
-          autocomplete.addListener("place_changed",() => {
-            marker.setVisible(false);
-            const place = autocomplete.getPlace();
-            if (!place.geometry || !place.geometry.location) {
-              window.alert("No details available for input: '" + place.name + "'");
-              return;
-            }
-            if (place.geometry.viewport) {
-              map.fitBounds(place.geometry.viewport);
-            } else {
-              map.setCenter(place.geometry.location);
-              map.setZoom(17);
-            }
-            marker.setPosition(place.geometry.location);
-            marker.setVisible(true);
-
-            formPlaceId.value = place.place_id;
-          });
-        };
-
-
-      - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API_KEY'] }&libraries=places&callback=initMap".html_safe
-      script{defer src = google_api }
 
       = f.submit

@@ -1,4 +1,18 @@
 class ShopsController < ApplicationController
+  
+  def index
+    @lat = params[:lat]
+    @lng = params[:lng]
+    @q = Shop.ransack(params[:q])
+    @shops = if @lat && @lng
+               Shop.near([@lat, @lng], 10, units: :km)
+             elsif params[:q].present? && params[:q][:name_cont].present?
+               @q.result
+             else
+               Shop.near([35.6809591, 139.7673068], 10, units: :km)
+             end
+  end
+
   def new
     @shop = Shop.new
   end
@@ -16,6 +30,6 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :place_id)
+    params.require(:shop).permit(:name, :place_id, :address, :phone_number, :latitude, :longitude)
   end
 end
