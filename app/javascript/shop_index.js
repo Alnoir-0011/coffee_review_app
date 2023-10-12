@@ -37,9 +37,8 @@ const initIndexMap = () => {
       google.maps.event.addListener(markers[i], 'click', () => {
         map.setCenter(markers[i].position);
         map.setZoom(17); 
-        const rect = listItems[i].getBoundingClientRect();
-        const elemtop = rect.top + list.scrollTop;
-        list.scrollTop = elemtop;
+        const height = listItems[i].firstElementChild.firstElementChild.clientHeight + 8;
+        list.scrollTop = height * i;
         collapseList.forEach((collapse, index) => {
           if(index == i) {
             collapse.show();
