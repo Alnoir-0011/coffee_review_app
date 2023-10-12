@@ -1,4 +1,6 @@
 class Shop < ApplicationRecord
+  geocoded_by latitude: :latitude, longitude: :longitude
+
   has_many :dealers, dependent: :destroy
   has_many :beans, through: :dealers
   has_many :purchases, dependent: :destroy

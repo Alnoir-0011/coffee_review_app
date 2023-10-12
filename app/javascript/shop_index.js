@@ -2,8 +2,13 @@ import * as bootstrap from "bootstrap"
 const initIndexMap = () => {
   if(document.getElementById("map-index")) {
     const geocoder = new google.maps.Geocoder();
+
+    const currentLocationButton = document.getElementById("get-position");
+    const currentLat = parseFloat(currentLocationButton.dataset.lat);
+    const currentLng = parseFloat(currentLocationButton.dataset.lng);
+
     const map = new google.maps.Map(document.getElementById("map-index"), {
-      center: {lat: 35.6809591, lng:139.7673068},
+      center: {lat: currentLat || 35.6809591, lng: currentLng || 139.7673068},
       zoom: 9,
     });
 
@@ -20,7 +25,7 @@ const initIndexMap = () => {
         map: map,
       });
 
-      button = listItems[i].firstElementChild.firstElementChild.firstElementChild;
+      const button = listItems[i].firstElementChild.firstElementChild.firstElementChild;
       button.addEventListener('click', (e) => {
         const targetLat = e.target.parentElement.parentElement.parentElement.parentElement.dataset.lat;
         const targetLng = e.target.parentElement.parentElement.parentElement.parentElement.dataset.lng;
