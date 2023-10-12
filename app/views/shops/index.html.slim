@@ -1,6 +1,8 @@
 .container
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2
-    h1.mt-3 店舗一覧
+    .d-flex.justify-content-between.align-align-items-center.my-3 data-controller="location"
+      h1 店舗一覧
+      button#get-position.btn.btn-dark.my-2 data-action="click->location#current" data-lat="#{ @lat || '' }" data-lng="#{ @lng || '' }" 現在地から検索
     #map-index.mb-3
     css:
       #map-index{
