@@ -7,7 +7,7 @@
     .accordion-collapse.col-12.collapse id="collapse#{shop.id}" aria-labelledby="heading#{shop.id}" data-bs-parent="#accordionShops"
       .accordion-body
         p.mb-2 = shop.address
-        p.mb-2 = shop.telephone_number
+        p.mb-2 = shop.phone_number
         .d-flex.overflow-x-auto.mb-3
           = render partial: 'review_card', collection: shop.reviews.limit(3)
         
