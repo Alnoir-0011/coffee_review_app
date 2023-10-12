@@ -9,7 +9,7 @@
         height: 600px;
       }
       #accordionShops{
-        height: 400px;
+        max-height: 400px;
       }
 
     = search_form_for @q, url: shops_path, class: 'input-group mb-3' do |f|
@@ -17,7 +17,7 @@
       = f.submit class: 'btn btn-secondary'
 
     - if @shops.present?
-      .accordion.overflow-y-scroll#accordionShops
+      .accordion.overflow-y-auto#accordionShops
         = render @shops
     - else
       .d-flex.align-items-center.justify-content-around
