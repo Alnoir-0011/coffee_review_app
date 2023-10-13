@@ -1,19 +1,20 @@
 .container
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2
     = render 'shared/current_user_profile'
-    = render 'shared/tab_buttons'
-    = search_form_for @q, url: mypage_reviews_path,
-                      html: { data: { turbo_frame: "reviews-list" } },
-                      class: 'row row-cols row-cols-md-2 row-cols-xl-5 input-group mb-3 ms-0' do |f|
-      = f.text_field :title_cont, class: 'col form-control', placeholder: 'title'
-      = f.text_field :purchase_bean_name_cont, class: 'col form-control', placeholder: 'bean name'
-      = f.select :tools_name_eq, Tool.pluck(:name), prompt: '使用器具',class: 'col form-select'
-      = f.submit '検索', class: 'btn btn-secondary'
+    = turbo_frame_tag 'list-with-tab' do
+      = render 'shared/tab_buttons'
+      = search_form_for @q, url: mypage_reviews_path,
+                        html: { data: { turbo_frame: "reviews-list" } },
+                        class: 'row row-cols row-cols-md-2 row-cols-xl-5 input-group mb-3 ms-0' do |f|
+        = f.text_field :title_cont, class: 'col form-control', placeholder: 'title'
+        = f.text_field :purchase_bean_name_cont, class: 'col form-control', placeholder: 'bean name'
+        = f.select :tools_name_eq, Tool.pluck(:name), prompt: '使用器具',class: 'col form-select'
+        = f.submit '検索', class: 'btn btn-secondary'
 
-    = turbo_frame_tag 'reviews-list' do
-      - if @reviews.present?
-        .accordion#accordionreviews.accordion-flush
-          = render @reviews
-        = paginate @reviews
-      - else
-        h3.col-10.offset-1 No reviews here :-(
+      = turbo_frame_tag 'reviews-list' do
+        - if @reviews.present?
+          .accordion#accordionreviews.accordion-flush
+            = render @reviews
+          = paginate @reviews
+        - else
+          h3.col-10.offset-1 No reviews here :-(

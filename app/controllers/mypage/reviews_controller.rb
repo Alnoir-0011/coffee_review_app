@@ -11,14 +11,13 @@ class Mypage::ReviewsController < ApplicationController
   end
 
   def create
-    @review = current_user.purchases.find(params[:review][:purchase_id]).build_review(review_params)
-
-    if @review.save_with_tools(tool_ids: params[:review][:tool_ids])
+    @purchase = current_user.purchases.find(params[:review][:purchase_id])
+    @review = @purchase.build_review(review_params)
+    if @review.save_with_tools(form_tool_ids: params[:review][:tool_ids])
       redirect_to mypage_reviews_path, success: 'レビューを投稿しました'
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def edit; end
@@ -26,7 +25,7 @@ class Mypage::ReviewsController < ApplicationController
   def update
     @review.assign_attributes(review_params)
 
-    if @review.save_with_tools(tool_ids: params[:review][:tool_ids])
+    if @review.save_with_tools(form_tool_ids: params[:review][:tool_ids])
       redirect_to mypage_reviews_path, success: 'レビューを更新しました'
     else
       render :edit, status: :unprocessable_entity
@@ -41,7 +40,7 @@ class Mypage::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :evaluation, :content, :brewing_method_id)
+    params.require(:review).permit(:title, :fineness, :evaluation, :content, :brewing_method_id)
   end
 
   def set_review
