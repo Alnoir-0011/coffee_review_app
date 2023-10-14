@@ -1,0 +1,23 @@
+.card.p-3
+  .row
+    .col-11
+      .d-flex.align-items-center.mb-3
+        = image_tag review.user.avatar.url, size: '70x70', class: 'me-3'
+        .d-flex.flex-wrap.align-items-center
+          h6.me-3 = review.user.name
+          .d-flex.flex-wrap.align-items-center
+            .badge.rounded-pill.text-bg-secondary.me-2
+              i.bi.bi-star
+              span = review.evaluation
+            .badge.rounded-pill.text-bg-secondary.me-2.d-flex.flex-wrap.pe-1
+              - if review.tools.present?
+                - review.tools.each do |tool|
+                  span.badge.rounded-pill.text-bg-light.me-1.ms-0 = tool.name
+              - else
+                span ツール登録なし
+            .badge.rounded-pill.text-bg-secondary
+              span = review.brewing_method.name
+      h5 = review.title
+      p = simple_format(review.content)
+    .col-1.mt-auto
+      i.bi.bi-hand-thumbs-up.mb-3
