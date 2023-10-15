@@ -8,6 +8,6 @@
       .accordion-body
         p.mb-2 = shop.address
         p.mb-2 = shop.phone_number
-        .d-flex.overflow-x-auto.mb-3
+        .d-flex.overflow-x-auto
           = render 'reviews', reviews: shop.reviews.limit(3)
         
