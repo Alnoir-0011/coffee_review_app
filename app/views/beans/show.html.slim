@@ -1,14 +1,15 @@
 .container
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2
     .row.my-3
-      = image_tag @bean.image.url, class: 'col-6'
-      .text-center.col-6
+      = image_tag @bean.image.url, class: 'col-10 offset-1 col-xs-8 offset-xs-2 col-sm-6 offset-sm-0'
+      .text-center.mt-3.col-sm-6
         h4 = @bean.name
         h4 = @bean.region.name
         p = @bean.shops.limit(2).pluck(:name).join(',')
-        h4 平均評価：
+        h4 = "平均評価 #{ @bean.average_evaluation }"
     .mb-3
       - if @reviews.present?
         = render partial: 'review', collection: @reviews
+        = paginate @reviews
       - else
         p No reviews here :-(

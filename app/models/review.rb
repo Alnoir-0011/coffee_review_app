@@ -49,6 +49,10 @@ class Review < ApplicationRecord
     purchase.store_grind_option_grinded?
   end
 
+  def own?(user)
+    user.id == self.user.id
+  end
+
   private
 
   def fineness_status

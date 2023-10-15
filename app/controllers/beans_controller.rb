@@ -10,7 +10,7 @@ class BeansController < ApplicationController
 
   def show
     @bean = Bean.find(params[:id])
-    @reviews = @bean.reviews.page(params[:page])
+    @reviews = @bean.reviews.includes(:tools, :brewing_method, purchase: :user).page(params[:page])
   end
 
   def new

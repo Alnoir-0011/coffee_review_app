@@ -19,5 +19,11 @@
               span = review.brewing_method.name
       h5 = review.title
       p = simple_format(review.content)
-    .col-1.mt-auto
-      i.bi.bi-hand-thumbs-up.mb-3
+    .col-1.mt-auto.fs-4
+      - if review.own?(current_user)
+        = link_to edit_mypage_review_path(review), class: 'link-dark' do
+          i.bi.bi-pencil
+        = link_to mypage_review_path(review), class: 'link-dark', data: { turbo_method: :delete } do
+          i.bi.bi-trash
+      - else
+        i.bi.bi-hand-thumbs-up
