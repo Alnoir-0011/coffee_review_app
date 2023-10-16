@@ -23,6 +23,10 @@ class Bean < ApplicationRecord
     authorizable_ransackable_associations
   end
 
+  def average_evaluation
+    reviews.average(:evaluation)
+  end
+
   private
 
   def raw_cannot_grind

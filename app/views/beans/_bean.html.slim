@@ -1,4 +1,4 @@
-= link_to '#', class: 'card mb-3 text-decoration-none' do
+= link_to bean_path(bean), data: { turbo_frame: '_top' }, class: 'card mb-3 text-decoration-none' do
   .row.g-0
     .col-md-12.col-xl-4.col-lg-5
       = image_tag bean.image.url, class:'img-fluid rounded col-12'
@@ -6,9 +6,12 @@
       .card-body
         h5.card-title.mb-1  = bean.name
         h6.card-text.mb-1 = bean.shops.present? ? bean.shops.first.name : '店舗が登録されていません'
-        .d-flex
-          i.bi.bi-star
-          p.card-text.mb-1 = 
+        - if bean.average_evaluation
+          .d-flex
+            i.bi.bi-star
+            p.card-text.mb-1 = bean.average_evaluation
+        - else
+          p 評価がありません
         .bg-body-secondary
           - if bean.reviews.present?
             - bean.reviews.limit(3).each do |review|

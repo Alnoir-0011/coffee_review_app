@@ -4,6 +4,8 @@ class Review < ApplicationRecord
   has_many :review_tools, dependent: :destroy
   has_many :tools, through: :review_tools
 
+  delegate :user, :bean, to: :purchase
+
   validates :title, presence: true, length: { maximum: 255 }
   validates :content, length: { maximum: 65535 }
   validates :evaluation, numericality: { in: 1..5 }
@@ -45,6 +47,10 @@ class Review < ApplicationRecord
 
   def already_grinded?
     purchase.store_grind_option_grinded?
+  end
+
+  def own?(user)
+    user.id == self.user.id
   end
 
   private
