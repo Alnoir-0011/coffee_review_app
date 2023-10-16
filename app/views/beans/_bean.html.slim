@@ -6,9 +6,12 @@
       .card-body
         h5.card-title.mb-1  = bean.name
         h6.card-text.mb-1 = bean.shops.present? ? bean.shops.first.name : '店舗が登録されていません'
-        .d-flex
-          i.bi.bi-star
-          p.card-text.mb-1 = 
+        - if bean.average_evaluation
+          .d-flex
+            i.bi.bi-star
+            p.card-text.mb-1 = bean.average_evaluation
+        - else
+          p 評価がありません
         .bg-body-secondary
           - if bean.reviews.present?
             - bean.reviews.limit(3).each do |review|
