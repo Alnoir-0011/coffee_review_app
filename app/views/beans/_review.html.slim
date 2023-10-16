@@ -2,9 +2,11 @@
   .row
     .col-11
       .d-flex.align-items-center.mb-3
-        = image_tag review.user.avatar.url, size: '70x70', class: 'me-3'
+        = link_to user_profile_path(review.user), class: 'me-3' do
+          = image_tag review.user.avatar.url, size: '70x70'
         .d-flex.flex-wrap.align-items-center
-          h6.me-3 = review.user.name
+          = link_to user_profile_path(review.user), class: 'link-dark me-3', data: { turbo_frame: '_top' } do
+            h6 = review.user.name
           .d-flex.flex-wrap.align-items-center
             .badge.rounded-pill.text-bg-secondary.me-2
               i.bi.bi-star
