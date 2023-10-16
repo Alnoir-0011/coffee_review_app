@@ -7,6 +7,8 @@
         h4 = @bean.region.name
         p = @bean.shops.limit(2).pluck(:name).join(',')
         h4 = "平均評価 #{ @bean.average_evaluation }"
+        h4 = "焙煎 #{@bean.roast}"
+        h4 = "細かさ #{@bean.fineness}"
     .mb-3
       - if @reviews.present?
         = render partial: 'review', collection: @reviews
