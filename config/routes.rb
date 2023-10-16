@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[index new create edit update destroy]
     resource :profile, only: %i[show edit update]
   end
+
+  resources :user_profiles, only: %i[show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
