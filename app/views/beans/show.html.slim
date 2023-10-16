@@ -10,12 +10,13 @@
         h4 = "焙煎 #{@bean.roast}"
         - unless @bean.roast_raw?
           h4 = "細かさ #{@bean.fineness}"
-    .d-flex.mb-3.justify-content-end
-      = sort_link(@q, :created_at, class: 'link-dark text-decoration-none ms-2')
-      = sort_link(@q, :evaluation, class: 'link-dark text-decoration-none ms-2')
-    .mb-3
-      - if @reviews.present?
-        = render partial: 'review', collection: @reviews
-        = paginate @reviews
-      - else
-        p No reviews here :-(
+    = turbo_frame_tag 'review-list' do
+      .d-flex.mb-3.justify-content-end
+        = sort_link(@q, :created_at, class: 'link-dark text-decoration-none ms-2')
+        = sort_link(@q, :evaluation, class: 'link-dark text-decoration-none ms-2')
+      .mb-3
+        - if @reviews.present?
+          = render partial: 'review', collection: @reviews
+          = paginate @reviews
+        - else
+          p No reviews here :-(
