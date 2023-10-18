@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resource :profile, only: %i[show edit update]
   end
 
+  resources :password_resets, only: %i[new create edit update]
+
   resources :user_profiles, only: %i[show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
