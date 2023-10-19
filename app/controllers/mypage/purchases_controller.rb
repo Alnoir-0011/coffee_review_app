@@ -4,7 +4,7 @@ class Mypage::PurchasesController < ApplicationController
 
   def index
     @q = current_user.purchases.ransack(params[:q])
-    @purchases = @q.result.includes(:bean, :shop).order(purchase_at: :desc).page(params[:page])
+    @purchases = @q.result.includes(:bean, :shop, :review).order(purchase_at: :desc).page(params[:page])
   end
 
   def new

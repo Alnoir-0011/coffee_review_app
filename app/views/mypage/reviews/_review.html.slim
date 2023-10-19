@@ -20,7 +20,9 @@
             span.badge.rounded-pill.text-bg-secondary.me-1 = tool.name
         .text-break
           = simple_format(h(review.content))
-        .d-flex.justify-content-end.ms-auto.fs-4.me-1
+        .d-flex.justify-content-end.fs-4.me-1
+          .me-auto
+            i.bi.bi-hand-thumbs-up
           = link_to edit_mypage_review_path(review), class: 'link-dark me-3', data: { turbo_frame: "_top" } do
             i.bi.bi-pencil
           = link_to mypage_review_path(review), class: 'link-dark', data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }
