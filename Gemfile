@@ -103,4 +103,5 @@ group :test do
 end
 
 gem 'dotenv-rails'
+gem 'config'
 gem 'bootstrap_form'

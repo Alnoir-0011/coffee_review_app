@@ -10,7 +10,7 @@ html
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
     - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API_KEY'] }&libraries=places".html_safe
     script{defer src = google_api }
-  body
+  body.d-flex.flex-column
     - if logged_in?
       = render 'shared/header'
     - else
