@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_20_184407) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_16_134120) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -109,12 +109,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_184407) do
 
   create_table "shops", force: :cascade do |t|
     t.string "name", null: false
-    t.string "adress"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "telephone_number"
-    t.float "latutude"
+    t.string "address"
+    t.string "place_id", null: false
+    t.float "latitude"
     t.float "longitude"
+    t.string "phone_number"
     t.index ["name"], name: "index_shops_on_name", unique: true
   end
 
@@ -143,7 +144,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_184407) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "avatar"
+    t.string "reset_password_token"
+    t.datetime "reset_password_token_expires_at"
+    t.datetime "reset_password_email_sent_at"
+    t.integer "access_count_to_reset_password_page", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
   add_foreign_key "beans", "regions"

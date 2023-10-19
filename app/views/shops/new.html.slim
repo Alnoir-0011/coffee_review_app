@@ -1,0 +1,26 @@
+.container
+  .col-md-10.offset-md-1.col-lg-8.offset-lg-2.col-xl-6.offset-xl-3
+    .d-flex.justify-content-between.mb-3.mt-5
+      h1 ショップ登録
+      = link_to 'キャンセル', mypage_purchases_path, class: 'btn btn-outline-info my-2'
+    = bootstrap_form_with model: @shop do |f|
+      - if f.object.errors.full_messages.include?('Placeを入力してください')
+        .alert.alert-danger
+          = 'マップから位置情報を入力してください'
+      = text_field :search, :search, id: 'pac-input', class: 'form-control'
+
+      #map-new.mb-3
+
+      = f.text_field :name, id: 'form-name', placeholder: 'チェーン店は店舗名を最後まで入力してください'
+      = f.hidden_field :place_id, id: 'form-place-id'
+      = f.hidden_field :address, id: 'form-address'
+      = f.hidden_field :phone_number, id: 'form-phonenumber'
+      = f.hidden_field :latitude, id: 'form-lat'
+      = f.hidden_field :longitude, id: 'form-lng'
+
+      css:
+        #map-new {
+          height: 400px;
+        }
+
+      = f.submit
