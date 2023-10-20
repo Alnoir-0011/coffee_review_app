@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_19_180605) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_20_173955) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,6 +71,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_180605) do
     t.index ["bean_id"], name: "index_favorites_on_bean_id"
     t.index ["user_id", "bean_id"], name: "index_favorites_on_user_id_and_bean_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "review_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_likes_on_review_id"
+    t.index ["user_id", "review_id"], name: "index_likes_on_user_id_and_review_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -169,6 +179,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_180605) do
   add_foreign_key "dealers", "shops"
   add_foreign_key "favorites", "beans"
   add_foreign_key "favorites", "users"
+  add_foreign_key "likes", "reviews"
+  add_foreign_key "likes", "users"
   add_foreign_key "purchases", "beans"
   add_foreign_key "purchases", "shops"
   add_foreign_key "purchases", "users"

@@ -3,6 +3,8 @@ class Review < ApplicationRecord
   belongs_to :brewing_method
   has_many :review_tools, dependent: :destroy
   has_many :tools, through: :review_tools
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
 
   delegate :user, :bean, to: :purchase
 
