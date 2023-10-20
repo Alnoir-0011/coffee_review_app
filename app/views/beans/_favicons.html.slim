@@ -1,0 +1,4 @@
+- if current_user.favorite?(bean)
+  = render 'unfavorite', bean: bean
+- else
+  = render 'favorite', bean: bean

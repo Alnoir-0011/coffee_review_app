@@ -2,14 +2,17 @@
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2
     .row.my-3
       = image_tag @bean.image.url, class: 'col-10 offset-1 col-xs-8 offset-xs-2 col-sm-6 offset-sm-0'
-      .text-center.mt-3.col-sm-6
-        h4 = @bean.name
-        h4 = @bean.region.name
-        p = @bean.shops.limit(2).pluck(:name).join(',')
-        h4 = "平均評価 #{ @bean.average_evaluation }"
-        h4 = "焙煎 #{@bean.roast}"
-        - unless @bean.roast_raw?
-          h4 = "細かさ #{@bean.fineness}"
+      .d-flex.justify-content-between.mt-3.col-sm-6
+        .text-center.col-10
+          h4 = @bean.name
+          h4 = @bean.region.name
+          p = @bean.shops.limit(2).pluck(:name).join(',')
+          h4 = "平均評価 #{ @bean.average_evaluation }"
+          h4 = "焙煎 #{@bean.roast}"
+          - unless @bean.roast_raw?
+            h4 = "細かさ #{@bean.fineness}"
+        .fs-4.col-2#fav
+          = render 'favicons', bean: @bean
     = turbo_frame_tag 'review-list' do
       .d-flex.mb-3.justify-content-end
         = sort_link(@q, :created_at, class: 'link-dark text-decoration-none ms-2')

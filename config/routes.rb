@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
   root to: 'tops#index'
 
-  resources :beans, only: %i[index show new create]
+  resources :beans, only: %i[index show new create] do
+    resource :favorite, only: %i[create destroy]
+  end
   resources :shops, only: %i[index new create]
   namespace :mypage do
     root to: redirect('mypage/purchases')
