@@ -3,7 +3,7 @@
     .col-11
       .d-flex.align-items-center.mb-3
         = link_to user_profile_path(review.user), class: 'me-3' do
-          = image_tag review.user.avatar.url, size: '70x70'
+          = image_tag review.user.avatar.url, size: '70x70', class: 'rounded-circle'
         .d-flex.flex-wrap.align-items-center
           = link_to user_profile_path(review.user), class: 'link-dark me-3', data: { turbo_frame: '_top' } do
             h6 = review.user.name
@@ -28,4 +28,6 @@
         = link_to mypage_review_path(review), class: 'link-dark', data: { turbo_method: :delete, turbo_frame: '_top' } do
           i.bi.bi-trash
       - else
-        i.bi.bi-hand-thumbs-up
+        .d-flex.align-items-center
+          i.bi.bi-hand-thumbs-up
+          span.fs-5 = review.liked_users.length

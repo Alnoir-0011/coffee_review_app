@@ -1,6 +1,6 @@
 .container
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2.col-xl-6.offset-xl-3
     .d-flex.justify-content-between.mb-3.mt-5
-      h1 レビュー作成
+      h1 レビュー編集
       = link_to 'キャンセル', mypage_purchases_path
-    = render 'form', { purchase: @purchase, review: @review, url: mypage_reviews_path }
+    = render 'form', { review: @review, url: review_path(@review) }

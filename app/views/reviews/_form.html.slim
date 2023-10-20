@@ -1,5 +1,4 @@
 = bootstrap_form_with model: review, url: url do |f|
-  = f.hidden_field :purchase_id, value: purchase.id
   = f.text_field :title
   = f.select :fineness, Review.finenesses.keys.to_a, {}, disabled: review.already_grinded?
   = f.label :tools
