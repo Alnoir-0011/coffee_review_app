@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_16_134120) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_19_180605) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +63,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_16_134120) do
     t.index ["shop_id"], name: "index_dealers_on_shop_id"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "bean_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bean_id"], name: "index_favorites_on_bean_id"
+    t.index ["user_id", "bean_id"], name: "index_favorites_on_user_id_and_bean_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "purchases", force: :cascade do |t|
     t.integer "store_roast_option", default: 0, null: false
     t.integer "store_grind_option", default: 0, null: false
@@ -109,9 +119,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_16_134120) do
 
   create_table "shops", force: :cascade do |t|
     t.string "name", null: false
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "address"
     t.string "place_id", null: false
     t.float "latitude"
     t.float "longitude"
@@ -157,6 +167,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_16_134120) do
   add_foreign_key "brewing_prefences", "users"
   add_foreign_key "dealers", "beans"
   add_foreign_key "dealers", "shops"
+  add_foreign_key "favorites", "beans"
+  add_foreign_key "favorites", "users"
   add_foreign_key "purchases", "beans"
   add_foreign_key "purchases", "shops"
   add_foreign_key "purchases", "users"

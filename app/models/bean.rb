@@ -6,6 +6,8 @@ class Bean < ApplicationRecord
   has_many :shops, through: :dealers
   has_many :purchases, dependent: :destroy
   has_many :reviews, through: :purchases
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
   
   validates :name, presence: true, length: { maximum: 255 }
   
