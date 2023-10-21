@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_beans, through: :favorites, source: :bean
   has_many :likes, dependent: :destroy
-  has_many :liked_reviews, through: :liles, source: :review
+  has_many :liked_reviews, through: :likes, source: :review
 
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -54,7 +54,7 @@ class User < ApplicationRecord
     self.favorite_beans.include?(bean)
   end
 
-  def like(reivew)
+  def like(review)
     liked_reviews << review
   end
 

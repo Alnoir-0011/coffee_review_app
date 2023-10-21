@@ -1,0 +1,4 @@
+- if current_user.like?(review)
+  = render 'shared/like/unlike', review: review
+- else
+  = render 'shared/like/like', review: review
