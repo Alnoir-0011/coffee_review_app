@@ -3,9 +3,9 @@
     .col-md-12.col-xl-4.col-lg-5
       = image_tag bean.image.url, class:'img-fluid rounded col-12'
     .col-md-12.col-xl-8.col-lg-7
-      .card-body
+      .card-body.py-2
         h5.card-title.mb-1  = bean.name
-        h6.card-text.mb-1 = bean.shops.present? ? bean.shops.first.name : '店舗が登録されていません'
+        h6.card-text.mb-0 = bean.shops.present? ? bean.shops.first.name : '店舗が登録されていません'
         - if bean.average_evaluation
           .d-flex
             i.bi.bi-star
@@ -15,6 +15,6 @@
         .bg-body-secondary
           - if bean.reviews.present?
             - bean.reviews.limit(3).each do |review|
-              p.card-text = review.title
+              p.card-text.mb-0.fs-7 = review.title
           - else
             p any review here
