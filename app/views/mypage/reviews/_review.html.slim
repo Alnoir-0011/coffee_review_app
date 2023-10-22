@@ -6,7 +6,7 @@
           h5.me-3.mb-0 = review.title
           h6.mb-0 = review.purchase.bean.name
     .accordion-collapse.col-12.collapse[id="collapse#{review.id}" aria-labelledby="heading#{review.id}" data-bs-parent="#accordionPurchases"]
-      .accordion-body
+      .accordion-body.pb-2
         .d-flex.justify-content-between
           p = review.purchase.roast_status
           p = review.grind_status
@@ -20,11 +20,11 @@
             span.badge.rounded-pill.text-bg-secondary.me-1 = tool.name
         .text-break
           = simple_format(h(review.content))
-        .d-flex.justify-content-end.fs-4.me-1
+        .d-flex.justify-content-end.fs-4
           .me-auto
             .d-flex
               i.bi.bi-hand-thumbs-up
-              p = review.likes.length
+              p.mb-0 = review.likes.length
           = link_to edit_review_path(review), class: 'link-dark me-3', data: { turbo_frame: "_top" } do
             i.bi.bi-pencil
           = link_to mypage_review_path(review), class: 'link-dark', data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }

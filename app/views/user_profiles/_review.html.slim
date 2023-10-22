@@ -6,7 +6,7 @@
           h5.me-3.mb-0 = review.title
           h6.mb-0 = review.purchase.bean.name
     .accordion-collapse.col-12.collapse[id="collapse#{review.id}" aria-labelledby="heading#{review.id}" data-bs-parent="#accordionPurchases"]
-      .accordion-body
+      .accordion-body.pb-2
         .d-flex.justify-content-between
           p = review.purchase.roast_status
           p = review.grind_status
@@ -19,7 +19,6 @@
           - review.tools.each do |tool|
             span.badge.rounded-pill.text-bg-secondary.me-1 = tool.name
         .text-break
-          = simple_format(h(review.content))
-        .d-flex.justify-content-end.ms-auto.fs-4.me-1
-          = link_to '#', class: 'link-dark me-3' do
-            i.bi.bi-star
+          = simple_format(h(review.content), class: 'mb-0')
+        .d-flex.justify-content-end.fs-4 id="like_#{review.id}"
+          = render 'shared/like/likeicons', review: review

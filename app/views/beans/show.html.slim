@@ -7,16 +7,16 @@
           h4 = @bean.name
           h4 = @bean.region.name
           p = @bean.shops.limit(2).pluck(:name).join(',')
-          h4 = "平均評価 #{ @bean.average_evaluation }"
+          h4 = "平均評価 #{@bean.average_evaluation}"
           h4 = "焙煎 #{@bean.roast}"
           - unless @bean.roast_raw?
             h4 = "細かさ #{@bean.fineness}"
         .fs-4.col-2#fav
           = render 'favicons', bean: @bean
     = turbo_frame_tag 'review-list' do
-      .d-flex.mb-3.justify-content-end
-        = sort_link(@q, :created_at, class: 'link-dark text-decoration-none ms-2')
-        = sort_link(@q, :evaluation, class: 'link-dark text-decoration-none ms-2')
+      .d-flex.mb-1.justify-content-end
+        = sort_link(@q, :created_at, class: 'link-dark ms-2')
+        = sort_link(@q, :evaluation, class: 'link-dark ms-2')
       .mb-3
         - if @reviews.present?
           = render partial: 'review', collection: @reviews
