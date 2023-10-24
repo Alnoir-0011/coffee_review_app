@@ -17,6 +17,7 @@
       .d-flex.mb-1.justify-content-end
         = sort_link(@q, :created_at, class: 'link-dark ms-2')
         = sort_link(@q, :evaluation, class: 'link-dark ms-2')
+        = sort_link(@q, :like_count, class: 'link-dark ms-2')
       .mb-3
         - if @reviews.present?
           = render partial: 'review', collection: @reviews

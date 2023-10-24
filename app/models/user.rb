@@ -47,11 +47,11 @@ class User < ApplicationRecord
   end
 
   def unfavorite(bean)
-    favorite_beans.delete(bean)
+    favorite_beans.destroy(bean)
   end
 
   def favorite?(bean)
-    self.favorite_beans.include?(bean)
+    favorite_beans.include?(bean)
   end
 
   def like(review)
@@ -59,7 +59,7 @@ class User < ApplicationRecord
   end
 
   def unlike(review)
-    liked_reviews.delete(review)
+    liked_reviews.destroy(review)
   end
 
   def like?(review)

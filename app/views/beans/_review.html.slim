@@ -5,12 +5,12 @@
         = image_tag review.user.avatar.url, size: '70x70', class: 'rounded-circle'
       .d-flex.flex-wrap.align-items-center
         = link_to user_profile_path(review.user), class: 'link-dark me-3', data: { turbo_frame: '_top' } do
-          h6 = review.user.name
+          h6.mb-0 = review.user.name
         .d-flex.flex-wrap.align-items-center
           .badge.rounded-pill.text-bg-secondary.me-2
             i.bi.bi-star
             span = review.evaluation
-          .badge.rounded-pill.text-bg-secondary.me-2.d-flex.flex-wrap.pe-1
+          .badge.rounded-pill.text-bg-secondary.my-1.me-2.d-flex.flex-wrap.pe-1
             - if review.tools.present?
               - review.tools.each do |tool|
                 span.badge.rounded-pill.text-bg-light.me-1.ms-0 = tool.name
@@ -24,7 +24,7 @@
     - if review.own?(current_user)
       .me-auto
         i.bi.bi-hand-thumbs-up
-        span = review.liked_users.length
+        span = review.like_count
       = link_to edit_review_path(review), class: 'link-dark me-1', data: { turbo_frame: '_top' } do
         i.bi.bi-pencil
       = link_to mypage_review_path(review), class: 'link-dark', data: { turbo_method: :delete, turbo_frame: '_top' } do
