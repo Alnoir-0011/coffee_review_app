@@ -3,4 +3,4 @@
     .d-flex.justify-content-between.mb-3.mt-5
       h1 購入記録作成
       = link_to 'キャンセル', mypage_purchases_path
-    = render 'form', { purchase_form: @purchase_form, url: mypage_purchases_path }
+    = render 'form', { purchase_form: @purchase_form, url: purchases_path }

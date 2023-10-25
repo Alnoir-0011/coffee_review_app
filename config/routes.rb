@@ -9,11 +9,16 @@ Rails.application.routes.draw do
   resources :beans, only: %i[index show new create] do
     resource :favorite, only: %i[create destroy]
   end
+  resources :purchases, only: %i[new create edit update] do
+    resources :reviews, only: %i[new create edit update], shallow: true do
+      resource :like, only: %i[create destroy]
+    end
+  end
   resources :shops, only: %i[index new create]
   namespace :mypage do
     root to: redirect('mypage/purchases')
-    resources :purchases, only: %i[index new create edit update destroy]
-    resources :reviews, only: %i[index new create edit update destroy]
+    resources :purchases, only: %i[index destroy]
+    resources :reviews, only: %i[index destroy]
     resource :profile, only: %i[show edit update]
   end
 

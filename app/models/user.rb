@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :brewing_methods, through: :brewing_prefences
   has_many :favorites, dependent: :destroy
   has_many :favorite_beans, through: :favorites, source: :bean
+  has_many :likes, dependent: :destroy
+  has_many :liked_reviews, through: :likes, source: :review
 
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -45,10 +47,22 @@ class User < ApplicationRecord
   end
 
   def unfavorite(bean)
-    favorite_beans.delete(bean)
+    favorite_beans.destroy(bean)
   end
 
   def favorite?(bean)
-    self.favorite_beans.include?(bean)
+    favorite_beans.include?(bean)
+  end
+
+  def like(review)
+    liked_reviews << review
+  end
+
+  def unlike(review)
+    liked_reviews.destroy(review)
+  end
+
+  def like?(review)
+    liked_reviews.include?(review)
   end
 end
