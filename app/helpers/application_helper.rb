@@ -1,6 +1,6 @@
 module ApplicationHelper
   def turbo_stream_flash
-    turbo_stream.append "flash", partial: "shared/flash"
+    turbo_stream.append "flashes", partial: "shared/flash"
   end
 
   def bg_if(controller_name)
