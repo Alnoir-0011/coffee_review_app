@@ -15,7 +15,7 @@ html
       = render 'shared/header'
     - else
       = render 'shared/before_login_header'
-    #flash
-      = render 'shared/flash'
     = yield
     = render 'shared/footer'
+    #flashes.position-fixed.top-0.end-0.m-2
+      = render 'shared/flash'
