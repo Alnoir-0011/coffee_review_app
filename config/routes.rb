@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
+  get 'terms_of_use', to: 'static_pages#terms_of_use'
+  get 'privacy_policy', to: 'static_pages#privacy_policy'
   root to: 'tops#index'
 
   resources :beans, only: %i[index show new create] do
