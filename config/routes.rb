@@ -11,12 +11,15 @@ Rails.application.routes.draw do
   resources :beans, only: %i[index show new create] do
     resource :favorite, only: %i[create destroy]
   end
+
   resources :purchases, only: %i[new create edit update] do
     resources :reviews, only: %i[new create edit update], shallow: true do
       resource :like, only: %i[create destroy]
     end
   end
+
   resources :shops, only: %i[index new create]
+  
   namespace :mypage do
     root to: redirect('mypage/purchases')
     resources :purchases, only: %i[index destroy]
@@ -25,8 +28,14 @@ Rails.application.routes.draw do
   end
 
   resources :password_resets, only: %i[new create edit update]
-
   resources :user_profiles, only: %i[show]
+
+  namespace :admin do
+    root to: 'base#index'
+    get 'login', to: 'usersessions#new'
+    post 'login', to: 'usersessions#create'
+    delete 'logout', to: 'usersessions#destroy'
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

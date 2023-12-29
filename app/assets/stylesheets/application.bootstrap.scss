@@ -2,10 +2,13 @@
 @import 'bootstrap-icons/font/bootstrap-icons';
 
 body {
-    background-color: #ECECEC;
     min-height: 100vh;
 }
 
-header {
-    background-color: #641F1F;
+.bg-ececec {
+  background-color: #ECECEC;
+}
+
+.bg-641f1f {
+  background-color: #641F1F;
 }
