@@ -1,9 +1,6 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-body {
-    min-height: 100vh;
-}
 
 .bg-ececec {
   background-color: #ECECEC;
@@ -11,4 +8,20 @@ body {
 
 .bg-641f1f {
   background-color: #641F1F;
+}
+
+.admin-login-mt {
+  margin-top: 8rem;
+}
+
+.h-100vh {
+  height: 100vh;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.mh-100vh {
+  min-height: 100vh;
 }

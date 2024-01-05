@@ -32,9 +32,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'base#index'
-    get 'login', to: 'usersessions#new'
-    post 'login', to: 'usersessions#create'
-    delete 'logout', to: 'usersessions#destroy'
+    get 'login', to: 'user_sessions#new'
+    post 'login', to: 'user_sessions#create'
+    delete 'logout', to: 'user_sessions#destroy'
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
