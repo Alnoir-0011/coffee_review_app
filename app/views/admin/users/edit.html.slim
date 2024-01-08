@@ -1,0 +1,14 @@
+.container
+  .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+    .d-flex.justify-content-between.align-items-center.my-3
+      h1.mb-0 Edit user
+      = link_to 'back', admin_users_path, class: 'btn btn-outline-danger'
+    = bootstrap_form_with model: @user, url: admin_user_path(@user) do |f|
+      = f.email_field :email
+      = f.text_field :name
+      = f.file_field :avatar, id: 'file-field'
+      = f.hidden_field :avatar_cache
+      .mb-3#preview-field
+        = image_tag @user.avatar.url, id: 'preview', class: 'avatar-preview object-fit-cover'
+      = f.select :role, User.roles.keys.to_a
+      = f.submit

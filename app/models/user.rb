@@ -24,6 +24,14 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, length: { maximum: 255 }
   validates :name, presence: true, length: { maximum: 255 }
 
+  def self.ransackable_attributes(auth_object = nil)
+    authorizable_ransackable_attributes
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    authorizable_ransackable_associations
+  end
+
   def save_with_associations(tool_ids:, brewing_method_ids:)
     ActiveRecord::Base.transaction do
       # binding.pry
