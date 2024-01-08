@@ -9,7 +9,7 @@
               = f.text_field :name, class: 'col'
               = f.file_field :avatar, class: 'col'
             = f.hidden_field :avatar_cache
-          = link_to 'キャンセル', mypage_profile_path, class: 'col-6 col-md-3 col-lg-2 badge rounded-pill text-decoration-none text-bg-secondary fs-6 ms-auto', data: { turbo_frame: 'profile'}
+          = link_to 'キャンセル', mypage_profile_path, class: 'col-6 col-md-3 col-lg-2 badge rounded-pill text-decoration-none text-bg-secondary fs-6 ms-auto shadow-sm', data: { turbo_frame: 'profile'}
         = f.email_field :email
         = f.label :tools
         = f.collection_check_boxes :tool_ids, Tool.all, :id, :name, inline: true, hide_label: true
