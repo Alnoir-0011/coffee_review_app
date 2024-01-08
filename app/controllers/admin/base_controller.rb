@@ -14,6 +14,6 @@ class Admin::BaseController < ApplicationController
   end
 
   def admin_authenticate
-    redirect_to root_path unless current_user.admin?
+    redirect_to root_path, warning: 'admin only' unless current_user.admin?
   end
 end
