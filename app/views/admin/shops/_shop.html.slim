@@ -1,0 +1,15 @@
+= turbo_frame_tag shop do
+  .row.py-2.border-bottom.align-items-center
+    .col-3
+      = shop.name
+    .col-3
+      = shop.address
+    .col-1
+      = shop.beans.count
+    .col-1
+      = shop.reviews.count
+    .col-2
+      = shop.created_at
+    .col-2.d-flex.justify-content-center
+      = link_to 'edit', edit_admin_shop_path(shop), class: 'btn btn-success me-2', data: { turbo_frame: '_top' }
+      = link_to 'delete', admin_shop_path(shop), class: 'btn btn-danger', data: { turbo_confirm: 'Are you Sure?', turbo_method: :delete }
