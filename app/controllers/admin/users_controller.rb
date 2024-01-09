@@ -18,7 +18,7 @@ class Admin::UsersController < Admin::BaseController
 
   def destroy
     @user.destroy!
-    redirect_to admin_users_path, success: 'user deleted'
+    flash.now[:success] = 'user deleted'
   end
   
   private

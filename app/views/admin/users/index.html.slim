@@ -9,7 +9,7 @@
                       class: 'input-group mb-3 ms-0' do |f|
       = f.text_field :name_cont, class: 'form-control', placeholder: 'name'
       = f.text_field :email_cont, class: 'form-control', placeholder: 'email'
-      = f.select :role_eq, User.roles, class: 'form-select px-4', prompt: 'role'
+      = f.select :role_eq, User.roles.keys.to_a, class: 'form-select px-4', prompt: 'role'
       = f.submit '検索', class: 'btn btn-primary px-4'
     = turbo_frame_tag 'user-list' do
       .row.border-bottom.pb-1

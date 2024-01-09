@@ -10,4 +10,4 @@
       = user.created_at
     .col-2.d-flex.justify-content-center
       = link_to 'edit', edit_admin_user_path(user), class: 'btn btn-success me-2', data: { turbo_frame: '_top' }
-      = link_to 'delete' ,'#' ,class: 'btn btn-danger', data: { turbo_confirm: 'Are you Sure?', turbo_method: :delete }
+      = link_to 'delete', admin_user_path(user), class: 'btn btn-danger', data: { turbo_confirm: 'Are you Sure?', turbo_method: :delete }
