@@ -5,12 +5,12 @@
       .d-flex.align-items-center.me-1
         .me-1 総店舗数:
         = Shop.count
-    = search_form_for @q, url: admin_shops_path, html: { data: { turbo_frame: "shop-list" } },
+    = search_form_for @q, url: admin_shops_path, html: { data: { turbo_frame: "shops-list" } },
                       class: 'input-group mb-3 ms-0' do |f|
       = f.text_field :name_cont, class: 'form-control', placeholder: 'name'
       = f.text_field :address_cont, class: 'form-control', placeholder: 'address'
       = f.submit '検索', class: 'btn btn-primary px-4'
-    = turbo_frame_tag 'shop-list' do
+    = turbo_frame_tag 'shops-list' do
       .row.border-bottom.pb-1
         .col-3
           = sort_link(@q, :name, class: 'link-dark')
