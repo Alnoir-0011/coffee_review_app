@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     resources :users, only: %i[index edit update destroy]
     resources :beans, only: %i[index new create edit update destroy]
     resources :shops, only: %i[index new create edit update destroy]
+    resources :purchases, only: %i[index edit update destroy]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
