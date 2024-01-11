@@ -1,5 +1,5 @@
 class PurchasesController < ApplicationController
-  before_action :set_purchases, only: %i[edit update]
+  before_action :set_purchase, only: %i[edit update]
   before_action :set_purchase_form, only: %i[edit]
 
   def new
@@ -33,7 +33,7 @@ class PurchasesController < ApplicationController
       :store_roast_option, :store_grind_option, :purchase_at).merge(user_id: current_user.id)
   end
 
-  def set_purchases
+  def set_purchase
     @purchase = current_user.purchases.find(params[:id])
   end
 
