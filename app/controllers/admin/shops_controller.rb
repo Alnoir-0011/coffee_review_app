@@ -2,7 +2,7 @@ class Admin::ShopsController < Admin::BaseController
   before_action :set_shop, only: %i[edit update destroy]
   def index
     @q = Shop.ransack(params[:q])
-    @shops = @q.result
+    @shops = @q.result.includes(:beans, :reviews)
   end
 
   def new
@@ -38,5 +38,9 @@ class Admin::ShopsController < Admin::BaseController
 
   def set_shop
     @shop = Shop.find(params[:id])
+  end
+
+  def shop_params
+    params.require(:shop).permit(:name, :place_id, :address, :phone_number, :latitude, :longitude)
   end
 end
