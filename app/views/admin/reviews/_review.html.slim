@@ -1,0 +1,15 @@
+= turbo_frame_tag review do
+  .row.py-2.border-bottom.align-items-center
+    .col-3
+      = review.title
+    .col-3
+      = review.bean.name
+    .col-1
+      = review.fineness
+    .col-1
+      = review.evaluation
+    .col-2
+      = review.created_at
+    .col-2.d-flex.justify-content-center
+      = link_to 'edit', edit_admin_review_path(review), class: 'btn btn-success me-2', data: { turbo_frame: '_top' }
+      = link_to 'delete', admin_review_path(review),class: 'btn btn-danger', data: { turbo_confirm: 'Are you Sure?', turbo_method: :delete }
