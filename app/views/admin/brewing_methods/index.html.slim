@@ -11,9 +11,9 @@
         .col-3
           = sort_link(@q, :created_at, class: 'link-dark')
         .col-2
-          = link_to new_admin_tool_path, class: 'btn btn-primary py-0 col-12', data: { turbo_frame: 'new_tool' } do
+          = link_to new_admin_brewing_method_path, class: 'btn btn-primary py-0 col-12', data: { turbo_frame: 'new_brewing_method' } do
             i.bi.bi-plus-circle-fill.me-1
             | Add
-      = turbo_frame_tag 'new_tool'
-      #tools
-        = render @tools
+      = turbo_frame_tag 'new_brewing_method'
+      #brewing_methods
+        = render @brewing_methods

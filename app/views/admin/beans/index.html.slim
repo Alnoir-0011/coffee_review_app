@@ -27,5 +27,7 @@
         .col-2
           = sort_link(@q, :created_at, class: 'link-dark')
         .col-2
-          = link_to '+add bean', new_admin_bean_path, class: 'btn btn-primary py-0 col-12', data: { turbo_frame: '_top' }
+          = link_to new_admin_bean_path, class: 'btn btn-primary py-0 col-12', data: { turbo_frame: '_top' } do
+            i.bi.bi-plus-circle-fill.me-1
+            | Add
       = render @beans

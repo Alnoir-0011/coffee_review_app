@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[index edit update destroy]
     resources :regions
     resources :tools
+    resources :brewing_methods
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
