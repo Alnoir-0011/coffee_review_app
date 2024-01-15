@@ -11,7 +11,7 @@
         .col-3
           = sort_link(@q, :created_at, class: 'link-dark')
         .col-2
-          = link_to '+add region', new_admin_region_path, class: 'btn btn-primary py-0 col-12', data: { turbo_frame: 'new_region' }
-      = turbo_frame_tag 'new_region'
-      #regions
-        = render @regions
+          = link_to '+add tool', new_admin_tool_path, class: 'btn btn-primary py-0 col-12', data: { turbo_frame: 'new_tool' }
+      = turbo_frame_tag 'new_tool'
+      #tools
+        = render @tools
