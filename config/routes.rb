@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     resources :shops, only: %i[index new create edit update destroy]
     resources :purchases, only: %i[index edit update destroy]
     resources :reviews, only: %i[index edit update destroy]
+    resources :regions
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

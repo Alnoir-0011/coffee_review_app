@@ -28,6 +28,7 @@ module Myapp
       g.assets false
       g.helper false
       g.test_framework false
+      g.decorator false
     end
   end
 end
