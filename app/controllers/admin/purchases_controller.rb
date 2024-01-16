@@ -3,7 +3,7 @@ class Admin::PurchasesController < Admin::BaseController
 
   def index
     @q = Purchase.ransack(params[:q])
-    @purchases = @q.result.includes(:user, :bean, :shop)
+    @purchases = @q.result.includes(:user, :bean, :shop).page(params[:page])
   end
 
   def edit

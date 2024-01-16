@@ -3,7 +3,7 @@ class Admin::ReviewsController < Admin::BaseController
 
   def index
     @q = Review.ransack(params[:q])
-    @reviews = @q.result.includes(purchase: [:bean, :user])
+    @reviews = @q.result.includes(purchase: [:bean, :user]).page(params[:page])
   end
 
   def edit; end

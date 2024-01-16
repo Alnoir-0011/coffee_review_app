@@ -3,7 +3,7 @@ class Admin::RegionsController < Admin::BaseController
 
   def index
     @q = Region.ransack(params[:q])
-    @regions = @q.result
+    @regions = @q.result.page(params[:page])
   end
 
   def new

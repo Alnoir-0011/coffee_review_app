@@ -3,7 +3,7 @@ class Admin::ToolsController < Admin::BaseController
 
   def index
     @q = Tool.ransack(params[:q])
-    @tools = @q.result
+    @tools = @q.result.page(params[:page])
   end
 
   def new

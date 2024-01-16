@@ -2,7 +2,7 @@ class Admin::ShopsController < Admin::BaseController
   before_action :set_shop, only: %i[edit update destroy]
   def index
     @q = Shop.ransack(params[:q])
-    @shops = @q.result.includes(:beans, :reviews)
+    @shops = @q.result.includes(:beans, :reviews).page(params[:page])
   end
 
   def new

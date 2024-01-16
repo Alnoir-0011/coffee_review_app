@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::BaseController
 
   def index
     @q = User.ransack(params[:q])
-    @users = @q.result
+    @users = @q.result.page(params[:page])
   end
 
   def edit; end

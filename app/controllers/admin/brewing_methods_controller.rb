@@ -3,7 +3,7 @@ class Admin::BrewingMethodsController < Admin::BaseController
 
   def index
     @q = BrewingMethod.ransack(params[:q])
-    @brewing_methods = @q.result
+    @brewing_methods = @q.result.page(params[:page])
   end
 
   def new

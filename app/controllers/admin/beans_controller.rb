@@ -3,7 +3,7 @@ class Admin::BeansController < Admin::BaseController
 
   def index
     @q = Bean.ransack(params[:q])
-    @beans = @q.result.includes(:purchases, :reviews, :region)
+    @beans = @q.result.includes(:purchases, :reviews, :region).page(params[:page])
   end
 
   def new
