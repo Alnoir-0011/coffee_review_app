@@ -1,10 +1,10 @@
 = bootstrap_form_with model: bean, url: url, class: 'mb-3' do |f|
-      = f.text_field :name
-      = f.select :roast, Bean.roasts.keys.to_a
-      = f.select :fineness, Bean.finenesses.keys.to_a
-      = f.file_field :image, id: 'file-field'
-      = f.hidden_field :avatar_cache
-      .mb-3#preview-field
-        = image_tag bean.image.url, id: 'preview', class: 'image-preview object-fit-cover'
-      = f.select :region_id, Region.pluck(:name, :id)
-      = f.submit
+  = f.text_field :name
+  = f.select :roast, Bean.roasts.keys.to_a
+  = f.select :fineness, Bean.finenesses.keys.to_a
+  = f.file_field :image, id: 'file-field'
+  = f.hidden_field :image_cache
+  .mb-3#preview-field
+    = image_tag bean.image.url, id: 'preview', class: 'image-preview object-fit-cover'
+  = f.select :region_id, Region.pluck(:name, :id)
+  = f.submit

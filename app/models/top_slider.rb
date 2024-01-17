@@ -1,5 +1,5 @@
 class TopSlider < ApplicationRecord
-  mount_uploader :SliderUploader
+  mount_uploader :image, SliderUploader
 
   validates :image, presence: true
   validates :name, presence: true, length: { maximum: 255 }
