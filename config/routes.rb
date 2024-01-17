@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     resources :regions
     resources :tools
     resources :brewing_methods
-    resources :top_sliders
+    resources :top_sliders, only: %i[index new create edit update destroy]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
