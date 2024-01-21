@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include GroupByDay
+
   authenticates_with_sorcery!
 
   mount_uploader :avatar, AvatorUploader

@@ -1,4 +1,6 @@
 class Review < ApplicationRecord
+  include GroupByDay
+
   belongs_to :purchase
   belongs_to :brewing_method
   has_many :review_tools, dependent: :destroy

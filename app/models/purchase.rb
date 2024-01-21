@@ -1,4 +1,6 @@
 class Purchase < ApplicationRecord
+  include GroupByDay
+
   belongs_to :user
   belongs_to :bean
   belongs_to :shop

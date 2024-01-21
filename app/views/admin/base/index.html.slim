@@ -1,2 +1,22 @@
 .container
-  h1.mt-2 Dashboard :-)
+  h1.mt-2 Dashboard
+  .row.mb-3
+    .card.col-4.p-2.bg-info
+      h4 User
+      = line_chart User.group_by_day
+    .card.col-4.p-2.bg-info-subtle
+      h4 Purchase
+      = line_chart Purchase.group_by_day
+    .card.col-4.p-2.bg-success-subtle
+      h4 Review
+      = line_chart Review.group_by_day
+  .card.p-2.mb-3
+    h4 Most Reviewed Shop
+    .d-flex.ms-3
+      h5.mb-0.me-2= @most_reviewed_shop[0]
+      h5.mb-0 = "#{@most_reviewed_shop[1]}件"
+  .card.p-2
+    h4 Monthly Reviewed Shop
+    .d-flex.ms-3
+      h5.mb-0.me-2= @monthly_reviewed_shop[0]
+      h5.mb-0 = "#{@monthly_reviewed_shop[1]}件"

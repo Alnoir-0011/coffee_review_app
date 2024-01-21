@@ -4,7 +4,8 @@ class Admin::BaseController < ApplicationController
   layout 'admin/layouts/application'
 
   def index
-
+    @most_reviewed_shop = Shop.joins(:reviews).group("shops.name").order('count_all DESC').limit(1).count.to_a[0]
+    @monthly_reviewed_shop = Shop.joins(:reviews).where("shops.created_at > ?", Time.current.prev_month).group("shops.name").order('count_all DESC').limit(1).count.to_a[0]
   end
 
   private

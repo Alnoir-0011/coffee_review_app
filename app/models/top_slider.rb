@@ -6,6 +6,14 @@ class TopSlider < ApplicationRecord
 
   validate :past_date_cannot, unless: -> { end_of_publication.nil? }
 
+  def self.ransackable_attributes(auth_object = nil)
+    authorizable_ransackable_attributes
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    authorizable_ransackable_associations
+  end
+
   private
 
   def past_date_cannot
