@@ -2,7 +2,7 @@ class Admin::RegionsController < Admin::BaseController
   before_action :set_region, only: %i[show edit update destroy]
 
   def index
-    @q = Region.ransack(params[:q])
+    @q = Region.ransack(params[:q], auth_object: current_user)
     @regions = @q.result.page(params[:page])
   end
 

@@ -2,7 +2,7 @@ class Admin::BrewingMethodsController < Admin::BaseController
   before_action :set_brewing_method, only: %i[show edit update destroy]
 
   def index
-    @q = BrewingMethod.ransack(params[:q])
+    @q = BrewingMethod.ransack(params[:q], auth_object: current_user)
     @brewing_methods = @q.result.page(params[:page])
   end
 

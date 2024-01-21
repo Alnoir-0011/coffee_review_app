@@ -2,7 +2,7 @@ class Admin::ToolsController < Admin::BaseController
   before_action :set_tool, only: %i[show edit update destroy]
 
   def index
-    @q = Tool.ransack(params[:q])
+    @q = Tool.ransack(params[:q], auth_object: current_user)
     @tools = @q.result.page(params[:page])
   end
 

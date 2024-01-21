@@ -1,7 +1,7 @@
 class Admin::TopSlidersController < Admin::BaseController
   before_action :set_top_slider, only: %i[edit update destroy]
   def index
-    @q = TopSlider.ransack(params[:q])
+    @q = TopSlider.ransack(params[:q], auth_object: current_user)
     @top_sliders = @q.result.page(params[:page])
   end
 

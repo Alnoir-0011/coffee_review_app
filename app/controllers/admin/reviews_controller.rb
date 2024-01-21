@@ -2,7 +2,7 @@ class Admin::ReviewsController < Admin::BaseController
   before_action :set_review, only: %i[edit update destroy]
 
   def index
-    @q = Review.ransack(params[:q])
+    @q = Review.ransack(params[:q], auth_object: current_user)
     @reviews = @q.result.includes(purchase: [:bean, :user]).page(params[:page])
   end
 

@@ -2,7 +2,7 @@ class Admin::BeansController < Admin::BaseController
   before_action :set_bean, only: %i[edit update destroy]
 
   def index
-    @q = Bean.ransack(params[:q])
+    @q = Bean.ransack(params[:q], auth_object: current_user)
     @beans = @q.result.includes(:purchases, :reviews, :region).page(params[:page])
   end
 

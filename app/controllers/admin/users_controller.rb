@@ -2,7 +2,7 @@ class Admin::UsersController < Admin::BaseController
   before_action :set_user, only: %i[edit update destroy]
 
   def index
-    @q = User.ransack(params[:q])
+    @q = User.ransack(params[:q], auth_object: current_user)
     @users = @q.result.page(params[:page])
   end
 

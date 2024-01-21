@@ -1,7 +1,8 @@
 class Admin::ShopsController < Admin::BaseController
   before_action :set_shop, only: %i[edit update destroy]
+
   def index
-    @q = Shop.ransack(params[:q])
+    @q = Shop.ransack(params[:q], auth_object: current_user)
     @shops = @q.result.includes(:beans, :reviews).page(params[:page])
   end
 

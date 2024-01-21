@@ -2,7 +2,7 @@ class Admin::PurchasesController < Admin::BaseController
   before_action :set_purchase, only: %i[edit update destroy]
 
   def index
-    @q = Purchase.ransack(params[:q])
+    @q = Purchase.ransack(params[:q], auth_object: current_user)
     @purchases = @q.result.includes(:user, :bean, :shop).page(params[:page])
   end
 
