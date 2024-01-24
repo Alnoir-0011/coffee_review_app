@@ -21,16 +21,16 @@ const imagePreview = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('event!');
+  // console.log('event!');
   imagePreview();
 });
 
 document.addEventListener('turbo:load', () => {
-  console.log('turbo!');
+  // console.log('turbo!');
   imagePreview();
 });
 
 document.addEventListener('turbo:frame-load', () => {
-  console.log('frame!');
+  // console.log('frame!');
   imagePreview();
 });

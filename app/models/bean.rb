@@ -26,7 +26,10 @@ class Bean < ApplicationRecord
   end
 
   def average_evaluation
-    reviews.average(:evaluation)
+    # reviews.average(:evaluation)
+    # evs = reviews.pluck(:evaluation)
+    evs = reviews.map { |review| review.evaluation }
+    evs.sum.fdiv(evs.length)
   end
 
   private
