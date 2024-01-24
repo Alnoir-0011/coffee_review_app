@@ -1,0 +1,11 @@
+= turbo_frame_tag tool do
+  .row.py-2.border-bottom.align-items-center
+    .col-2
+      = tool.id
+    .col-5
+      = tool.name
+    .col-3
+      = l tool.created_at, format: :long
+    .col-2.d-flex.justify-content-center
+      = link_to 'edit', edit_admin_tool_path(tool), class: 'btn btn-success me-2'
+      = link_to 'delete', admin_tool_path(tool),class: 'btn btn-danger', data: { turbo_confirm: 'Are you Sure?', turbo_method: :delete }

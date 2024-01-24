@@ -1,0 +1,29 @@
+div.d-flex.flex-column.flex-shrink-0.p-3.bg-light style="width: 240px; min-height: 100vh;"
+  a.d-flex.align-items-center.mb-3.mb-md-0.me-md-auto.link-dark.text-decoration-none[herf='#']
+    span.fs-4 Admin Menu
+  hr
+  ul.nav.nav-pills.flex-column.mb-auto
+    li.nav-item
+      = link_to 'Dashboard', admin_root_path, class: "nav-link #{active_if('admin/base')}"
+    li.nav-item
+      = link_to 'User', admin_users_path, class: "nav-link #{active_if('admin/users')}"
+    li.nav-item
+      = link_to 'Bean', admin_beans_path, class: "nav-link #{active_if('admin/beans')}"
+    li.nav-item
+      = link_to 'Shop', admin_shops_path, class: "nav-link #{active_if('admin/shops')}"
+    li.nav-item
+      = link_to 'Purchase', admin_purchases_path, class: "nav-link #{active_if('admin/purchases')}"
+    li.nav-item
+      = link_to 'Review', admin_reviews_path, class: "nav-link #{active_if('admin/reviews')}"
+    li.nav-item
+      = link_to 'Options', admin_regions_path, class: "nav-link #{active_if('admin/regions')}"
+    li.nav-item
+      = link_to 'Top sliders', admin_top_sliders_path, class: "nav-link #{active_if('admin/top_sliders')}"
+  hr
+  div.dropdown
+    a.d-flex.align-items-center.link-dark.text-decoration-none.dropdown-toggle[href="#" data-bs-toggle="dropdown" aria-expanded="false"]
+      = image_tag current_user.avatar.url, class: 'avatar-xs rounded-circle me-2'
+      strong = current_user.name
+    ul.dropdown-menu.text-small.shadow
+      li
+        = link_to 'Logout', admin_logout_path, class: 'dropdown-item', data: { turbo_confirm: 'Are you Sure?', turbo_method: :delete }

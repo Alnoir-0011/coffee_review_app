@@ -1,0 +1,7 @@
+ul.nav.nav-tabs.mb-3
+  li.nav-item
+    = link_to 'Region', admin_regions_path, class: "nav-link #{active_if('admin/regions')}", aria_current: 'page'
+  li.nav-item
+    = link_to 'Tool', admin_tools_path, class: "nav-link #{active_if('admin/tools')}", aria_current: 'page'
+  li.nav-item
+    = link_to 'Brewing_method', admin_brewing_methods_path, class: "nav-link #{active_if('admin/brewing_methods')}", aria_current: 'page'

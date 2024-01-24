@@ -1,5 +1,6 @@
 class BeansController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
+
   def index
     # binding.pry
     @region = Region.find(params[:region] || params[:q][:region_id])

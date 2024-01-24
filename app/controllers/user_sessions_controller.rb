@@ -10,6 +10,7 @@ class UserSessionsController < ApplicationController
       flash[:success] = 'Login successful'
       redirect_back_or_to root_path
     else
+      flash.now[:danger] = 'Login fail'
       render :new, status: :unprocessable_entity
     end
   end

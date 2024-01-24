@@ -1,0 +1,11 @@
+= turbo_frame_tag region do
+  .row.py-2.border-bottom.align-items-center
+    .col-2
+      = region.id
+    .col-5
+      = region.name
+    .col-3
+      = l region.created_at, format: :long
+    .col-2.d-flex.justify-content-center
+      = link_to 'edit', edit_admin_region_path(region), class: 'btn btn-success me-2'
+      = link_to 'delete', admin_region_path(region),class: 'btn btn-danger', data: { turbo_confirm: 'Are you Sure?', turbo_method: :delete }

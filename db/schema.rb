@@ -10,20 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_22_184439) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_05_051331) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "administrators", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "remember_token"
-    t.datetime "remember_token_expires_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "beans", force: :cascade do |t|
     t.string "name", null: false
@@ -147,6 +136,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_184439) do
     t.index ["name"], name: "index_tools_on_name", unique: true
   end
 
+  create_table "top_sliders", force: :cascade do |t|
+    t.string "name", null: false
+    t.json "image", null: false
+    t.datetime "end_of_publication"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_tools", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "tool_id", null: false
@@ -169,6 +166,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_184439) do
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
     t.integer "access_count_to_reset_password_page", default: 0
+    t.integer "role", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end

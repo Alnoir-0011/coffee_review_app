@@ -1,0 +1,31 @@
+.container
+  .col-md-10.offset-md-1
+    .d-flex.justify-content-between.align-items-center.my-3
+      h1.mb-0 Purchase
+      .d-flex.align-items-center.me-1
+        .me-1 総記録数:
+        = Purchase.count
+    = search_form_for @q, url: admin_purchases_path, html: { data: { turbo_frame: "purchases-list" } },
+                      class: 'input-group mb-3 ms-0' do |f|
+      = f.text_field :bean_name_cont, class: 'form-control', placeholder: 'bean name'
+      = f.text_field :shop_name_cont, class: 'form-control', placeholder: 'shop name'
+      = f.select :store_roast_option_eq, Purchase.store_roast_options.keys.to_a, class: 'form-select px-4', prompt: 'roast'
+      = f.select :store_grind_option_eq, Purchase.store_grind_options.keys.to_a, class: 'form-select px-4', prompt: 'fineness'
+      = f.submit '検索', class: 'btn btn-primary px-4'
+    = turbo_frame_tag 'purchases-list' do
+      .row.border-bottom.pb-1
+        .col-2
+          = sort_link(@q, :bean_name, class: 'link-dark')
+        .col-2
+          = sort_link(@q, :shop_name, class: 'link-dark')
+        .col-1
+          = sort_link(@q, :store_roast_option, 'roast', class: 'link-dark')
+        .col-1
+          = sort_link(@q, :store_grind_option, 'fineness', class: 'link-dark')
+        .col-2
+          = sort_link(@q, :purchase_at, class: 'link-dark')
+        .col-2
+          = sort_link(@q, :created_at, class: 'link-dark')
+        .col-2
+      = render @purchases
+      = paginate @purchases

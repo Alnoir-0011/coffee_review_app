@@ -1,4 +1,21 @@
-.container
+.swiper
+  .swiper-wrapper
+    - if @top_sliders.present?
+      - if @top_sliders.count < 4 && @top_sliders.count > 1
+        - 2.times do
+          - @top_sliders.each do |slider|
+            = image_tag slider.image.url, class: 'swiper-slide object-fit-cover'
+      - else
+        - @top_sliders.each do |slider|
+          = image_tag slider.image.url, class: 'swiper-slide object-fit-cover'
+    - else
+      = image_tag 'OGP.png', class: 'swiper-slide object-fit-cover'
+  .swiper-pagination
+  .swiper-button-prev
+  .swiper-button-next
+  / .swiper-scrollbar
+
+.container.mb-3
   .col-md-10.offset-md-1
     h1.mb-3.mt-4 TOP reviews
     = search_form_for @q, url: root_path, html: { data: { turbo_frame: "top-list" } },

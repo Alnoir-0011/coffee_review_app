@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include GroupByDay
+
   authenticates_with_sorcery!
 
   mount_uploader :avatar, AvatorUploader
@@ -14,6 +16,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_reviews, through: :likes, source: :review
 
+  enum role: { general: 0, admin: 10 }
+
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
@@ -21,6 +25,14 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true, length: { maximum: 255 }
   validates :name, presence: true, length: { maximum: 255 }
+
+  def self.ransackable_attributes(auth_object = nil)
+    auth_object&.admin? ? super : []
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    auth_object&.admin? ? super : []
+  end
 
   def save_with_associations(tool_ids:, brewing_method_ids:)
     ActiveRecord::Base.transaction do

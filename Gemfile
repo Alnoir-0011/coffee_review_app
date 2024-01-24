@@ -62,8 +62,6 @@ gem 'rails-i18n'
 gem 'html2slim', github: "slim-template/html2slim"
 gem 'kaminari'
 gem 'seed-fu'
-gem 'trestle'
-gem 'trestle-auth'
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'geocoder'
@@ -106,3 +104,4 @@ end
 gem 'dotenv-rails'
 gem 'config'
 gem 'bootstrap_form'
+gem "chartkick"
