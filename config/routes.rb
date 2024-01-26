@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
+
+  post "oauth/callback", to: "oauths#callback"
+  get "oauth/callback", to: "oauths#callback"
+  get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
+
   get 'terms_of_use', to: 'static_pages#terms_of_use'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
   root to: 'tops#index'
