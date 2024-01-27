@@ -1,4 +1,8 @@
 footer.mt-auto
-  nav.navbar.sticky-bottom.bg-body-tertiary.mt-5
+  nav.navbar.bg-body-tertiary
     .container-fluid
-      .nav-item.mt-2.mb-2.ms-auto coffee stack log
+      .d-flex.col-12.justify-content-center
+        = link_to 'プライバシーポリシー', privacy_policy_path, class: 'nav-item link-secondary text-decoration-none me-1'
+        = link_to '利用規約', terms_of_use_path, class: 'nav-item link-secondary text-decoration-none me-1'
+        a.nav-item.link-secondary.text-decoration-none href="https://forms.gle/GeH1KKPzwvwAUDqf9" お問い合わせ
+      p.nav-item.ms-auto.text-secondary ©coffee stack log.

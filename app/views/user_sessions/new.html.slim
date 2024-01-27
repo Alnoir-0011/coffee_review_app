@@ -4,7 +4,12 @@
     = bootstrap_form_with model: @user, url: login_path, class: 'mb-3' do |f|
       = f.email_field :email
       = f.password_field :password
-      = f.submit 'login'
+      = f.submit 'login', class: 'd-block btn btn-secondary col-8 offset-2'
+    .col-10.offset-1.mb-3
+      / = link_to auth_at_provider_path(provider: :google), class: 'd-block border rounded shadow text-center py-2 text-decoration-none link-dark' do
+      = link_to auth_at_provider_path(provider: :google), class: 'd-block btn btn-outline-primary' do
+        i.bi.bi-google.me-1
+        span googleでログイン
     .d-flex.justify-content-around.mb-3
-      = link_to 'Signup', new_user_path
-      = link_to 'Forgot password?', new_password_reset_path
+      = link_to 'Sign up', new_user_path, class: 'btn btn-outline-secondary'
+      = link_to 'Forgot password?', new_password_reset_path, class: 'btn btn-outline-secondary'

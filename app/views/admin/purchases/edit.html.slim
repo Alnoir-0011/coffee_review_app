@@ -1,0 +1,12 @@
+.container
+  .col-md-10.offset-md-1
+    .d-flex.justify-content-between.align-items-center.my-3
+      h1.mb-0 Edit purchase
+      = link_to 'back', admin_purchases_path, class: 'btn btn-outline-danger'
+    = bootstrap_form_with model: @purchase_form, url: admin_purchase_path(@purchase), class: 'mb-3' do |f|
+      = f.text_field :shop_name
+      = f.text_field :bean_name
+      = f.select :store_roast_option, Purchase.store_roast_options.keys.to_a, prompt: 'roast'
+      = f.select :store_grind_option, Purchase.store_grind_options.keys.to_a, prompt: 'fineness'
+      = f.date_field :purchase_at
+      = f.submit

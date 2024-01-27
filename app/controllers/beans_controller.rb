@@ -1,5 +1,6 @@
 class BeansController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
+
   def index
     # binding.pry
     @region = Region.find(params[:region] || params[:q][:region_id])
@@ -11,7 +12,7 @@ class BeansController < ApplicationController
   def show
     @bean = Bean.find(params[:id])
     @q = @bean.reviews.ransack(params[:q])
-    @reviews = @q.result.includes(:tools, :brewing_method, purchase: :user).page(params[:page])
+    @reviews = @q.result.includes(:tools, :brewing_method, :liked_users, purchase: :user).page(params[:page])
   end
 
   def new

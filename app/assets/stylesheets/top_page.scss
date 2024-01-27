@@ -1,0 +1,41 @@
+.swiper {
+  width: 100%;
+  align-items: center;
+  .swiper-wrapper {
+    width: 100%;
+  }
+}
+
+.swiper-slide {
+  width: 100%
+}
+
+@media (min-width: 576px){
+  .swiper-slide {
+    width: 540px;
+  }
+}
+
+@media (min-width: 768px){
+  .swiper-slide {
+    width: 580px;
+  }
+}
+
+@media (min-width: 992px){
+  .swiper-slide {
+    width: 780px;
+  }
+}
+
+@media (min-width: 1200px){
+  .swiper-slide {
+    width: 930px;
+  }
+}
+
+@media (min-width: 1400px){
+  .swiper-slide {
+    width: 1080px;
+  }
+}

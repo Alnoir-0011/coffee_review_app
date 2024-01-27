@@ -1,0 +1,13 @@
+= turbo_frame_tag top_slider do
+  .row.py-2.border-bottom.align-items-center
+    .col-1
+      = top_slider.id
+    .col-3
+      = top_slider.name
+    .col-3
+      = top_slider.end_of_publication
+    .col-3
+      = top_slider.created_at
+    .col-2.d-flex.justify-content-center
+      = link_to 'edit', edit_admin_top_slider_path(top_slider), class: 'btn btn-success me-2', data: { turbo_frame: '_top' }
+      = link_to 'delete', admin_top_slider_path(top_slider),class: 'btn btn-danger', data: { turbo_confirm: 'Are you Sure?', turbo_method: :delete }

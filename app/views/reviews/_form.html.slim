@@ -1,0 +1,13 @@
+= bootstrap_form_with model: review, url: url do |f|
+  = f.text_field :title
+  = f.select :fineness, Review.finenesses.keys.to_a, {}, disabled: review.already_grinded?
+  = f.label :tools
+  = f.collection_check_boxes :tool_ids, Tool.all, :id, :name, inline: true, hide_label: true
+  = f.select :brewing_method_id, BrewingMethod.pluck(:name, :id), prompt: '飲み方'
+  = f.form_group :evaluation, label: { text: Review.human_attribute_name(:evaluation) }
+    br
+    .d-flex.justify-content-around
+      - 1.upto(5) do |i|
+        = f.radio_button :evaluation, i, label: i, inline: true
+  = f.text_area :content
+  = f.submit

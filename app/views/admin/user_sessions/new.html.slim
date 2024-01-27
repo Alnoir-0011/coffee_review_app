@@ -1,0 +1,9 @@
+.container.h-100
+  .col-md-8.offset-md-2.col-lg-6.offset-lg-3.col-xl-4.offset-xl-4.d-flex.flex-column.justify-content-center.h-100
+    .card.p-3
+      h2.mb-3.text-center
+        | [Admin] Login
+      = bootstrap_form_with model: @user, url: admin_login_path do |f|
+        = f.email_field :email
+        = f.password_field :password
+        = f.submit 'login'

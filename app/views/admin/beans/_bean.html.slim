@@ -1,0 +1,17 @@
+= turbo_frame_tag bean do
+  .row.py-2.border-bottom.align-items-center
+    .col-3
+      = bean.name
+    .col-1
+      = bean.roast
+    .col-1
+      = bean.fineness
+    .col-2
+      = bean.region.name
+    .col-1
+      = "#{bean.purchases.count}/#{bean.reviews.count}"
+    .col-2
+      = bean.created_at
+    .col-2.d-flex.justify-content-center
+      = link_to 'edit', edit_admin_bean_path(bean), class: 'btn btn-success me-2', data: { turbo_frame: '_top' }
+      = link_to 'delete', admin_bean_path(bean),class: 'btn btn-danger', data: { turbo_confirm: 'Are you Sure?', turbo_method: :delete }

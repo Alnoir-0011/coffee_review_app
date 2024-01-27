@@ -1,0 +1,8 @@
+= bootstrap_form_with model: top_slider, url: url, class: 'mb-3' do |f|
+  = f.text_field :name
+  = f.file_field :image, required: false, id: 'file-field'
+  = f.hidden_field :image_cache
+  .mb-3#preview-field
+    = image_tag top_slider.image.url, id: 'preview', class: 'image-preview object-fit-cover'
+  = f.date_field :end_of_publication
+  = f.submit

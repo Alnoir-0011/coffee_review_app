@@ -1,4 +1,6 @@
 class Purchase < ApplicationRecord
+  include GroupByDay
+
   belongs_to :user
   belongs_to :bean
   belongs_to :shop
@@ -14,11 +16,11 @@ class Purchase < ApplicationRecord
 
 
   def self.ransackable_attributes(auth_object = nil)
-    authorizable_ransackable_attributes
+    auth_object&.admin? ? super : %w(store_roast_option store_grind_option)
   end
 
   def self.ransackable_associations(auth_object = nil)
-    authorizable_ransackable_associations
+    auth_object&.admin? ? super : %w(bean shop)
   end
 
   def roast_status

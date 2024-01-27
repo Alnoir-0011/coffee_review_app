@@ -1,0 +1,3 @@
+= link_to review_like_path(review), class: 'link-dark text-decoration-none d-flex align-items-center', data: { turbo_method: :post }
+  i.bi.bi-hand-thumbs-up
+  p.m-0 = review.liked_users.length

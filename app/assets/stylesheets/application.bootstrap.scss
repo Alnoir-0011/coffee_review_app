@@ -1,11 +1,7 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
-
-body {
-    background-color: #ECECEC;
-    min-height: 100vh;
-}
-
-header {
-    background-color: #641F1F;
-}
+@import 'swiper/swiper-bundle';
+@import 'top_page';
+@import 'height_control';
+@import 'image_size';
+@import 'bg_colors';

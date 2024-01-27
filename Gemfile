@@ -62,11 +62,10 @@ gem 'rails-i18n'
 gem 'html2slim', github: "slim-template/html2slim"
 gem 'kaminari'
 gem 'seed-fu'
-gem 'trestle'
-gem 'trestle-auth'
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'geocoder'
+gem 'counter_culture'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -105,3 +104,4 @@ end
 gem 'dotenv-rails'
 gem 'config'
 gem 'bootstrap_form'
+gem "chartkick"

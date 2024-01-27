@@ -3,13 +3,13 @@
     .col-10.offset-1
       = bootstrap_form_with model: @user, url: mypage_profile_path do |f|
         .row.row-cols-1.row-cols-md-2.align-items-center.mb-3.mt-3
-          .d-flex.align-items-center.col-md-6.col-lg-9
-            = image_tag @user.avatar.url, class: 'col-xs-2 rounded-circle me-3'
+          .d-flex.align-items-center.col-md-6.col-lg-9#preview-field
+            = image_tag @user.avatar.url, class: 'col-xs-2 rounded-circle me-3 avatar-preview object-fit-cover', id: 'preview'
             .row
               = f.text_field :name, class: 'col'
-              = f.file_field :avatar, class: 'col'
+              = f.file_field :avatar, class: 'col', id: 'file-field'
             = f.hidden_field :avatar_cache
-          = link_to 'キャンセル', mypage_profile_path, class: 'col-6 col-md-3 col-lg-2 badge rounded-pill text-decoration-none text-bg-secondary fs-6 ms-auto', data: { turbo_frame: 'profile'}
+          = link_to 'キャンセル', mypage_profile_path, class: 'col-6 col-md-3 col-lg-2 badge rounded-pill text-decoration-none text-bg-secondary fs-6 ms-auto shadow-sm', data: { turbo_frame: 'profile'}
         = f.email_field :email
         = f.label :tools
         = f.collection_check_boxes :tool_ids, Tool.all, :id, :name, inline: true, hide_label: true

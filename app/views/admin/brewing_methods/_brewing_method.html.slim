@@ -1,0 +1,11 @@
+= turbo_frame_tag brewing_method do
+  .row.py-2.border-bottom.align-items-center
+    .col-2
+      = brewing_method.id
+    .col-5
+      = brewing_method.name
+    .col-3
+      = l brewing_method.created_at, format: :long
+    .col-2.d-flex.justify-content-center
+      = link_to 'edit', edit_admin_brewing_method_path(brewing_method), class: 'btn btn-success me-2'
+      = link_to 'delete', admin_brewing_method_path(brewing_method),class: 'btn btn-danger', data: { turbo_confirm: 'Are you Sure?', turbo_method: :delete }

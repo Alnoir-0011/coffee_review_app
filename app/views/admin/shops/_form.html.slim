@@ -1,0 +1,17 @@
+= bootstrap_form_with model: shop, url: url, class: 'mb-3' do |f|
+  = text_field :search, :search, id: 'pac-input', class: 'form-control'
+
+  #map-new.mb-3
+
+  = f.text_field :name, id: 'form-name', placeholder: 'チェーン店は店舗名を最後まで入力してください'
+  = f.text_field :place_id, id: 'form-place-id'
+  = f.text_field :address, id: 'form-address'
+  = f.text_field :phone_number, id: 'form-phonenumber'
+  = f.number_field :latitude, id: 'form-lat'
+  = f.number_field :longitude, id: 'form-lng'
+  css:
+    #map-new {
+      height: 25rem;
+    }
+
+  = f.submit

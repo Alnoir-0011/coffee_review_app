@@ -6,6 +6,8 @@ class Bean < ApplicationRecord
   has_many :shops, through: :dealers
   has_many :purchases, dependent: :destroy
   has_many :reviews, through: :purchases
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
   
   validates :name, presence: true, length: { maximum: 255 }
   
@@ -16,15 +18,18 @@ class Bean < ApplicationRecord
   enum :fineness, { beans: 0, coarsely: 10, medium: 20, medium_fine: 30, fine: 40, superfine: 50 }, prefix: true
   
   def self.ransackable_attributes(auth_object = nil)
-    authorizable_ransackable_attributes
+    auth_object&.admin? ? super : %w(id name roast fineness region_id)
   end
 
   def self.ransackable_associations(auth_object = nil)
-    authorizable_ransackable_associations
+    auth_object&.admin? ? super : %w(region)
   end
 
   def average_evaluation
-    reviews.average(:evaluation)
+    # reviews.average(:evaluation)
+    # evs = reviews.pluck(:evaluation)
+    evs = reviews.map { |review| review.evaluation }
+    evs.sum.fdiv(evs.length)
   end
 
   private

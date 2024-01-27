@@ -10,19 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_16_134120) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_24_162956) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "administrators", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "remember_token"
-    t.datetime "remember_token_expires_at"
+  create_table "authentications", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "provider", null: false
+    t.string "uid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
+    t.index ["user_id"], name: "index_authentications_on_user_id"
   end
 
   create_table "beans", force: :cascade do |t|
@@ -61,6 +60,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_16_134120) do
     t.index ["bean_id", "shop_id"], name: "index_dealers_on_bean_id_and_shop_id", unique: true
     t.index ["bean_id"], name: "index_dealers_on_bean_id"
     t.index ["shop_id"], name: "index_dealers_on_shop_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "bean_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bean_id"], name: "index_favorites_on_bean_id"
+    t.index ["user_id", "bean_id"], name: "index_favorites_on_user_id_and_bean_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "review_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_likes_on_review_id"
+    t.index ["user_id", "review_id"], name: "index_likes_on_user_id_and_review_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -103,15 +122,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_16_134120) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "purchase_id"
+    t.integer "like_count", default: 0, null: false
     t.index ["brewing_method_id"], name: "index_reviews_on_brewing_method_id"
     t.index ["purchase_id"], name: "index_reviews_on_purchase_id", unique: true
   end
 
   create_table "shops", force: :cascade do |t|
     t.string "name", null: false
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "address"
     t.string "place_id", null: false
     t.float "latitude"
     t.float "longitude"
@@ -124,6 +144,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_16_134120) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_tools_on_name", unique: true
+  end
+
+  create_table "top_sliders", force: :cascade do |t|
+    t.string "name", null: false
+    t.json "image", null: false
+    t.datetime "end_of_publication"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_tools", force: :cascade do |t|
@@ -148,6 +176,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_16_134120) do
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
     t.integer "access_count_to_reset_password_page", default: 0
+    t.integer "role", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
@@ -157,6 +186,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_16_134120) do
   add_foreign_key "brewing_prefences", "users"
   add_foreign_key "dealers", "beans"
   add_foreign_key "dealers", "shops"
+  add_foreign_key "favorites", "beans"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "likes", "reviews"
+  add_foreign_key "likes", "users"
   add_foreign_key "purchases", "beans"
   add_foreign_key "purchases", "shops"
   add_foreign_key "purchases", "users"

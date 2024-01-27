@@ -1,0 +1,32 @@
+.container
+  .col-lg-10.offset-lg-1
+    .d-flex.justify-content-between.align-items-center.my-3
+      h1.mb-0 Shop
+      .d-flex.align-items-center.me-1
+        .me-1 総店舗数:
+        = Shop.count
+    = search_form_for @q, url: admin_shops_path, html: { data: { turbo_frame: "shops-list" } },
+                      class: 'input-group mb-3 ms-0' do |f|
+      = f.text_field :name_cont, class: 'form-control', placeholder: 'name'
+      = f.text_field :address_cont, class: 'form-control', placeholder: 'address'
+      = f.submit '検索', class: 'btn btn-primary px-4'
+    = turbo_frame_tag 'shops-list' do
+      .row.border-bottom.pb-1
+        .col-3
+          = sort_link(@q, :name, class: 'link-dark')
+        .col-3
+          = sort_link(@q, :address, class: 'link-dark')
+        .col-1
+          / = sort_link(@q, :beans, class: 'link-dark')
+          | bean count
+        .col-1
+          / = sort_link(@q, :reviews, class: 'link-dark')
+          | review count
+        .col-2
+          = sort_link(@q, :created_at, class: 'link-dark')
+        .col-2
+          = link_to new_admin_shop_path, class: 'btn btn-primary py-0 col-12', data: { turbo_frame: '_top' } do
+            i.bi.bi-plus-circle-fill.me-1
+            | Add
+      = render @shops
+      = paginate @shops

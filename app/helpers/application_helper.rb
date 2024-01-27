@@ -1,6 +1,6 @@
 module ApplicationHelper
   def turbo_stream_flash
-    turbo_stream.append "flash", partial: "shared/flash"
+    turbo_stream.append "flashes", partial: "shared/flash"
   end
 
   def bg_if(controller_name)
@@ -13,5 +13,9 @@ module ApplicationHelper
     else
       'link-dark'
     end
+  end
+
+  def active_if(controller_name)
+    return 'active' if controller_name == params[:controller]
   end
 end

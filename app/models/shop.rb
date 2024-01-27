@@ -19,10 +19,10 @@ class Shop < ApplicationRecord
   validates :longitude, numericality: { in: 120..150 }
 
   def self.ransackable_attributes(auth_object = nil)
-    authorizable_ransackable_attributes
+    auth_object&.admin? ? super : %w(name)
   end
 
   def self.ransackable_associations(auth_object = nil)
-    authorizable_ransackable_associations
+    auth_object&.admin? ? super : []
   end
 end

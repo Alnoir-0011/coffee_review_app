@@ -1,6 +1,6 @@
-.container
+.container.mb-3
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2
-    .card.my-3
+    / .card.my-3
       .col-10.offset-1
         .row.align-items-center.my-3
           = image_tag @user.avatar_url, class: 'rounded-circle col-4'
@@ -11,6 +11,7 @@
         .mb-1
           label 好きな飲み方
           p = @user.decorate.brewing_method_names
+    = render 'shared/user_profile', user: @user
     = turbo_frame_tag 'review-list' do
       .d-flex.justify-content-end
         = sort_link(@q, :purchase_bean_name, 'Bean name', class: 'link-dark ms-1')

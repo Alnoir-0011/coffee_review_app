@@ -1,11 +1,9 @@
 - flash.each do |message_type, message|
-  div.alert.alert-dismissible[class="alert-#{message_type}"]
+  / .alert.alert-dismissible[class="alert-#{message_type}"]
     button.btn-close[type="button" data-bs-dismiss="alert"]
     = message
-  / .toast[class="border-#{message_type}" role="alert" aria-live="assertive" aria-atomic="true"]
-    .toast-header
-      img.rounded.me-2[src="..." alt="..."]
-      strong.me-auto = message_type
-      button.btn-close[type="button" data-bs-dismiss="toast" aria-label="Close"]
-    .toast-body
-      | = message
+
+  .toast.align-items-center.opacity-100.mb-2.border-3.hide.bg-light class="boader-#{message_type}" role="alert" aria-live="assertive" aria-atomic="true" data-controller="toast"
+    .d-flex
+      .toast-body = message
+      button.btn-close.me-2.m-auto type="button" data-bs-dismiss="toast" aria-label="Close"
