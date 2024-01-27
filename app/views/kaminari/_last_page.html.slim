@@ -6,4 +6,6 @@
     per_page     : number of items to fetch per page
     remote       : data-remote
 
-== link_to_unless current_page.last?, t('views.pagination.last').html_safe, url, remote: remote, class: 'btn btn-outline-secondary'
+- unless current_page.last?
+  = link_to url, remote: remote, class: 'btn btn-outline-secondary' do
+    i.bi.bi-chevron-bar-right
