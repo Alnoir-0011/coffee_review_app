@@ -80,4 +80,8 @@ class User < ApplicationRecord
   def like?(review)
     liked_reviews.include?(review)
   end
+
+  def same?(user)
+    id == user.id
+  end
 end

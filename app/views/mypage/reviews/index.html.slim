@@ -1,6 +1,6 @@
 .container.mb-3
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2
-    = render 'shared/current_user_profile'
+    = render 'shared/user_profile', user: current_user
     = turbo_frame_tag 'list-with-tab' do
       = render 'shared/tab_buttons'
       = search_form_for @q, url: mypage_reviews_path,
