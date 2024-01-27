@@ -1,16 +1,25 @@
 .container.mb-3
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2
-    = render 'shared/current_user_profile'
+    = render 'shared/user_profile', user: current_user
     = turbo_frame_tag 'list-with-tab' do
       = render 'shared/tab_buttons'
       = search_form_for @q, url: mypage_purchases_path,
                         html: { data: { turbo_frame: "purchases-list" } },
-                        class: 'row row-cols row-cols-md-2 row-cols-xl-5 input-group mb-3 ms-0' do |f|
-        = f.text_field :bean_name_cont, class: 'col form-control', placeholder: 'bean name'
-        = f.text_field :shop_name_cont, class: 'col form-control', placeholder: 'shop name'
-        = f.select :store_roast_option_eq, Purchase.store_roast_options, prompt: 'roast', class: 'col form-select'
-        = f.select :store_grind_option_eq, Purchase.store_grind_options, prompt: 'fineness', class: 'col form-select'
-        = f.submit '検索', class: 'btn btn-secondary'
+                        class: 'row align-items-center justify-content-center g-2 mb-3 ms-0' do |f|
+        .col-auto
+          = f.label :bean_name_cont, class: 'visually-hidden'
+          = f.text_field :bean_name_cont, class: 'form-control', placeholder: 'bean name'
+        .col-auto
+          = f.label :shop_name_cont, class: 'visually-hidden'
+          = f.text_field :shop_name_cont, class: 'form-control', placeholder: 'shop name'
+        .col-auto
+          = f.label :store_roast_option_eq, class: 'visually-hidden'
+          = f.select :store_roast_option_eq, Purchase.store_roast_options, { prompt: 'roast' }, { class: 'col-auto form-select' }
+        .col-auto
+          = f.label :store_grind_option_eq, class: 'visually-hidden'
+          = f.select :store_grind_option_eq, Purchase.store_grind_options, { prompt: 'fineness' }, { class: 'col-auto form-select' }
+        .col-auto
+          = f.submit '検索', class: 'col-auto btn btn-secondary'
 
       = link_to 'add new record', new_purchase_path, class: 'btn btn-outline-dark col-12 mb-3', data: { turbo_frame: '_top'}
       = turbo_frame_tag 'purchases-list' do

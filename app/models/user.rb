@@ -15,6 +15,9 @@ class User < ApplicationRecord
   has_many :favorite_beans, through: :favorites, source: :bean
   has_many :likes, dependent: :destroy
   has_many :liked_reviews, through: :likes, source: :review
+  has_many :authentications, dependent: :destroy
+
+  accepts_nested_attributes_for :authentications
 
   enum role: { general: 0, admin: 10 }
 
@@ -76,5 +79,9 @@ class User < ApplicationRecord
 
   def like?(review)
     liked_reviews.include?(review)
+  end
+
+  def same?(user)
+    id == user.id
   end
 end
