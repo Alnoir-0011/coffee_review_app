@@ -5,13 +5,17 @@
       = render 'shared/tab_buttons'
       = search_form_for @q, url: mypage_purchases_path,
                         html: { data: { turbo_frame: "purchases-list" } },
-                        class: 'row align-items-center justify-content-center g-2 mb-3 ms-0' do |f|
-        .col-auto
+                        class: 'row align-items-top justify-content-center g-2 mb-3 ms-0' do |f|
+        .col-auto.position-relative[data-controller="autocomplete" data-autocomplete-url-value="/beans/search" role="combobox"]
           = f.label :bean_name_cont, class: 'visually-hidden'
-          = f.text_field :bean_name_cont, class: 'form-control', placeholder: 'bean name'
-        .col-auto
+          = f.text_field :bean_name_cont, class: 'form-control', placeholder: 'bean name', data: { autocomplete_target: "input" }
+          = f.hidden_field :bean_name, data: { autocomplete_target: "hidden" }
+          ul.z-2.position-absolute.top-100.start-0.list-group[data-autocomplete-target="results"]
+        .col-auto.z-2.position-relative[data-controller="autocomplete" data-autocomplete-url-value="/shops/search" role="combobox"]
           = f.label :shop_name_cont, class: 'visually-hidden'
-          = f.text_field :shop_name_cont, class: 'form-control', placeholder: 'shop name'
+          = f.text_field :shop_name_cont, class: 'form-control', placeholder: 'shop name', data: { autocomplete_target: "input" }
+          = f.hidden_field :shop_name, data: { autocomplete_target: "hidden" }
+          ul.z-2.list-group.position-absolute.top-100.start-0[data-autocomplete-target="results"]
         .col-auto
           = f.label :store_roast_option_eq, class: 'visually-hidden'
           = f.select :store_roast_option_eq, Purchase.store_roast_options, { prompt: 'roast' }, { class: 'col-auto form-select' }

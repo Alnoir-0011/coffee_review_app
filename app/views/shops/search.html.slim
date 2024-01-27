@@ -1,0 +1,3 @@
+- @shops.each do |shop|
+  li.list-group-item.cursor-pointer[role="option" data-autocomplete-value="#{shop.id}" data-autocomplete-label="#{shop.name}"]
+    = shop.name

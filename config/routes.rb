@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   root to: 'tops#index'
 
   resources :beans, only: %i[index show new create] do
+    get :search, on: :collection
     resource :favorite, only: %i[create destroy]
   end
 
@@ -23,7 +24,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :shops, only: %i[index new create]
+  resources :shops, only: %i[index new create] do
+    get :search, on: :collection
+  end
   
   namespace :mypage do
     root to: redirect('mypage/purchases')

@@ -28,6 +28,11 @@ class BeansController < ApplicationController
     end
   end
 
+  def search
+    @beans = Bean.where("name like ?", "%#{params[:q]}%")
+    render layout: false
+  end
+
   private
 
   def bean_params
