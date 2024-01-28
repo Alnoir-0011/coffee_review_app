@@ -19,11 +19,15 @@
   .col-md-10.offset-md-1
     h1.mb-3.mt-4 TOP reviews
     = search_form_for @q, url: root_path, html: { data: { turbo_frame: "top-list" } },
-                      class: 'input-group mb-4 col-lg-10' do |f|
-      = f.text_field :name_cont, class: 'form-control', placeholder: 'name'
-      = f.select :roast_eq, Bean.roasts, prompt: 'roast',class: 'form-control'
-      = f.select :fineness_eq, Bean.finenesses, prompt: 'fineness',class: 'form-control'
-      = f.submit 'search', class: 'btn btn-secondary'
+                      class: 'mb-4' do |f|
+      .position-relative[data-controller="autocomplete" data-autocomplete-url-value="/beans/search" role="combobox"]
+        .input-group
+          = f.text_field :name_cont, class: 'form-control', placeholder: 'name', data: { autocomplete_target: "input" }
+          = f.hidden_field :name, data: { autocomplete_target: "hidden" }
+          = f.select :roast_eq, Bean.roasts, { prompt: 'roast' }, { class: 'form-control' }
+          = f.select :fineness_eq, Bean.finenesses, { prompt: 'fineness' }, { class: 'form-control' }
+          = f.submit 'search', class: 'btn btn-secondary'
+        ul.z-2.list-group.position-absolute.top-100.start-0[data-autocomplete-target="results"]
     .d-flex.justify-content-between
       .col-8.me-1
         = turbo_frame_tag 'top_list' do

@@ -9,9 +9,11 @@
         .col-auto
           = f.label :title_cont, class: 'visually-hidden'
           = f.text_field :title_cont, class: 'form-control', placeholder: 'title'
-        .col-auto
+        .col-auto.position-relative[data-controller="autocomplete" data-autocomplete-url-value="/beans/search" role="combobox"]
           = f.label :purchase_bean_name_cont, class: 'visually-hidden'
-          = f.text_field :purchase_bean_name_cont, class: 'form-control', placeholder: 'bean name'
+          = f.text_field :purchase_bean_name_cont, class: 'form-control', placeholder: 'bean name', data: { autocomplete_target: "input" }
+          = f.hidden_field :purchase_bean_name, data: { autocomplete_target: "hidden" }
+          ul.z-2.position-absolute.top-100.start-0.list-group[data-autocomplete-target="results"]
         .col-auto
           = f.label :tools_name_eq, class: 'visually-hidden'
           = f.select :tools_name_eq, Tool.pluck(:name), { prompt: '使用器具' }, { class: 'form-select' }
