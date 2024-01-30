@@ -11,7 +11,7 @@
             i.bi.bi-star
             p.card-text.mb-1 = bean.average_evaluation
         - else
-          p.mb-1 = t('default.noting', item: Review.human_attribute_name(:evaluation))
+          p.mb-1 = t('defaults.nothing', item: Review.human_attribute_name(:evaluation))
         .bg-body-secondary
           - if bean.reviews.present?
             - bean.reviews.limit(3).each do |review|

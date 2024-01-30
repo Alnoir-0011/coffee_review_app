@@ -8,7 +8,7 @@ class Mypage::ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    flash.now[:success] = t('default.message.deleted', item: Review.model_name.human)
+    flash.now[:success] = t('defaults.message.deleted', item: Review.model_name.human)
   end
 
   private

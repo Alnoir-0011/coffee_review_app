@@ -35,7 +35,7 @@
           - if @beans.present?
             = render partial: 'beans/bean', collection: @beans
           - else
-            h2.ms-4 = t('defaults.noting', item: Bean.model_name.human)
+            h2.ms-4 = t('defaults.nothing', item: Bean.model_name.human)
       .col-4
         h3.text-center = t('.search_from_region')
         .row.ms-1.justify-content-evenly.g-2

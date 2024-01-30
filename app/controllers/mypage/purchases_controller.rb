@@ -8,7 +8,7 @@ class Mypage::PurchasesController < ApplicationController
 
   def destroy
     @purchase.destroy!
-    flash.now[:success] = t('default.message.deleted', item: Purchase.model_name.human)
+    flash.now[:success] = t('defaults.message.deleted', item: Purchase.model_name.human)
   end
 
   private
