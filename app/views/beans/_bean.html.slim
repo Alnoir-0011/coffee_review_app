@@ -6,7 +6,7 @@
       .card-body.py-2
         h5.card-title.mb-1  = bean.name
         h6.card-text.mb-0 = bean.shops.present? ? bean.shops.first.name : t('defaults.unregistered', item: Shop.model_name.human)
-        - if bean.average_evaluation
+        - if bean.reviews.present?
           .d-flex
             i.bi.bi-star
             p.card-text.mb-1 = bean.average_evaluation
