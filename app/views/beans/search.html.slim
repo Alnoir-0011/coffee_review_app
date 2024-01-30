@@ -1,0 +1,3 @@
+- @beans.each do |bean|
+  li.list-group-item.cursor-pointer[role="option" data-autocomplete-value="#{bean.id}" data-autocomplete-label="#{bean.name}"]
+    = bean.name

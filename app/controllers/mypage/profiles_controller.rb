@@ -8,7 +8,7 @@ class Mypage::ProfilesController < ApplicationController
   def update
     @user.assign_attributes(user_params)
     if @user.save_with_associations(tool_ids: params[:user][:tool_ids], brewing_method_ids: params[:user][:brewing_method_ids])
-      flash.now[:success] = 'プロフィールを更新しました'
+      flash.now[:success] = t('.success')
     else
       render :edit, status: :unprocessable_entity
     end

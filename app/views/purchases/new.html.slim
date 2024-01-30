@@ -1,6 +1,7 @@
+- assign_meta_tags title: t('.title')
 .container.mb-3
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2.col-xl-6.offset-xl-3
-    .d-flex.justify-content-between.mb-3.mt-5
-      h1 購入記録作成
-      = link_to 'キャンセル', mypage_purchases_path
+    .d-flex.justify-content-between.mb-3.mt-5.align-align-items-center
+      h1.mb-0 = t('.title')
+      = link_to t('defaults.cancel'), mypage_purchases_path, class: 'btn btn-outline-info my-2'
     = render 'form', { purchase_form: @purchase_form, url: purchases_path }

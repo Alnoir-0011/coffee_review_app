@@ -1,12 +1,13 @@
+- assign_meta_tags title: t('.title')
 .container.mb-3
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2.col-xl-6.offset-xl-3
     .d-flex.justify-content-between.mb-3.mt-5
-      h1 ショップ登録
-      = link_to 'キャンセル', mypage_purchases_path, class: 'btn btn-outline-info my-2'
+      h1.mb-0 = t('.title')
+      = link_to t('default.cancel'), mypage_purchases_path, class: 'btn btn-outline-info my-2'
     = bootstrap_form_with model: @shop do |f|
-      - if f.object.errors.full_messages.include?('Placeを入力してください')
+      - if f.object.errors.present?
         .alert.alert-danger
-          = 'マップから位置情報を入力してください'
+          = t('.enter_your_location_from_the_map')
       = text_field :search, :search, id: 'pac-input', class: 'form-control'
 
       #map-new.mb-3

@@ -1,15 +1,15 @@
 = turbo_frame_tag 'profile' do
   .card.my-3
     .col-10.offset-1
-      .row.row-cols-md-3.row-cols.align-items-center.my-3
-        .d-flex.align-items-center.col-md-6
-          = image_tag user.avatar.url, class: 'rounded-circle me-3'
-          h5.lh-1.fs-4.col-8.mb-0 = user.name
+      .row.align-items-center.my-3
+        .d-flex.align-items-center.col-auto
+          = image_tag user.avatar.url, class: 'rounded-circle me-3 avatar-preview p-0'
+          h5.fs-4.mb-0 = user.name
         - if user.same?(current_user)
-          = link_to '編集', edit_mypage_profile_path, class: 'col-4 col-md-2 badge rounded-pill text-decoration-none text-bg-secondary fs-5 ms-auto mt-2 shadow-sm', data: { turbo_frame: 'profile' }
+          = link_to t('defaults.edit'), edit_mypage_profile_path, class: 'col-auto px-3 badge rounded-pill text-decoration-none text-bg-secondary fs-5 ms-auto mt-2 shadow-sm', data: { turbo_frame: 'profile' }
       .mb-1
-        label 所有器具
+        label = User.human_attribute_name(:tools)
         p = user.decorate.tool_names
       .mb-1
-        label 好きな飲み方
+        label = User.human_attribute_name(:brewing_method)
         p = user.decorate.brewing_method_names

@@ -1,4 +1,107 @@
 ja:
   activerecord:
     models:
+      bean: 'コーヒー豆'
+      brewing_method: '淹れ方'
+      purchase: '購入記録'
+      region: '産地'
+      review: 'レビュー'
+      shop: '店舗'
+      tool: '器具'
+      user: 'ユーザー'
     attributes:
+      bean:
+        name: '商品名'
+        roast: '焙煎'
+        fineness: '挽き方'
+        image: '画像'
+        average_evaluation: '平均評価'
+      brewing_method:
+        name: '名前'
+      purchase:
+        store_roast_option: '焙煎'
+        store_grind_option: '挽き方'
+        purchase_at: '購入日'
+      region:
+        name: '地名'
+      review:
+        title: 'タイトル'
+        fineness: '挽き方'
+        evaluation: '評価'
+        content: '内容'
+        tools: '使用器具'
+        tool_ids: '使用器具'
+        brewing_method: '飲み方'
+        brewing_method_id: '飲み方'
+        like_count: 'いいね数'
+      shop:
+        name: '店名'
+        address: '住所'
+        latitude: '緯度'
+        longitude: '経度'
+        phone_number: '電話番号'
+        place: 'Place'
+      tool:
+        name: '名前'
+      user:
+        email: 'メールアドレス'
+        name: 'ユーザー名'
+        password: 'パスワード'
+        password_confirmation: 'パスワード(確認)'
+        avatar: 'プロフィール画像'
+        brewing_method: '好みの飲み方'
+        tools: '所有器具'
+  attributes:
+    id: 'ID'
+    created_at: '作成日時'
+    updated_at: '更新日時'
+  enums:
+    user:
+      role:
+        general: 一般
+        admin: 管理者
+    bean:
+      roast:
+        raw: '焙煎前'
+        light: 'ライト'
+        chinamon: 'シナモン'
+        medium: 'ミディアム'
+        high: 'ハイ'
+        city: 'シティ'
+        fullcity: 'フルシティ'
+        french: 'フレンチ'
+        italian: 'イタリアン'
+      fineness:
+        beans: '粉砕前'
+        coarsely: '粗挽き'
+        medium: '中挽き'
+        medium_fine: '中細挽き'
+        fine: '細挽き'
+        superfine: '極細挽き'
+    purchase:
+      store_roast_option:
+        roasted: '焙煎済み'
+        light: 'ライト'
+        chinamon: 'シナモン'
+        medium: 'ミディアム'
+        high: 'ハイ'
+        city: 'シティ'
+        fullcity: 'フルシティ'
+        french: 'フレンチ'
+        italian: 'イタリアン'
+      store_grind_option:
+        grinded: '粉砕済み'
+        beans: '粉砕前'
+        coarsely: '粗挽き'
+        medium: '中挽き'
+        medium_fine: '中細挽き'
+        fine: '細挽き'
+        superfine: '極細挽き'
+    review:
+      fineness:
+        grinded: '粉砕済み'
+        coarsely: '粗挽き'
+        medium: '中挽き'
+        medium_fine: '中細挽き'
+        fine: '細挽き'
+        superfine: '極細挽き'

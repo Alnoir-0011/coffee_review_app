@@ -1,13 +1,19 @@
 class FavoritesController < ApplicationController
+  before_action: :set_bean, only: %i[create destroy]
+
   def create
-    @bean = Bean.find(params[:bean_id])
     current_user.favorite(@bean)
-    flash[:success] = "#{@bean.name}をお気に入り登録しました"
+    flash[:success] = t('.success', item: @bean.name)
   end
 
   def destroy
-    @bean = Bean.find(params[:bean_id])
     current_user.unfavorite(@bean)
-    flash[:success] = "#{@bean.name}のお気に入り登録を解除しました"
+    flash[:success] = t('.success', item: @bean.name)
+  end
+
+  private
+
+  def set_bean
+    @bean = Bean.find(params[:bean_id])
   end
 end

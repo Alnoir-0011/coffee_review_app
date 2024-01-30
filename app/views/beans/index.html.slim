@@ -1,17 +1,22 @@
+- assign_meta_tags title: @region.name
 .container.mb-3
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2
     h1.mt-5.mb-3 = @region.name
     = search_form_for @q, url: beans_path(region: @region),
-                      html: { data: { turbo_frame: "bean-list" } }, class: 'input-group' do |f|
-      = f.text_field :name_cont, class: 'form-control', placeholder: 'name'
-      = f.select :roast_eq, Bean.roasts, prompt: 'roast',class: 'form-control'
-      = f.select :fineness_eq, Bean.finenesses, prompt: 'fineness',class: 'form-control'
-      = f.hidden_field :region_id, value: @region.id
-      = f.submit 'search', class: 'btn btn-secondary'
+                      html: { data: { turbo_frame: "bean-list" } } do |f|
+      .position-relative[data-controller="autocomplete" data-autocomplete-url-value="/beans/search" role="combobox"]
+        .input-group
+          = f.text_field :name_cont, class: 'form-control', placeholder: 'name', data: { autocomplete_target: "input" }
+          = f.hidden_field :name, data: { autocomplete_target: "hidden" }
+          = f.select :roast_eq, Bean.roasts_i18n.invert.map{|key, value| [key, Bean.roasts[value]]}, { prompt: Bean.human_attribute_name(:roast) }, { class: 'form-control' }
+          = f.select :fineness_eq, Bean.finenesses_i18n.invert.map{|key, value| [key, Bean.finenesses[value]]}, { prompt: Bean.human_attribute_name(:fineness) }, { class: 'form-control' }
+          = f.hidden_field :region_id, value: @region.id
+          = f.submit t('defaults.search'), class: 'btn btn-secondary'
+        ul.z-2.list-group.position-absolute.top-100.start-0[data-autocomplete-target="results"]
     br
     = turbo_frame_tag "bean-list" do
       - if @beans.present?
         = render @beans
         = paginate @beans
       - else
-        | No Beans here
+        = t('defaults.unregistered', item: Bean.model_name.human)

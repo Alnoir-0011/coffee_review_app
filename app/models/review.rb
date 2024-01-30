@@ -29,9 +29,9 @@ class Review < ApplicationRecord
 
   def grind_status
     if fineness_grinded?
-      purchase.grind_situation
+      purchase.grind_situation_i18n
     else
-      fineness
+      fineness_i18n
     end
   end
 

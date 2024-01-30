@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   root to: 'tops#index'
 
   resources :beans, only: %i[index show new create] do
+    get :search, on: :collection
     resource :favorite, only: %i[create destroy]
   end
 
@@ -23,7 +24,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :shops, only: %i[index new create]
+  resources :shops, only: %i[index new create] do
+    get :search, on: :collection
+  end
   
   namespace :mypage do
     root to: redirect('mypage/purchases')
@@ -36,7 +39,7 @@ Rails.application.routes.draw do
   resources :user_profiles, only: %i[show]
 
   namespace :admin do
-    root to: 'base#index'
+    root to: 'dashboards#index'
     get 'login', to: 'user_sessions#new'
     post 'login', to: 'user_sessions#create'
     delete 'logout', to: 'user_sessions#destroy'
