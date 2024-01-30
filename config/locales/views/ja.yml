@@ -101,7 +101,7 @@ ja:
   static_pages:
     privacy_policy:
       title: 'プライバシーポリシー'
-    term_of_use:
+    terms_of_use:
       title: '利用規約'
   mypage:
     purchases:
