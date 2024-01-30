@@ -8,8 +8,8 @@
           h4 = @bean.name
           h4 = @bean.region.name
           p = @bean.shops.limit(2).pluck(:name).join(',')
-          h4 = "#{Bean.human_attribute_name(:average_evaluation)} #{@bean.average_evaluation}"
-          h4 = "#{Bean.human_attribute_name(:roast)} #{@bean.roast}"
+          h4 = @bean.reviews.present? ? "#{Bean.human_attribute_name(:average_evaluation)} #{@bean.average_evaluation}" : ''
+          h4 = "#{Bean.human_attribute_name(:roast)} #{@bean.roast_i18n}"
           - unless @bean.roast_raw?
             h4 = "#{Bean.human_attribute_name(:fineness)} #{@bean.fineness_i18n}"
         .fs-4.col-2#fav
