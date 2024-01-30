@@ -24,9 +24,9 @@
           = f.label :store_grind_option_eq, class: 'visually-hidden'
           = f.select :store_grind_option_eq, Purchase.store_grind_options_i18n.invert.map{|key, value| [key, Purchase.store_grind_options[value]]}, { prompt: Purchase.human_attribute_name(:store_grind_option) }, { class: 'col-auto form-select' }
         .col-auto
-          = f.submit t('default.search'), class: 'col-auto btn btn-secondary'
+          = f.submit t('defaults.search'), class: 'col-auto btn btn-secondary'
 
-      = link_to t('default.register', item: Purchase.model_name.human), new_purchase_path, class: 'btn btn-outline-dark col-12 mb-3', data: { turbo_frame: '_top'}
+      = link_to t('defaults.register', item: Purchase.model_name.human), new_purchase_path, class: 'btn btn-outline-dark col-12 mb-3', data: { turbo_frame: '_top'}
       = turbo_frame_tag 'purchases-list' do
         - if @purchases.present?
           .accordion.accordion-flush#accordionPurchases

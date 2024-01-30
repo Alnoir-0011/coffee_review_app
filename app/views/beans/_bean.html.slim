@@ -17,4 +17,4 @@
             - bean.reviews.limit(3).each do |review|
               p.card-text.mb-0.fs-7 = review.title
           - else
-            p = t('default.nothing', item: Review.model_name.human)
+            p = t('defaults.nothing', item: Review.model_name.human)

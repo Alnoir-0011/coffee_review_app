@@ -1,16 +1,18 @@
 ja:
-  default:
+  defaults:
     login: 'ログイン'
     logout: 'ログアウト'
     logout_confirm: 'ログアウトしますか？'
     mypage: 'マイページ'
     shop: 'Shop'
+    menu: 'Menu'
     edit: '編集'
     delete: '削除'
     search: '検索'
     send: '送信'
+    regist: '登録'
     register: "%{item}を登録する"
-    noting: "%{item}が見つかりません"
+    nothing: "%{item}が見つかりません"
     unregistered: '未登録'
     cancel: 'キャンセル'
     no_candidates: "%{item}がありませんか？"

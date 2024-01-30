@@ -11,7 +11,7 @@
           h4 = "#{Bean.human_attribute_name(:average_evaluation)} #{@bean.average_evaluation}"
           h4 = "#{Bean.human_attribute_name(:roast)} #{@bean.roast}"
           - unless @bean.roast_raw?
-            h4 = "#{Bean.human_attribute_name(:fineness)} #{@bean.fineness}"
+            h4 = "#{Bean.human_attribute_name(:fineness)} #{@bean.fineness_i18n}"
         .fs-4.col-2#fav
           = render 'favicons', bean: @bean
     = turbo_frame_tag 'review-list' do
@@ -24,4 +24,4 @@
           = render partial: 'review', collection: @reviews
           = paginate @reviews
         - else
-          p = t('default.nothing', item: Review.model_name.human)
+          p = t('defaults.nothing', item: Review.model_name.human)

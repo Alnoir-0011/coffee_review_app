@@ -8,12 +8,12 @@ header.bg-641f1f
       .collapse.navbar-collapse#navbarNavDropdown
         ul.navbar-nav.ms-auto.me-auto
           li.nav-item
-            = link_to t('default.shop'), shops_path, class: 'nav-link active fs-4'
+            = link_to t('defaults.shop'), shops_path, class: 'nav-link active fs-4'
         ul.navbar-nav
           li.nav-item.dropdown
-            a.nav-link.dropdown-toggle.active.fs-4 href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" Menu
+            a.nav-link.dropdown-toggle.active.fs-4.ms-4 href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" = t('defaults.menu')
             ul.dropdown-menu
               li
-                = link_to t('default.mypage'), mypage_purchases_path, class: 'dropdown-item fs-5'
+                = link_to t('defaults.mypage'), mypage_purchases_path, class: 'dropdown-item fs-5'
               li
-                = link_to t('default.logout'), logout_path, data: { turbo_confirm: t('default.logout_confirm') , turbo_method: :delete }, class: 'dropdown-item fs-5'
+                = link_to t('defaults.logout'), logout_path, data: { turbo_confirm: t('default.logout_confirm') , turbo_method: :delete }, class: 'dropdown-item fs-5'

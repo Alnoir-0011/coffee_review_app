@@ -19,7 +19,7 @@
           = f.label :tools_name_eq, class: 'visually-hidden'
           = f.select :tools_name_eq, Tool.pluck(:name), { prompt: Review.human_attribute_name(:tool) }, { class: 'form-select' }
         .col-auto
-          = f.submit t('default.search'), class: 'btn btn-secondary'
+          = f.submit t('defaults.search'), class: 'btn btn-secondary'
 
       = turbo_frame_tag 'reviews-list' do
         - if @reviews.present?
@@ -27,4 +27,4 @@
             = render @reviews
           = paginate @reviews
         - else
-          h3.col-10.offset-1 = t('default.nothing', item: Review.model_name.human)
+          h3.col-10.offset-1 = t('defaults.nothing', item: Review.model_name.human)
