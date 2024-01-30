@@ -29,8 +29,10 @@ ja:
         fineness: '挽き方'
         evaluation: '評価'
         content: '内容'
-        tool: '使用器具'
+        tools: '使用器具'
+        tool_ids: '使用器具'
         brewing_method: '飲み方'
+        brewing_method_id: '飲み方'
         like_count: 'いいね数'
       shop:
         name: '店名'

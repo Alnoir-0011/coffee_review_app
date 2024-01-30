@@ -1,7 +1,7 @@
 = bootstrap_form_with model: review, url: url do |f|
   = f.text_field :title
-  = f.select :fineness, Review.finenesses.keys.to_a, {}, disabled: review.already_grinded?
-  = f.label :tools
+  = f.select :fineness, Review.finenesses_i18n.invert, {}, disabled: review.already_grinded?
+  = f.label :tool_ids, class: 'mb-2'
   = f.collection_check_boxes :tool_ids, Tool.all, :id, :name, inline: true, hide_label: true
   = f.select :brewing_method_id, BrewingMethod.pluck(:name, :id), prompt: Review.human_attribute_name(:brewing_method)
   = f.form_group :evaluation, label: { text: Review.human_attribute_name(:evaluation) }
