@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :set_bean, only: %i[create destroy]
+  before_action: :set_bean, only: %i[create destroy]
 
   def create
     current_user.favorite(@bean)
