@@ -5,7 +5,7 @@ class UserDecorator < Draper::Decorator
     if self.tools.present?
       self.tools.pluck(:name).join(" ")
     else
-      t('default.unregistered')
+      I18n.t('defaults.unregistered')
     end
   end
 
@@ -13,7 +13,7 @@ class UserDecorator < Draper::Decorator
     if self.brewing_methods.present?
       self.brewing_methods.pluck(:name).join(" ")
     else
-      t('default.unregistered')
+      I18n.t('defaults.unregistered')
     end
   end
 end
