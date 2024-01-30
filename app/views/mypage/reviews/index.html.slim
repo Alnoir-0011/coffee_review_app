@@ -17,7 +17,7 @@
           ul.z-2.position-absolute.top-100.start-0.list-group[data-autocomplete-target="results"]
         .col-auto
           = f.label :tools_name_eq, class: 'visually-hidden'
-          = f.select :tools_name_eq, Tool.pluck(:name), { prompt: Review.human_attribute_name(:tool) }, { class: 'form-select' }
+          = f.select :tools_name_eq, Tool.pluck(:name), { prompt: Review.human_attribute_name(:tools) }, { class: 'form-select' }
         .col-auto
           = f.submit t('defaults.search'), class: 'btn btn-secondary'
 
