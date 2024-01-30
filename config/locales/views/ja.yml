@@ -113,3 +113,53 @@ ja:
     profiles:
       update:
         success: 'プロフィールを更新しました'
+  admin:
+    dashboards:
+      index:
+        title: 'ダッシュボード'
+    beans:
+      index:
+        title: 'コーヒー豆一覧'
+      new:
+        title: 'コーヒー豆登録'
+      edit:
+        title: 'コーヒー豆編集'
+    brewing_methods:
+      index:
+        title: '淹れ方一覧'
+    purchases:
+      index:
+        title: '購入記録一覧'
+    regions:
+      index: 
+        title: '産地一覧'
+    reviews:
+      index:
+        title: 'レビュー一覧'
+      edit:
+        title: 'レビュー編集'
+    shops:
+      index:
+        title: '店舗一覧'
+      new:
+        title: '店舗登録'
+      edit:
+        title: '店舗編集'
+    tools:
+      index:
+        title: 'ツール一覧'
+    top_sliders:
+      index:
+        title: 'スライダー一覧'
+      new:
+        title: 'スライダー登録'
+      edit:
+        title: 'スライダー編集'
+    user_sessions:
+      new:
+        title: 'ログイン'
+    users:
+      index:
+        title: 'ユーザー一覧'
+      edit:
+        title: 'ユーザー編集'

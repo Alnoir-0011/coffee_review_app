@@ -1,9 +1,9 @@
-- assign_meta_tags title: t('.title')
 .container.mb-3
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2
     = render 'shared/user_profile', user: current_user
     = turbo_frame_tag 'list-with-tab' do
       = render 'shared/tab_buttons'
+      - assign_meta_tags title: t('.title')
       = search_form_for @q, url: mypage_reviews_path,
                         html: { data: { turbo_frame: "reviews-list" } },
                         class: 'row  align-items-center justify-content-center g-2 mb-3 ms-0' do |f|
