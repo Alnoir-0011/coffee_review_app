@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to login_path, success: t('default.message.registerd', item: User.model_name.human)
+      redirect_to login_path, success: t('defaults.message.registerd', item: User.model_name.human)
     else
       render :new, status: :unprocessable_entity
     end

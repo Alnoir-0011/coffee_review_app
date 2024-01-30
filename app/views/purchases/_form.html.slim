@@ -1,6 +1,6 @@
 = bootstrap_form_with model: purchase_form, url: url do |f|
   .d-flex.align-items-center.justify-content-around
-    p.mb-0 = t('default.no_candidates', item: Shop.model_name.human)
+    p.mb-0 = t('defaults.no_candidates', item: Shop.model_name.human)
     = link_to t('defaults.register', item: Shop.model_name.human), new_shop_path, class: 'btn btn-outline-secondary'
   .form-group.mb-3.position-relative[data-controller="autocomplete" data-autocomplete-url-value="/shops/search" role="combobox"]
     = f.label :shop_name, Shop.human_attribute_name(:name), class: 'form-label'

@@ -6,7 +6,7 @@ class Admin::BaseController < ApplicationController
   private
 
   def not_authenticated
-    redirect_to admin_login_path, danger: t('default.require_login')
+    redirect_to admin_login_path, danger: t('defaults.require_login')
   end
 
   def admin_authenticate

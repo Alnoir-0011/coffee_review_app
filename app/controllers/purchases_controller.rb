@@ -9,7 +9,7 @@ class PurchasesController < ApplicationController
   def create
     @purchase_form = PurchaseForm.new(purchase_form_params)
     if @purchase_form.save
-      redirect_to mypage_purchases_path, success: t('default.message.created', item: Purchase.model_name.human)
+      redirect_to mypage_purchases_path, success: t('defaults.message.created', item: Purchase.model_name.human)
     else
       render :new, status: :unprocessable_entity
     end
@@ -20,7 +20,7 @@ class PurchasesController < ApplicationController
   def update
     @purchase_form = PurchaseForm.new(purchase_form_params, purchase: @purchase)
     if @purchase_form.update
-      redirect_to mypage_purchases_path, success: t('default.message.updated', item: Purchase.model_name.human)
+      redirect_to mypage_purchases_path, success: t('defaults.message.updated', item: Purchase.model_name.human)
     else
       render :edit, status: :unprocessable_entity
     end

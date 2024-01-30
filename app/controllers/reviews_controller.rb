@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @purchase = current_user.purchases.find(params[:purchase_id])
     @review = @purchase.build_review(review_params)
     if @review.save_with_tools(form_tool_ids: params[:review][:tool_ids])
-      redirect_to mypage_reviews_path, success: t('default.message.posted', item: Review.model_name.human)
+      redirect_to mypage_reviews_path, success: t('defaults.message.posted', item: Review.model_name.human)
     else
       render :new, status: :unprocessable_entity
     end
@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
     @review.assign_attributes(review_params)
 
     if @review.save_with_tools(form_tool_ids: params[:review][:tool_ids])
-      redirect_to mypage_reviews_path, success: t('default.message.updated', item: Review.model_name.human)
+      redirect_to mypage_reviews_path, success: t('defaults.message.updated', item: Review.model_name.human)
     else
       render :edit, status: :unprocessable_entity
     end

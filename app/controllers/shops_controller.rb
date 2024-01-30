@@ -21,7 +21,7 @@ class ShopsController < ApplicationController
     @shop = Shop.new(shop_params)
 
     if @shop.save
-      redirect_to mypage_purchases_path, success: t('default.message.registered', item: Shop.model_name.human)
+      redirect_to mypage_purchases_path, success: t('defaults.message.registered', item: Shop.model_name.human)
     else
       render :new, status: :unprocessable_entity
     end

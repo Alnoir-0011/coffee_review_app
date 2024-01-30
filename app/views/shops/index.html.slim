@@ -26,5 +26,5 @@
         = render @shops
     - else
       .d-flex.align-items-center.justify-content-around
-        span = t('defaults.noting', item: Shop.model_name.human)
+        span = t('defaults.nothing', item: Shop.model_name.human)
         = link_to t('defaults.register', item: Shop.model_name.human), new_shop_path, class: 'btn btn-outline-secondary'

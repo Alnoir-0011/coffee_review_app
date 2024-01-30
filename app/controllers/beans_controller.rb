@@ -22,7 +22,7 @@ class BeansController < ApplicationController
   def create
     @bean = Bean.new(bean_params)
     if @bean.save
-      redirect_to beans_path(region: params[:bean][:region_id]), success: t('default.message.registered', item: Bean.model_name.human)
+      redirect_to beans_path(region: params[:bean][:region_id]), success: t('defaults.message.registered', item: Bean.model_name.human)
     else
       render :new, status: :unprocessable_entity
     end
