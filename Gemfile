@@ -105,3 +105,4 @@ gem 'dotenv-rails'
 gem 'config'
 gem 'bootstrap_form'
 gem "chartkick"
+gem 'meta-tags', '~> 2.11'

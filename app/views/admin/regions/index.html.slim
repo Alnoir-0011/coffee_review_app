@@ -3,6 +3,7 @@
     h1.my-3 Options
     = turbo_frame_tag 'list' do
       = render 'admin/shared/option_tabs'
+      - assign_meta_tags title: t('.title'), admin: true
       .row.border-bottom.pb-1
         .col-2
           = sort_link(@q, :id, class: 'link-dark')

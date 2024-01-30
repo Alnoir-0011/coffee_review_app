@@ -1,2 +1,167 @@
 ja:
-  default:
+  defaults:
+    login: 'ログイン'
+    logout: 'ログアウト'
+    logout_confirm: 'ログアウトしますか？'
+    mypage: 'マイページ'
+    shop: 'Shop'
+    menu: 'Menu'
+    edit: '編集'
+    delete: '削除'
+    search: '検索'
+    send: '送信'
+    regist: '登録'
+    register: "%{item}を登録する"
+    nothing: "%{item}が見つかりません"
+    unregistered: '未登録'
+    cancel: 'キャンセル'
+    no_candidates: "%{item}がありませんか？"
+    message:
+      input: "%{item}を入力してください"
+      require_login: 'ログインしてください'
+      created: "%{item}を作成しました"
+      registerd: "%{item}を登録しました"
+      not_created: "%{item}を作成できませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新できませんでした"
+      deleted: "%{item}を削除しました"
+      posted: "%{item}を投稿しました"
+      not_posted: "%{item}を投稿できませんでした"
+      delete_confirm: '削除しますか？'
+      not_authorized: '権限がありません'
+  users:
+    new:
+      title: 'ユーザー登録'
+  user_sessions:
+    new:
+      title: 'ログイン'
+      sign_in_with_google: 'googleでログイン'
+      sign_up: 'ユーザー登録'
+      forgot_password: 'パスワードを忘れた場合はこちら'
+    create:
+      success: 'ログインしました'
+      fail: 'ログインに失敗しました'
+    destroy:
+      success: 'ログアウトしました'
+  oauths:
+    callback:
+      success: "%{item}でログインしました"
+      fail: "%{item}でのログインに失敗しました"
+  tops:
+    index:
+      title: 'トップページ'
+      search_from_region: '産地で探す'
+  beans:
+    index:
+      title: 'コーヒー豆一覧'
+    new:
+      title: 'コーヒー豆登録'
+    show:
+      title: '商品詳細'
+  favorites:
+    create:
+      success: "%{item}をお気に入り登録しました"
+    destroy:
+      success: "%{item}のお気に入り登録を解除しました"
+  password_resets:
+    new:
+      title: 'パスワード再設定'
+    create:
+      success: 'パスワードの再設定を受け付けました。'
+    edit:
+      title: 'パスワード再設定'
+    update:
+      success: 'パスワードを変更しました'
+      fail: 'パスワードの変更に失敗しました'
+  purchases:
+    new:
+      title: '購入記録作成'
+    edit:
+      title: '購入記録編集'
+  reviews:
+    new:
+      title: 'レビュー作成'
+    edit:
+      title: 'レビュー編集'
+  likes:
+    create:
+      success: "%{item}をいいねしました"
+    destroy:
+      success: "%{item}のいいねを削除しました"
+  shops:
+    index: 
+      title: '店舗一覧'
+      search_by_location: '現在地から検索'
+    new:
+      title: '店舗登録'
+      enter_your_location_from_the_map: 'マップから位置情報を入力してください'
+  user_profiles:
+    show:
+      title: 'プロフィール閲覧'
+  static_pages:
+    privacy_policy:
+      title: 'プライバシーポリシー'
+    term_of_use:
+      title: '利用規約'
+  mypage:
+    purchases:
+      index:
+        title: '購入記録一覧'
+        review_posted: 'レビュー投稿済み'
+        post_review: 'レビューする'
+    reviews:
+      index:
+        title: 'レビュー一覧'
+    profiles:
+      update:
+        success: 'プロフィールを更新しました'
+  admin:
+    dashboards:
+      index:
+        title: 'ダッシュボード'
+    beans:
+      index:
+        title: 'コーヒー豆一覧'
+      new:
+        title: 'コーヒー豆登録'
+      edit:
+        title: 'コーヒー豆編集'
+    brewing_methods:
+      index:
+        title: '淹れ方一覧'
+    purchases:
+      index:
+        title: '購入記録一覧'
+    regions:
+      index: 
+        title: '産地一覧'
+    reviews:
+      index:
+        title: 'レビュー一覧'
+      edit:
+        title: 'レビュー編集'
+    shops:
+      index:
+        title: '店舗一覧'
+      new:
+        title: '店舗登録'
+      edit:
+        title: '店舗編集'
+    tools:
+      index:
+        title: 'ツール一覧'
+    top_sliders:
+      index:
+        title: 'スライダー一覧'
+      new:
+        title: 'スライダー登録'
+      edit:
+        title: 'スライダー編集'
+    user_sessions:
+      new:
+        title: 'ログイン'
+    users:
+      index:
+        title: 'ユーザー一覧'
+      edit:
+        title: 'ユーザー編集'

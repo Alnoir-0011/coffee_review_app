@@ -1,6 +1,7 @@
+- assign_meta_tags title: t('.title')
 .container
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2.col-xl-6.offset-xl-3
-    h1.my-3 パスワード再設定
+    h1.my-3 = t('.title')
     = bootstrap_form_with model: @user, url: password_reset_path(@token) do |f|
       = f.password_field :password
       = f.password_field :password_confirmation

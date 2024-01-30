@@ -1,8 +1,9 @@
+- assign_meta_tags title: t('.title')
 .container.mb-3
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2
     .d-flex.justify-content-between.align-align-items-center.my-3 data-controller="location"
-      h1 店舗一覧
-      button#get-position.btn.btn-dark.my-2 data-action="click->location#current" data-lat="#{ @lat || '' }" data-lng="#{ @lng || '' }" 現在地から検索
+      h1 = t('.title')
+      button#get-position.btn.btn-dark.my-2 data-action="click->location#current" data-lat="#{ @lat || '' }" data-lng="#{ @lng || '' }" = t('.search_by_location')
     #map-index.mb-3
     css:
       #map-index{
@@ -25,5 +26,5 @@
         = render @shops
     - else
       .d-flex.align-items-center.justify-content-around
-        span 店舗が見つかりません
-        = link_to '店舗を登録する', new_shop_path, class: 'btn btn-outline-secondary'
+        span = t('defaults.noting', item: Shop.model_name.human)
+        = link_to t('defaults.register', item: Shop.model_name.human), new_shop_path, class: 'btn btn-outline-secondary'

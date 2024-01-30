@@ -1,9 +1,10 @@
+- assign_meta_tags title: t('.title')
 .container
   .col-md-8.offset-md-2.col-lg-6.offset-lg-3.col-xl-4.offset-xl-4
-    h1.mb-3.mt-5 Signup
+    h1.mb-3.mt-5 = t('.title')
     = bootstrap_form_with model: @user do |f|
       = f.email_field :email
       = f.text_field :name
       = f.password_field :password
       = f.password_field :password_confirmation
-      = f.submit 'signup', class: 'd-block btn btn-secondary col-8 offset-2'
+      = f.submit t('default.regist'), class: 'd-block btn btn-secondary col-8 offset-2'

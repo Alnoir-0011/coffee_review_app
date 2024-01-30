@@ -39,11 +39,11 @@ const initSwiper = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('event!');
+  // console.log('event!');
   initSwiper();
 });
 
 document.addEventListener('turbo:load', () => {
-  console.log('turbo!');
+  // console.log('turbo!');
   initSwiper();
 });

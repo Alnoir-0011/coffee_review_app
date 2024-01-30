@@ -1,13 +1,14 @@
+- assign_meta_tags title: t('.title')
 .container.mb-3
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2.col-xl-6.offset-xl-3
-    .d-flex.justify-content-between.mb-3.mt-5
-      h1 コーヒー豆登録
-      = link_to 'キャンセル', mypage_purchases_path
+    .d-flex.justify-content-between.mb-3.mt-5.align-items-center
+      h1.mb-0 = t('.title')
+      = link_to t('defaults.cancel'), mypage_purchases_path, class: 'btn btn-outline-info'
     = bootstrap_form_with model: @bean do |f|
       = f.text_field :name
-      = f.select :roast, Bean.roasts.keys, prompt: '焙煎度合い'
-      = f.select :fineness, Bean.finenesses.keys, prompt: '粉の細かさ'
-      = f.select :region_id, Region.pluck(:name, :id), prompt: '産地'
+      = f.select :roast, Bean.roasts_i18n.invert, prompt: Bean.human_attribute_name(:roast)
+      = f.select :fineness, Bean.finenesses_i18n.invert, prompt: Bean.human_attribute_name(:fineness)
+      = f.select :region_id, Region.pluck(:name, :id), prompt: Region.model_name.human
       = f.file_field :image, id: 'file-field'
       = f.hidden_field :image_cache
       .mb-3#preview-field

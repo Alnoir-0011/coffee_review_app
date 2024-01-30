@@ -59,6 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('turbo:load', () => {
+  // console.log('turbo');
+  if(document.getElementById("map-new")) {
+    initNewMap();
+  };
+});
+
+document.addEventListener('turbo:render', () => {
   if(document.getElementById("map-new")) {
     initNewMap();
   };

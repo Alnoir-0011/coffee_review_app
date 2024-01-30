@@ -34,3 +34,8 @@ document.addEventListener('turbo:frame-load', () => {
   // console.log('frame!');
   imagePreview();
 });
+
+document.addEventListener('turbo:render', () => {
+  // console.log('frame!');
+  imagePreview();
+});

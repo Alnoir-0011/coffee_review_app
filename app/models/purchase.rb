@@ -11,7 +11,7 @@ class Purchase < ApplicationRecord
   validate :future_dates_cannot
   validate :prohibited_before_roasting
 
-  enum :store_roast_option, { roasted: 0, light: 10, chinamon: 20, medium: 30, high: 40, city: 50, fullcity: 60, fremch: 70, italian: 80 }, prefix: true
+  enum :store_roast_option, { roasted: 0, light: 10, chinamon: 20, medium: 30, high: 40, city: 50, fullcity: 60, french: 70, italian: 80 }, prefix: true
   enum :store_grind_option, { grinded: 0, beans: 10, coarsely: 20, medium: 30, medium_fine: 40, fine: 50, superfine: 60 }, prefix: true
 
 
@@ -25,17 +25,17 @@ class Purchase < ApplicationRecord
 
   def roast_status
     if store_roast_option_roasted?
-      bean.roast
+      bean.roast_i18n
     else
-      store_roast_option
+      store_roast_option_i18n
     end
   end
 
   def grind_situation
     if store_grind_option_grinded?
-      bean.fineness
+      bean.fineness_i18n
     else
-      store_grind_option
+      store_grind_option_i18n
     end
   end
 
