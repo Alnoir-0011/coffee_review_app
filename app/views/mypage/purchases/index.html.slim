@@ -8,24 +8,24 @@
                         class: 'row align-items-top justify-content-center g-2 mb-3 ms-0' do |f|
         .col-auto.position-relative[data-controller="autocomplete" data-autocomplete-url-value="/beans/search" role="combobox"]
           = f.label :bean_name_cont, class: 'visually-hidden'
-          = f.text_field :bean_name_cont, class: 'form-control', placeholder: 'bean name', data: { autocomplete_target: "input" }
+          = f.text_field :bean_name_cont, class: 'form-control', placeholder: Bean.human_attribute_name(:name), data: { autocomplete_target: "input" }
           = f.hidden_field :bean_name, data: { autocomplete_target: "hidden" }
           ul.z-2.position-absolute.top-100.start-0.list-group[data-autocomplete-target="results"]
         .col-auto.z-2.position-relative[data-controller="autocomplete" data-autocomplete-url-value="/shops/search" role="combobox"]
           = f.label :shop_name_cont, class: 'visually-hidden'
-          = f.text_field :shop_name_cont, class: 'form-control', placeholder: 'shop name', data: { autocomplete_target: "input" }
+          = f.text_field :shop_name_cont, class: 'form-control', placeholder: Shop.human_attribute_name(:name), data: { autocomplete_target: "input" }
           = f.hidden_field :shop_name, data: { autocomplete_target: "hidden" }
           ul.z-2.list-group.position-absolute.top-100.start-0[data-autocomplete-target="results"]
         .col-auto
           = f.label :store_roast_option_eq, class: 'visually-hidden'
-          = f.select :store_roast_option_eq, Purchase.store_roast_options, { prompt: 'roast' }, { class: 'col-auto form-select' }
+          = f.select :store_roast_option_eq, Purchase.store_roast_options_i18n.invert.map{|key, value| [key, Purchase.store_roast_options[value]]}, { prompt: Purchase.human_attribute_name(:store_roast_option) }, { class: 'col-auto form-select' }
         .col-auto
           = f.label :store_grind_option_eq, class: 'visually-hidden'
-          = f.select :store_grind_option_eq, Purchase.store_grind_options, { prompt: 'fineness' }, { class: 'col-auto form-select' }
+          = f.select :store_grind_option_eq, Purchase.store_grind_options_i18n.invert.map{|key, value| [key, Purchase.store_grind_options[value]]}, { prompt: Purchase.human_attribute_name(:store_grind_option) }, { class: 'col-auto form-select' }
         .col-auto
-          = f.submit '検索', class: 'col-auto btn btn-secondary'
+          = f.submit t('default.search'), class: 'col-auto btn btn-secondary'
 
-      = link_to 'add new record', new_purchase_path, class: 'btn btn-outline-dark col-12 mb-3', data: { turbo_frame: '_top'}
+      = link_to t('default.register', item: Purchase.model_name.human), new_purchase_path, class: 'btn btn-outline-dark col-12 mb-3', data: { turbo_frame: '_top'}
       = turbo_frame_tag 'purchases-list' do
         - if @purchases.present?
           .accordion.accordion-flush#accordionPurchases
@@ -33,4 +33,4 @@
             / = render 'purchase'
           = paginate @purchases
         - else
-          h3.col-10.offset-1 No record here :-(
+          h3.col-10.offset-1 = t('default.noting', item: Purchase.model_name.human)

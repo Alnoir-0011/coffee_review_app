@@ -6,10 +6,10 @@
           = image_tag user.avatar.url, class: 'rounded-circle me-3 avatar-preview p-0'
           h5.fs-4.mb-0 = user.name
         - if user.same?(current_user)
-          = link_to '編集', edit_mypage_profile_path, class: 'col-auto px-3 badge rounded-pill text-decoration-none text-bg-secondary fs-5 ms-auto mt-2 shadow-sm', data: { turbo_frame: 'profile' }
+          = link_to t('default.edit'), edit_mypage_profile_path, class: 'col-auto px-3 badge rounded-pill text-decoration-none text-bg-secondary fs-5 ms-auto mt-2 shadow-sm', data: { turbo_frame: 'profile' }
       .mb-1
-        label 所有器具
+        label = User.human_attribute_name(:tools)
         p = user.decorate.tool_names
       .mb-1
-        label 好きな飲み方
+        label = User.human_attribute_name(:brewing_method)
         p = user.decorate.brewing_method_names

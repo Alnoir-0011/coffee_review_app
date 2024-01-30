@@ -21,4 +21,4 @@
           = render partial: 'review', collection: @reviews
         = paginate @reviews
       - else
-        h3.col-10.offset-1 No reviews here :-(
+        h3.col-10.offset-1 = t('default.nothind', Review.model_name.human)

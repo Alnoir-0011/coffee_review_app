@@ -1,6 +1,6 @@
 .container.mb-3
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2.col-xl-6.offset-xl-3
     .d-flex.justify-content-between.mb-3.mt-5.align-items-center
-      h1.mb-0 購入記録編集
-      = link_to 'キャンセル', mypage_purchases_path, class: 'btn btn-outline-info my-2'
+      h1.mb-0 = t('.title')
+      = link_to t('default.cancel'), mypage_purchases_path, class: 'btn btn-outline-info my-2'
     = render 'form', { purchase_form: @purchase_form, url: purchase_path(@purchase) }

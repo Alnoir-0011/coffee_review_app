@@ -15,7 +15,7 @@
             p = review.evaluation
           p = review.brewing_method.name
         .d-flex.mb-2.pb-0.align-items-center
-          p.mb-0.me-1 使用器具
+          p.mb-0.me-1 = Review.human_attribute_name(:tool)
           - review.tools.each do |tool|
             span.badge.rounded-pill.text-bg-secondary.me-1 = tool.name
         .text-break.lh-1
@@ -27,5 +27,5 @@
               p.mb-0 = review.likes.length
           = link_to edit_review_path(review), class: 'link-dark me-3', data: { turbo_frame: "_top" } do
             i.bi.bi-pencil
-          = link_to mypage_review_path(review), class: 'link-dark', data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }
+          = link_to mypage_review_path(review), class: 'link-dark', data: { turbo_method: :delete, turbo_confirm: t('default.message.delete_confirm') }
             i.bi.bi-trash

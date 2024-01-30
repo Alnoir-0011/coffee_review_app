@@ -8,17 +8,17 @@
                         class: 'row  align-items-center justify-content-center g-2 mb-3 ms-0' do |f|
         .col-auto
           = f.label :title_cont, class: 'visually-hidden'
-          = f.text_field :title_cont, class: 'form-control', placeholder: 'title'
+          = f.text_field :title_cont, class: 'form-control', placeholder: Review.human_attribute_name(:title)
         .col-auto.position-relative[data-controller="autocomplete" data-autocomplete-url-value="/beans/search" role="combobox"]
           = f.label :purchase_bean_name_cont, class: 'visually-hidden'
-          = f.text_field :purchase_bean_name_cont, class: 'form-control', placeholder: 'bean name', data: { autocomplete_target: "input" }
+          = f.text_field :purchase_bean_name_cont, class: 'form-control', placeholder: Bean.human_attribute_name(:name), data: { autocomplete_target: "input" }
           = f.hidden_field :purchase_bean_name, data: { autocomplete_target: "hidden" }
           ul.z-2.position-absolute.top-100.start-0.list-group[data-autocomplete-target="results"]
         .col-auto
           = f.label :tools_name_eq, class: 'visually-hidden'
-          = f.select :tools_name_eq, Tool.pluck(:name), { prompt: '使用器具' }, { class: 'form-select' }
+          = f.select :tools_name_eq, Tool.pluck(:name), { prompt: Review.human_attribute_name(:tool) }, { class: 'form-select' }
         .col-auto
-          = f.submit '検索', class: 'btn btn-secondary'
+          = f.submit t('default.search'), class: 'btn btn-secondary'
 
       = turbo_frame_tag 'reviews-list' do
         - if @reviews.present?
@@ -26,4 +26,4 @@
             = render @reviews
           = paginate @reviews
         - else
-          h3.col-10.offset-1 No reviews here :-(
+          h3.col-10.offset-1 = t('default.nothing', item: Review.model_name.human)

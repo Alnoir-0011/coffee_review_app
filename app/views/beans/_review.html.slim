@@ -15,7 +15,7 @@
               - review.tools.each do |tool|
                 span.badge.rounded-pill.text-bg-light.me-1.ms-0 = tool.name
             - else
-              span ツール登録なし
+              span = t('default.unregistered', item: Tool.model_name.human)
           .badge.rounded-pill.text-bg-secondary
             span = review.brewing_method.name
     h5 = review.title

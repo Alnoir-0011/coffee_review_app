@@ -5,7 +5,7 @@
         .my-3
           .d-flex.justify-content-between.align-content-center#preview-field
             = image_tag @user.avatar.url, class: 'col-auto p-0 rounded-circle avatar-preview object-fit-cover', id: 'preview'
-            = link_to 'キャンセル', mypage_profile_path, class: 'col-auto badge rounded-pill text-decoration-none text-bg-secondary fs-5 ms-auto shadow-sm my-5', data: { turbo_frame: 'profile'}
+            = link_to t('default.cancel'), mypage_profile_path, class: 'col-auto badge rounded-pill text-decoration-none text-bg-secondary fs-5 ms-auto shadow-sm my-5', data: { turbo_frame: 'profile'}
           = f.text_field :name
           = f.file_field :avatar, id: 'file-field'
           = f.hidden_field :avatar_cache

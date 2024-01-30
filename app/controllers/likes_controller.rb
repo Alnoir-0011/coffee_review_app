@@ -3,12 +3,12 @@ class LikesController < ApplicationController
 
   def create
     current_user.like(@review)
-    flash[:success] = "#{@review.title}をいいねしました"
+    flash[:success] = t('.success', item: @review.title)
   end
 
   def destroy
     current_user.unlike(@review)
-    flash[:success] = "#{@review.title}のいいねを削除しました"
+    flash[:success] = t('.success', item: @review.title)
   end
 
   private

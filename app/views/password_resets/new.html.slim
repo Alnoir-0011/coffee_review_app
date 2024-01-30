@@ -1,7 +1,6 @@
 .container
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2.col-xl-6.offset-xl-3
-    h1.my-3 パスワード再設定
+    h1.my-3 = t('.title')
     = bootstrap_form_with model: @user, url: password_resets_path do |f|
       = f.email_field :email
-      = f.submit '送信'
-    
+      = f.submit t('default.send')

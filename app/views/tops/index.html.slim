@@ -24,9 +24,9 @@
         .input-group
           = f.text_field :name_cont, class: 'form-control', placeholder: 'name', data: { autocomplete_target: "input" }
           = f.hidden_field :name, data: { autocomplete_target: "hidden" }
-          = f.select :roast_eq, Bean.roasts, { prompt: 'roast' }, { class: 'form-control' }
-          = f.select :fineness_eq, Bean.finenesses, { prompt: 'fineness' }, { class: 'form-control' }
-          = f.submit 'search', class: 'btn btn-secondary'
+          = f.select :roast_eq, Bean.roasts_i18n.invert.map{|key, value| [key, Bean.roasts[value]]}, { prompt: Bean.human_attribute_name(:roast) }, { class: 'form-control' }
+          = f.select :fineness_eq, Bean.finenesses_i18n.invert.map{|key, value| [key, Bean.finenesses[value]]}, { prompt: Bean.human_attribute_name(:fineness) }, { class: 'form-control' }
+          = f.submit t('default.search'), class: 'btn btn-secondary'
         ul.z-2.list-group.position-absolute.top-100.start-0[data-autocomplete-target="results"]
     .d-flex.justify-content-between
       .col-8.me-1
@@ -34,8 +34,8 @@
           - if @beans.present?
             = render partial: 'beans/bean', collection: @beans
           - else
-            h2.ms-4 No bean here :-(
+            h2.ms-4 = t('default.noting', item: Bean.model_name.human)
       .col-4
-        h3.text-center 産地で探す
+        h3.text-center = t('.search_from_region')
         .row.ms-1.justify-content-evenly.g-2
           = render partial: 'region',collection: @regions
