@@ -1,4 +1,6 @@
 ja:
-  site:
-    name: 'coffee stack log'
-    description: ''
+  meta_tags:
+    defaults:
+      site:
+        name: 'coffee stack log'
+        description: 'testestestsetstes'

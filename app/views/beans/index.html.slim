@@ -1,3 +1,4 @@
+- assign_meta_tags title: @region.name
 .container.mb-3
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2
     h1.mt-5.mb-3 = @region.name
@@ -12,7 +13,6 @@
           = f.hidden_field :region_id, value: @region.id
           = f.submit t('default.search'), class: 'btn btn-secondary'
         ul.z-2.list-group.position-absolute.top-100.start-0[data-autocomplete-target="results"]
-
     br
     = turbo_frame_tag "bean-list" do
       - if @beans.present?

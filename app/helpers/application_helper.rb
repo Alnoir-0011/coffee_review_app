@@ -25,12 +25,10 @@ module ApplicationHelper
   end
 
   def assign_meta_tags(options = {})
-    defaults = t('meta_tags.defaults')
-    options.reverse_merge!(defaults)
-    site = options[:admin] ? "[Admin]#{t('site.name')}" : t('site.name')
-    description = t('site.description')
+    site = options[:admin] ? "[Admin]#{t('meta_tags.defaults.site.name')}" : t('meta_tags.defaults.site.name')
+    description = t('meta_tags.defaults.site.description')
     title = options[:title]
-    image = image_url('OGP.png')
+    image = options[:image].presence || image_url('OGP.png')
     configs = {
       separator: '|',
       reverse: true,
@@ -39,9 +37,6 @@ module ApplicationHelper
       description:,
       keywords: %w[コーヒー豆 レビュー 購入記録 コーヒー豆販売店検索],
       canonical: request.original_url,
-      icon: {
-        href: image_url('placeholder.png')
-      },
       og: {
         type: 'website',
         title: title.presence || site,
