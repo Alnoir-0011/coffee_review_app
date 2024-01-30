@@ -12,7 +12,7 @@
 
       #map-new.mb-3
 
-      = f.text_field :name, id: 'form-name', placeholder: 'チェーン店は店舗名を最後まで入力してください'
+      = f.hidden_field :name, id: 'form-name'
       = f.hidden_field :place_id, id: 'form-place-id'
       = f.hidden_field :address, id: 'form-address'
       = f.hidden_field :phone_number, id: 'form-phonenumber'
