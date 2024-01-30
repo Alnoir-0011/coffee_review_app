@@ -7,6 +7,7 @@ function initNewMap() {
   });
 
   const input = document.getElementById("pac-input");
+  const formnName = document.getElementById("form-name");
   const formPlaceId = document.getElementById("form-place-id");
   const formAddress = document.getElementById("form-address");
   const formPhonenuber = document.getElementById("form-phonenumber");
@@ -44,6 +45,7 @@ function initNewMap() {
     marker.setPosition(place.geometry.location);
     marker.setVisible(true);
 
+    formnName.value = place.name;
     formPlaceId.value = place.place_id;
     formAddress.value = place.formatted_address.replace("日本、","");
     formPhonenuber.value = place.formatted_phone_number;
