@@ -13,7 +13,8 @@
           - unless @bean.roast_raw?
             h4 = "#{Bean.human_attribute_name(:fineness)} #{@bean.fineness_i18n}"
         .fs-4.col-2#fav
-          = render 'favicons', bean: @bean
+          - if current_user
+            = render 'favicons', bean: @bean
     = turbo_frame_tag 'review-list' do
       .d-flex.mb-1.justify-content-end
         = sort_link(@q, :created_at, class: 'link-dark ms-2')

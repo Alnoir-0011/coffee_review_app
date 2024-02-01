@@ -20,15 +20,16 @@
             span = review.brewing_method.name
     h5 = review.title
     = simple_format(review.content, class: 'mb-0')
-  .fs-5.d-flex.justify-content-end
-    - if review.own?(current_user)
-      .me-auto
-        i.bi.bi-hand-thumbs-up
-        span = review.like_count
-      = link_to edit_review_path(review), class: 'link-dark me-1', data: { turbo_frame: '_top' } do
-        i.bi.bi-pencil
-      = link_to mypage_review_path(review), class: 'link-dark', data: { turbo_method: :delete, turbo_frame: '_top' } do
-        i.bi.bi-trash
-    - else
-      div id="like_#{review.id}"
-        = render 'shared/like/likeicons', review: review
+  - if current_user
+    .fs-5.d-flex.justify-content-end
+      - if review.own?(current_user)
+        .me-auto
+          i.bi.bi-hand-thumbs-up
+          span = review.like_count
+        = link_to edit_review_path(review), class: 'link-dark me-1', data: { turbo_frame: '_top' } do
+          i.bi.bi-pencil
+        = link_to mypage_review_path(review), class: 'link-dark', data: { turbo_method: :delete, turbo_frame: '_top' } do
+          i.bi.bi-trash
+      - else
+        div id="like_#{review.id}"
+          = render 'shared/like/likeicons', review: review
