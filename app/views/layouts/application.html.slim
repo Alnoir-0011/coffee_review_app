@@ -1,7 +1,8 @@
 doctype html
 html
   head
-    script{async src="https://www.googletagmanager.com/gtag/js?id=G-06DY2R97SP"}
+    script{async src="https://www.googletagmanager.com/gtag/js?id=#{ ENV['GOOGOLE_ANALYTICS_ID'] }"}
+    meta[name="google-site-verification" content="#{ ENV['GOOGLE_SITE_VERIFICATION_CONTENT'] }"]
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag
