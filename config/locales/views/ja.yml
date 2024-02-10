@@ -92,6 +92,10 @@ ja:
     index: 
       title: '店舗一覧'
       search_by_location: '現在地から検索'
+      current_display_content: '現在の表示内容:'
+      near_by_current_location: '現在地周辺の店舗'
+      name_include: "%{item}を含む店舗"
+      arround_tokyo: '東京駅周辺の店舗'
     new:
       title: '店舗登録'
       enter_your_location_from_the_map: 'マップから位置情報を入力してください'

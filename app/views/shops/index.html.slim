@@ -1,16 +1,19 @@
 - assign_meta_tags title: t('.title')
 .container.mb-3
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2
-    .d-flex.justify-content-between.align-align-items-center.my-3 data-controller="location"
-      h1 = t('.title')
+    .d-flex.justify-content-between.align-items-center.my-3 data-controller="location"
+      h1.mb-0 = t('.title')
       button#get-position.btn.btn-dark.my-2 data-action="click->location#current" data-lat="#{ @lat || '' }" data-lng="#{ @lng || '' }" = t('.search_by_location')
+    .d-flex.align-items-end
+      h5.mb-0.me-1 = t('.current_display_content')
+      h5.mb-0 = @search_explanation
     #map-index.mb-3
     css:
       #map-index{
-        height: 600px;
+        height: 37.5rem;
       }
       #accordionShops{
-        max-height: 400px;
+        max-height: 25rem;
       }
 
     = search_form_for @q, url: shops_path, class: 'mb-3' do |f|
