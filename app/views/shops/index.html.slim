@@ -19,7 +19,7 @@
     = search_form_for @q, url: shops_path, class: 'mb-3' do |f|
       .position-relative[data-controller="autocomplete" data-autocomplete-url-value="/shops/search" role="combobox"]
         .input-group
-          = f.text_field :name_cont, class: 'form-control', data: { autocomplete_target: "input" }
+          = f.text_field :name_cont, placeholder: Shop.human_attribute_name(:name), class: 'form-control', data: { autocomplete_target: "input" }
           = f.submit class: 'btn btn-secondary'
         = f.hidden_field :name, data: { autocomplete_target: "hidden" }
         ul.z-2.list-group.position-absolute.top-100.start-0[data-autocomplete-target="results"]
