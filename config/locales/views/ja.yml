@@ -16,6 +16,7 @@ ja:
     unregistered: '未登録'
     cancel: 'キャンセル'
     no_candidates: "%{item}がありませんか？"
+    search_by: "%{item}で探す"
     message:
       input: "%{item}を入力してください"
       require_login: 'ログインしてください'
