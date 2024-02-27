@@ -1,6 +1,8 @@
 class Review < ApplicationRecord
   include GroupByDay
 
+  mount_uploader :image, ImageUploader
+
   belongs_to :purchase
   belongs_to :brewing_method
   has_many :review_tools, dependent: :destroy

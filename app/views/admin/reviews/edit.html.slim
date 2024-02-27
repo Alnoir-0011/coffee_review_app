@@ -17,4 +17,8 @@
           - 1.upto(5) do |i|
             = f.radio_button :evaluation, i, label: i, inline: true
       = f.text_area :content
+      = f.file_field :image, id: 'file-field'
+      = f.hidden_field :image_cache
+      .mb-3#preview-field
+        = image_tag @review.image.url, id: 'preview', class: 'image-preview object-fit-cover'
       = f.submit

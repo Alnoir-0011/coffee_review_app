@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_24_162956) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_27_041311) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,7 +31,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_24_162956) do
     t.bigint "region_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.json "image"
     t.index ["region_id"], name: "index_beans_on_region_id"
   end
 
@@ -123,6 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_24_162956) do
     t.datetime "updated_at", null: false
     t.bigint "purchase_id"
     t.integer "like_count", default: 0, null: false
+    t.json "image"
     t.index ["brewing_method_id"], name: "index_reviews_on_brewing_method_id"
     t.index ["purchase_id"], name: "index_reviews_on_purchase_id", unique: true
   end
