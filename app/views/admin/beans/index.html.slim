@@ -9,10 +9,10 @@
     = search_form_for @q, url: admin_beans_path, html: { data: { turbo_frame: "beans-list" } },
                       class: 'input-group mb-3 ms-0' do |f|
       = f.text_field :name_cont, class: 'form-control', placeholder: 'name'
-      = f.select :roast_eq, Bean.roasts.keys.to_a, class: 'form-select px-4', prompt: 'roast'
-      = f.select :fineness_eq, Bean.finenesses.keys.to_a, class: 'form-select px-4', prompt: 'fineness'
-      = f.select :region_name_eq, Region.pluck(:name), class: 'form-select px-4', prompt: 'region'
-      = f.submit '検索', class: 'btn btn-primary px-4'
+      = f.select :roast_eq, Bean.roasts.keys.to_a, { prompt: 'roast' }, { class: 'form-select' }
+      = f.select :fineness_eq, Bean.finenesses.keys.to_a, { prompt: 'fineness' }, { class: 'form-select' }
+      = f.select :region_name_eq, Region.pluck(:name), { prompt: 'region' }, { class: 'form-select' }
+      = f.submit '検索', class: 'btn btn-primary'
     = turbo_frame_tag 'bean-list' do
       .row.border-bottom.pb-1
         .col-3
