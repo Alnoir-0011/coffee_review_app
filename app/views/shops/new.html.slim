@@ -3,7 +3,7 @@
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2.col-xl-6.offset-xl-3
     .d-flex.justify-content-between.mb-3.mt-5
       h1.mb-0 = t('.title')
-      = link_to t('default.cancel'), mypage_purchases_path, class: 'btn btn-outline-info my-2'
+      = link_to t('defaults.cancel'), mypage_purchases_path, class: 'btn btn-outline-info my-2'
     = bootstrap_form_with model: @shop do |f|
       - if f.object.errors.present?
         .alert.alert-danger
@@ -21,7 +21,7 @@
 
       css:
         #map-new {
-          height: 400px;
+          height: 25rem;
         }
 
       = f.submit

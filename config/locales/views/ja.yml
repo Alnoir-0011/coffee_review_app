@@ -21,7 +21,7 @@ ja:
       input: "%{item}を入力してください"
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"
-      registerd: "%{item}を登録しました"
+      registered: "%{item}を登録しました"
       not_created: "%{item}を作成できませんでした"
       updated: "%{item}を更新しました"
       not_updated: "%{item}を更新できませんでした"

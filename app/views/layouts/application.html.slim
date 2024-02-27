@@ -3,6 +3,7 @@ html
   head
     meta[name="google-site-verification" content="#{ ENV['GOOGLE_SITE_VERIFICATION_CONTENT'].html_safe }"]
     meta[name="viewport" content="width=device-width,initial-scale=1"]
+    meta[name="turbo-cache-control" content="no-cache"]
     = csrf_meta_tags
     = csp_meta_tag
     = show_meta_tags
@@ -25,5 +26,6 @@ html
       = render 'shared/before_login_header'
     = yield
     = render 'shared/footer'
+    = turbo_frame_tag 'modal'
     #flashes.position-fixed.top-0.end-0.m-2
       = render 'shared/flash'

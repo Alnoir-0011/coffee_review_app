@@ -1,10 +1,7 @@
-- assign_meta_tags title: t('.title')
-.container.mb-3
-  .col-md-10.offset-md-1.col-lg-8.offset-lg-2.col-xl-6.offset-xl-3
-    .d-flex.justify-content-between.mb-3.mt-5.align-items-center
-      h1.mb-0 = t('.title')
-      = link_to t('defaults.cancel'), mypage_purchases_path, class: 'btn btn-outline-info'
-    = bootstrap_form_with model: @bean do |f|
+= render 'shared/modal', title: t('.title') do
+  - assign_meta_tags title: t('.title')
+  = turbo_frame_tag @bean do
+    = bootstrap_form_with model: @bean, data: { action: "turbo:submit-end->modal#close" } do |f|
       = f.text_field :name
       = f.select :roast, Bean.roasts_i18n.invert, prompt: Bean.human_attribute_name(:roast)
       = f.select :fineness, Bean.finenesses_i18n.invert, prompt: Bean.human_attribute_name(:fineness)
