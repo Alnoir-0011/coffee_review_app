@@ -1,23 +1,29 @@
 .card.p-3.mb-2 id="review_#{review.id}"
-  .row
-    .d-flex.align-items-center.mb-2
-      = link_to user_profile_path(review.user), class: 'me-3', data: { turbo_frame: '_top' } do
-        = image_tag review.user.avatar.url, size: '70x70', class: 'rounded-circle'
+  .d-flex.align-items-center.mb-2
+    = link_to user_profile_path(review.user), class: 'me-3', data: { turbo_frame: '_top' } do
+      = image_tag review.user.avatar.url, size: '70x70', class: 'rounded-circle'
+    .d-flex.flex-wrap.align-items-center
+      = link_to user_profile_path(review.user), class: 'link-dark me-3', data: { turbo_frame: '_top' } do
+        h6.mb-0 = review.user.name
       .d-flex.flex-wrap.align-items-center
-        = link_to user_profile_path(review.user), class: 'link-dark me-3', data: { turbo_frame: '_top' } do
-          h6.mb-0 = review.user.name
-        .d-flex.flex-wrap.align-items-center
-          .badge.rounded-pill.text-bg-secondary.me-2
-            i.bi.bi-star
-            span = review.evaluation
-          .badge.rounded-pill.text-bg-secondary.my-1.me-2.d-flex.flex-wrap.pe-1
-            - if review.tools.present?
-              - review.tools.each do |tool|
-                span.badge.rounded-pill.text-bg-light.me-1.ms-0 = tool.name
-            - else
-              span = t('defaults.unregistered', item: Tool.model_name.human)
-          .badge.rounded-pill.text-bg-secondary
-            span = review.brewing_method.name
+        .badge.rounded-pill.text-bg-secondary.me-2
+          i.bi.bi-star
+          span = review.evaluation
+        .badge.rounded-pill.text-bg-secondary.my-1.me-2.d-flex.flex-wrap.pe-1
+          - if review.tools.present?
+            - review.tools.each do |tool|
+              span.badge.rounded-pill.text-bg-light.me-1.ms-0 = tool.name
+          - else
+            span = t('defaults.unregistered', item: Tool.model_name.human)
+        .badge.rounded-pill.text-bg-secondary
+          span = review.brewing_method.name
+  - if review.image.present?
+    .d-flex.mb-1
+      div
+        h5 = review.title
+        = simple_format(review.content, class: 'mb-0')
+      = image_tag review.image.url, size: '200x150', class: 'ms-auto shadow'
+  - else
     h5 = review.title
     = simple_format(review.content, class: 'mb-0')
   - if current_user
