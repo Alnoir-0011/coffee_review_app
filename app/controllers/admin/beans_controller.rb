@@ -44,6 +44,6 @@ class Admin::BeansController < Admin::BaseController
   end
 
   def bean_params
-    params.require(:bean).permit(:name, :roast, :fineness, :image, :image_cache, :region_id)
+    params.require(:bean).permit(:name, :roast, :fineness, :region_id)
   end
 end

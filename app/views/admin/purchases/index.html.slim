@@ -10,9 +10,9 @@
                       class: 'input-group mb-3 ms-0' do |f|
       = f.text_field :bean_name_cont, class: 'form-control', placeholder: 'bean name'
       = f.text_field :shop_name_cont, class: 'form-control', placeholder: 'shop name'
-      = f.select :store_roast_option_eq, Purchase.store_roast_options.keys.to_a, class: 'form-select px-4', prompt: 'roast'
-      = f.select :store_grind_option_eq, Purchase.store_grind_options.keys.to_a, class: 'form-select px-4', prompt: 'fineness'
-      = f.submit '検索', class: 'btn btn-primary px-4'
+      = f.select :store_roast_option_eq, Purchase.store_roast_options.keys.to_a, { prompt: 'roast' }, { class: 'form-select' }
+      = f.select :store_grind_option_eq, Purchase.store_grind_options.keys.to_a, { prompt: 'fineness' }, { class: 'form-select' }
+      = f.submit '検索', class: 'btn btn-primary'
     = turbo_frame_tag 'purchases-list' do
       .row.border-bottom.pb-1
         .col-2
