@@ -15,7 +15,8 @@
     = render 'shared/user_profile', user: @user
     = turbo_frame_tag 'review-list' do
       .d-flex.justify-content-end
-        = sort_link(@q, :purchase_bean_name, 'Bean name', class: 'link-dark ms-1')
+        = sort_link(@q, :title, class: 'link-dark')
+        = sort_link(@q, :purchase_bean_name, class: 'link-dark ms-1')
         = sort_link(@q, :created_at, class: 'link-dark ms-1')
       - if @reviews.present?
         .accordion#accordionreviews.accordion-flush

@@ -22,7 +22,7 @@
         .col-1
           = sort_link(@q, :fineness, class: 'link-dark')
         .col-2
-          = sort_link(@q, :region, class: 'link-dark')
+          = sort_link(@q, :region_name, Region.model_name.human, class: 'link-dark')
         .col-1
           | pcs/rvw
         .col-2
