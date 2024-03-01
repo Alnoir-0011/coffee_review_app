@@ -3,7 +3,7 @@ class TopsController < ApplicationController
   def index
     @top_sliders = TopSlider.all
     @regions = Region.all
-    @q = Bean.ransack(params[:q])
-    @beans = @q.result.includes(:shops, purchases: :review).page(params[:page])
+    @q = Review.ransack(params[:q])
+    @reviews = @q.result.includes(purchase: :bean).page(params[:page]).per(10)
   end
 end

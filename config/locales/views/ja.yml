@@ -52,6 +52,7 @@ ja:
     index:
       title: 'トップページ'
       search_from_region: '産地で探す'
+      search_from_review: 'レビューから探す'
   beans:
     index:
       title: 'コーヒー豆一覧'
