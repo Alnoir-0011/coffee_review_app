@@ -85,6 +85,8 @@ ja:
       title: 'レビュー作成'
     edit:
       title: 'レビュー編集'
+    image:
+      title: 'レビュー画像'
   likes:
     create:
       success: "%{item}をいいねしました"
