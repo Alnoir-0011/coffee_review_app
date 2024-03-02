@@ -5,7 +5,7 @@
         .d-flex.justify-content-start.col-12.align-items-center
           h5.me-3.mb-0 = review.title
           h6.mb-0 = review.purchase.bean.name
-    .accordion-collapse.col-12.collapse[id="collapse#{review.id}" aria-labelledby="heading#{review.id}" data-bs-parent="#accordionPurchases"]
+    .accordion-collapse.col-12.collapse[id="collapse#{review.id}" aria-labelledby="heading#{review.id}" data-bs-parent="#accordionReviews"]
       .accordion-body.pb-2
         .d-flex.justify-content-between
           p = review.purchase.roast_status
