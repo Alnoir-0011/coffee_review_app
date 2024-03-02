@@ -8,8 +8,8 @@
         .input-group
           = f.text_field :name_cont, class: 'form-control', placeholder: Bean.human_attribute_name(:name), data: { autocomplete_target: "input" }
           = f.hidden_field :name, data: { autocomplete_target: "hidden" }
-          = f.select :roast_eq, Bean.roasts_i18n.invert.map{|key, value| [key, Bean.roasts[value]]}, { prompt: Bean.human_attribute_name(:roast) }, { class: 'form-control' }
-          = f.select :fineness_eq, Bean.finenesses_i18n.invert.map{|key, value| [key, Bean.finenesses[value]]}, { prompt: Bean.human_attribute_name(:fineness) }, { class: 'form-control' }
+          = f.select :roast_eq, Bean.roasts_i18n.invert.map{|key, value| [key, Bean.roasts[value]]}, { prompt: Bean.human_attribute_name(:roast) }, { class: 'form-select' }
+          = f.select :fineness_eq, Bean.finenesses_i18n.invert.map{|key, value| [key, Bean.finenesses[value]]}, { prompt: Bean.human_attribute_name(:fineness) }, { class: 'form-select' }
           = f.hidden_field :region_id, value: @region.id
           = f.submit t('defaults.search'), class: 'btn btn-secondary'
         ul.z-2.list-group.position-absolute.top-100.start-0[data-autocomplete-target="results"]
