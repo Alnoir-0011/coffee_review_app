@@ -23,7 +23,7 @@
 
       = turbo_frame_tag 'reviews-list' do
         - if @reviews.present?
-          .accordion#accordionreviews.accordion-flush
+          .accordion#accordionReviews.accordion-flush
             = render @reviews
           = paginate @reviews
         - else

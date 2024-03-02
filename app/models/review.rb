@@ -26,7 +26,7 @@ class Review < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    auth_object&.admin? ? super : %w(purchase tools)
+    auth_object&.admin? ? super : %w(purchase tools brewing_method)
   end
 
   def grind_status

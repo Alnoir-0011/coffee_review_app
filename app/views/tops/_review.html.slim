@@ -1,0 +1,28 @@
+= link_to bean_path(review.bean), data: { turbo_frame: '_top' }, class: 'card mb-3 text-decoration-none shadow-sm'
+  / .row.g-0
+  /   .col-md-12.col-xl-4.col-lg-5
+  /     = image_tag review.image.url, class:'img-fluid rounded col-12 shadow-sm'
+  /   .col-md-12.col-xl-8.col-lg-7
+  /     .card-body.pt-1.pb-2
+  /       h5.card-title.mb-0 = review.title
+  /       h6.card-text.mb-0 = review.bean.name
+  /       .d-flex
+  /         i.bi.bi-star
+  /         span.card-text.me-2 = review.evaluation
+  /         .badge.rounded-pill.text-bg-secondary.mt-1
+  /           span = review.brewing_method.name
+  /       p.card-text.mb-0.lh-1 = truncate(review.content, length: 82)
+  .card-body.pt-1.pb-2
+    .row
+      .me-1.col
+        h5.card-title.mb-0 = review.title
+        h6.card-text.mb-0 = review.bean.name
+        .d-flex
+          i.bi.bi-star
+          span.card-text.me-2 = review.evaluation
+          .badge.rounded-pill.text-bg-secondary.mt-1
+            span = review.brewing_method.name
+        p.card-text.mb-0.lh-1.text-break = truncate(review.content, length: 100)
+      - if review.image.present?
+        .col-12.col-md-6.col-lg-5.col-xl-4.mt-1
+          = image_tag review.image.url, class: 'img-fluid col-12 shadow-sm'

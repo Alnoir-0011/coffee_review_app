@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: %i[edit update]
+  before_action :set_review, only: %i[edit update image]
 
   def new
     @purchase = current_user.purchases.find(params[:purchase_id])
@@ -27,6 +27,8 @@ class ReviewsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+
+  def image; end
 
   private
 

@@ -52,6 +52,7 @@ ja:
     index:
       title: 'トップページ'
       search_from_region: '産地で探す'
+      search_from_review: 'レビューから探す'
   beans:
     index:
       title: 'コーヒー豆一覧'
@@ -84,6 +85,8 @@ ja:
       title: 'レビュー作成'
     edit:
       title: 'レビュー編集'
+    image:
+      title: 'レビュー画像'
   likes:
     create:
       success: "%{item}をいいねしました"
