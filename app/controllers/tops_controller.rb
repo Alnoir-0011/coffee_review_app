@@ -4,6 +4,6 @@ class TopsController < ApplicationController
     @top_sliders = TopSlider.all
     @regions = Region.all
     @q = Review.ransack(params[:q])
-    @reviews = @q.result.includes(purchase: :bean).page(params[:page]).per(10)
+    @reviews = @q.result.includes(:brewing_method, purchase: :bean).page(params[:page]).per(10)
   end
 end
