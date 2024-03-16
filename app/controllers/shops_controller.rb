@@ -7,9 +7,14 @@ class ShopsController < ApplicationController
     if @lat && @lng
       @shops = Shop.near([@lat, @lng], 10, units: :km)
       @search_explanation = t('.near_by_current_location')
-    elsif params[:q].present? && params[:q][:name_cont].present?
+    elsif params[:q].present?
       @shops = @q.result
-      @search_explanation = t('.name_include', item: params[:q][:name_cont])
+
+      if params[:q][:name_cont].present?
+        @search_explanation = t('.name_include', item: params[:q][:name_cont])
+      elsif params[:q][:place_id_eq].present?
+        @search_explanation = @shops.first.name
+      end
     else
       @shops = Shop.near([35.6809591, 139.7673068], 10, units: :km)
       @search_explanation = t('.arround_tokyo')
