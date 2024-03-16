@@ -9,6 +9,9 @@ html
     = show_meta_tags
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+    javascript:
+      window.I18n = #{ t("javascript").to_json.html_safe };
+
     - googlemap_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API_KEY'] }&libraries=places".html_safe
     script{defer src = googlemap_api }
     - google_analytics = "https://www.googletagmanager.com/gtag/js?id=#{ ENV['GOOGLE_ANALYTICS_ID'] }".html_safe
@@ -19,6 +22,7 @@ html
       gtag('js', new Date());
 
       gtag('config', #{ raw ENV['GOOGLE_ANALYTICS_ID'].to_json });
+
   body.d-flex.flex-column.bg-ececec.mh-100vh
     - if logged_in?
       = render 'shared/header'

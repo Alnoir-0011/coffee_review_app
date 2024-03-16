@@ -12,12 +12,12 @@ export default class extends Controller {
     };
 
     const fail = (pos) => {
-      alert('位置情報の取得に失敗しました。エラーコード：'+pos);
+      alert(I18n.message.fail_get_location + pos);
     }
 
     try{
       navigator.geolocation.getCurrentPosition(success, fail);
-    }catch(e){alert("お使いのブラウザは対応していません。");
+    }catch(e){alert(I18n.message.your_browser_does_not_support);
     };
   }
 }
