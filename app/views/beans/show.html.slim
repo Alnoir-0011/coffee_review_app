@@ -17,8 +17,7 @@
             #fav
               = render 'favicons', bean: @bean
           .d-flex.justify-content-end
-            a.btn.btn-dark href="https://twitter.com/share?url=#{bean_url(@bean)}&text=#{@bean.name}%0aCoffee%20Stack%20Log.%0a" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="#{t('defaults.share_to_x')}"
-              / = t('defaults.share_to_x')
+            a.btn.btn-dark href="https://twitter.com/share?url=#{bean_url(@bean)}&text=#{t('.share_message', item: @bean.name)}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="#{t('defaults.share_to_x')}"
               i.bi.bi-twitter-x
     = turbo_frame_tag 'review-list' do
       .d-flex.mb-1.justify-content-end

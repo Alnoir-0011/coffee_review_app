@@ -63,6 +63,7 @@ ja:
       title: 'コーヒー豆登録'
     show:
       title: '商品詳細'
+      share_message: "%{item}%0aCoffee%20Stack%20Log.%0a"
   favorites:
     create:
       success: "%{item}をお気に入り登録しました"
