@@ -1,5 +1,6 @@
-.card.me-2
-  .card-body
-    h5.card-title = review.title
-    h6.card-subtitle.mb-2.text-body-secondary = review.purchase.bean.name
-    p.card-text = truncate(review.content, length: 20)
+= link_to bean_path(review.bean), class:'col-12 col-lg-4 text-decoration-none', data: { turbo_frame: '_top'} do
+  .card.h-100
+    .card-body
+      h5.card-title = review.title
+      h6.card-subtitle.mb-2.text-body-secondary = review.purchase.bean.name
+      p.card-text = truncate(review.content, length: 20)

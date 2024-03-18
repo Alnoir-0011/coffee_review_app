@@ -17,6 +17,8 @@ ja:
     cancel: 'キャンセル'
     no_candidates: "%{item}がありませんか？"
     search_by: "%{item}で探す"
+    share_to_x: 'Xへシェア'
+    copy_to_clipboard: 'クリップボードにコピー'
     message:
       input: "%{item}を入力してください"
       require_login: 'ログインしてください'
@@ -30,6 +32,7 @@ ja:
       not_posted: "%{item}を投稿できませんでした"
       delete_confirm: '削除しますか？'
       not_authorized: '権限がありません'
+      copy_to_clipboard: 'クリップボードにコピーしました'
   users:
     new:
       title: 'ユーザー登録'
@@ -60,6 +63,7 @@ ja:
       title: 'コーヒー豆登録'
     show:
       title: '商品詳細'
+      share_message: "%{item}%0aCoffee%20Stack%20Log.%0a"
   favorites:
     create:
       success: "%{item}をお気に入り登録しました"

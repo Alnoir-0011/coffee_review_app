@@ -12,9 +12,13 @@
           h4 = "#{Bean.human_attribute_name(:roast)} #{@bean.roast_i18n}"
           - unless @bean.roast_raw?
             h4 = "#{Bean.human_attribute_name(:fineness)} #{@bean.fineness_i18n}"
-        .fs-4.col-2#fav
+        .fs-4.col-2.d-flex.flex-column
           - if current_user
-            = render 'favicons', bean: @bean
+            #fav
+              = render 'favicons', bean: @bean
+          .d-flex.justify-content-end
+            a.btn.btn-dark href="https://twitter.com/share?url=#{bean_url(@bean)}&text=#{t('.share_message', item: @bean.name)}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="#{t('defaults.share_to_x')}"
+              i.bi.bi-twitter-x
     = turbo_frame_tag 'review-list' do
       .d-flex.mb-1.justify-content-end
         = sort_link(@q, :created_at, class: 'link-dark ms-2')
