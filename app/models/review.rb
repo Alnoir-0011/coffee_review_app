@@ -9,6 +9,8 @@ class Review < ApplicationRecord
   has_many :tools, through: :review_tools
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
+  has_many :recommendations, dependent: :destroy
+  has_many :recommended_users, through: :recommendations, source: :user
 
   delegate :user, :bean, to: :purchase
 
