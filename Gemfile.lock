@@ -483,6 +483,7 @@ DEPENDENCIES
   jsbundling-rails
   kaminari
   letter_opener_web
+  matrix (~> 0.4.2)
   meta-tags (~> 2.11)
   pg (~> 1.1)
   pry
