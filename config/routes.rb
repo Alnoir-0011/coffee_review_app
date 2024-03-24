@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'terms_of_use', to: 'static_pages#terms_of_use'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
   root to: 'tops#index'
+  get 'tops/search', to: 'tops#search'
 
   resources :beans, only: %i[index show new create] do
     get :search, on: :collection
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :purchases, only: %i[new create edit update] do
     resources :reviews, only: %i[new create edit update], shallow: true do
+      get :image, on: :member
       resource :like, only: %i[create destroy]
     end
   end

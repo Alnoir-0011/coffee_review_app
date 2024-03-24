@@ -22,7 +22,7 @@ class BeansController < ApplicationController
   def create
     @bean = Bean.new(bean_params)
     if @bean.save
-      redirect_to beans_path(region: params[:bean][:region_id]), success: t('defaults.message.registered', item: Bean.model_name.human)
+      flash.now[:success] = t('defaults.message.registered', item: Bean.model_name.human)
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,6 +36,6 @@ class BeansController < ApplicationController
   private
 
   def bean_params
-    params.require(:bean).permit(:name, :roast, :fineness, :region_id, :image)
+    params.require(:bean).permit(:name, :roast, :fineness, :region_id)
   end
 end

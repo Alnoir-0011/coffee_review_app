@@ -1,8 +1,8 @@
-- assign_meta_tags title: @bean.name, image: @bean.image.url
+- assign_meta_tags title: @bean.name, image: @bean.image_url
 .container.mb-3
-  .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+  .col-md-10.offset-md-1
     .row.my-3
-      = image_tag @bean.image.url, class: 'col-10 offset-1 col-xs-8 offset-xs-2 col-sm-6 offset-sm-0'
+      = image_tag @bean.image_url, class: 'col-10 offset-1 col-xs-8 offset-xs-2 col-sm-6 offset-sm-0'
       .d-flex.justify-content-between.mt-3.col-sm-6
         .text-center.col-10
           h4 = @bean.name
@@ -12,9 +12,13 @@
           h4 = "#{Bean.human_attribute_name(:roast)} #{@bean.roast_i18n}"
           - unless @bean.roast_raw?
             h4 = "#{Bean.human_attribute_name(:fineness)} #{@bean.fineness_i18n}"
-        .fs-4.col-2#fav
+        .fs-4.col-2.d-flex.flex-column
           - if current_user
-            = render 'favicons', bean: @bean
+            #fav
+              = render 'favicons', bean: @bean
+          .d-flex.justify-content-end
+            a.btn.btn-dark href="https://twitter.com/share?url=#{bean_url(@bean)}&text=#{t('.share_message', item: @bean.name)}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="#{t('defaults.share_to_x')}"
+              i.bi.bi-twitter-x
     = turbo_frame_tag 'review-list' do
       .d-flex.mb-1.justify-content-end
         = sort_link(@q, :created_at, class: 'link-dark ms-2')

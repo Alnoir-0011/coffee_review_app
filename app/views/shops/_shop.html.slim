@@ -7,7 +7,13 @@
     .accordion-collapse.col-12.collapse id="collapse#{shop.id}" aria-labelledby="heading#{shop.id}" data-bs-parent="#accordionShops"
       .accordion-body
         p.mb-2 = shop.address
-        p.mb-2 = shop.phone_number
-        .d-flex.overflow-x-auto
-          = render 'reviews', reviews: shop.reviews.limit(3)
-        
+        .d-flex.justify-content-between.mb-1 data-controller='clip'
+          p.mb-2 = shop.phone_number
+          / a.btn.btn-dark href="https://twitter.com/share?url=#{shops_url(q: { place_id_eq: shop.place_id })}&text=#{shop.name}" target="_blank"
+            = t('defaults.share_to_x')
+          input.d-none data-clip-target="source" value="#{shops_url(q: { place_id_eq: shop.place_id })}" readonly="" type="text"
+          / = button_to '', class: 'btn btn-dark', data: { action: 'clip#copy' } do
+          button.btn.btn-dark data-action="clip#copy" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="#{t('defaults.copy_to_clipboard')}"
+            i.bi.bi-clipboard2-fill
+        .row.g-2
+          = render 'reviews', reviews: shop.reviews.order(created_at: :desc).limit(3)

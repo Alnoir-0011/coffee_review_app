@@ -34,7 +34,6 @@
         = turbo_frame_tag 'top_list' do
           - if @reviews.present?
             .d-flex.justify-content-end
-              h5.mb-0.me-auto = t('.recommendation_for_you')
               = sort_link(@q, :evaluation, class: 'link-dark ms-2')
               = sort_link(@q, :like_count, class: 'link-dark ms-2')
               = sort_link(@q, :created_at, class: 'link-dark ms-2')

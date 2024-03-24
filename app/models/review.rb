@@ -1,12 +1,16 @@
 class Review < ApplicationRecord
   include GroupByDay
 
+  mount_uploader :image, ImageUploader
+
   belongs_to :purchase
   belongs_to :brewing_method
   has_many :review_tools, dependent: :destroy
   has_many :tools, through: :review_tools
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
+  has_many :recommendations, dependent: :destroy
+  has_many :recommended_users, through: :recommendations, source: :user
 
   delegate :user, :bean, to: :purchase
 
@@ -20,11 +24,11 @@ class Review < ApplicationRecord
   enum :fineness, { grinded: 0, coarsely: 10, medium: 20, medium_fine: 30, fine: 40, superfine: 50 }, prefix: true
 
   def self.ransackable_attributes(auth_object = nil)
-    auth_object&.admin? ? super : %w(title)
+    auth_object&.admin? ? super : %w(title evaluation created_at like_count)
   end
 
   def self.ransackable_associations(auth_object = nil)
-    auth_object&.admin? ? super : %w(purchase tools)
+    auth_object&.admin? ? super : %w(purchase tools brewing_method)
   end
 
   def grind_status

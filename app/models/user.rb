@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_reviews, through: :likes, source: :review
   has_many :authentications, dependent: :destroy
+  has_many :recommendations, dependent: :destroy
+  has_many :recommended_reviews, through: :recommendations, source: :review
 
   accepts_nested_attributes_for :authentications
 

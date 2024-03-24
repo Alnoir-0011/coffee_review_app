@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_24_162956) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_23_084657) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,7 +31,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_24_162956) do
     t.bigint "region_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.json "image"
     t.index ["region_id"], name: "index_beans_on_region_id"
   end
 
@@ -96,6 +95,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_24_162956) do
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
+  create_table "recommendations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "review_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_recommendations_on_review_id"
+    t.index ["user_id", "review_id"], name: "index_recommendations_on_user_id_and_review_id", unique: true
+    t.index ["user_id"], name: "index_recommendations_on_user_id"
+  end
+
   create_table "regions", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -123,6 +132,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_24_162956) do
     t.datetime "updated_at", null: false
     t.bigint "purchase_id"
     t.integer "like_count", default: 0, null: false
+    t.json "image"
     t.index ["brewing_method_id"], name: "index_reviews_on_brewing_method_id"
     t.index ["purchase_id"], name: "index_reviews_on_purchase_id", unique: true
   end
@@ -193,6 +203,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_24_162956) do
   add_foreign_key "purchases", "beans"
   add_foreign_key "purchases", "shops"
   add_foreign_key "purchases", "users"
+  add_foreign_key "recommendations", "reviews"
+  add_foreign_key "recommendations", "users"
   add_foreign_key "review_tools", "reviews"
   add_foreign_key "review_tools", "tools"
   add_foreign_key "reviews", "brewing_methods"

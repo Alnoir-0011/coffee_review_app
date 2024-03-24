@@ -16,11 +16,14 @@ ja:
     unregistered: '未登録'
     cancel: 'キャンセル'
     no_candidates: "%{item}がありませんか？"
+    search_by: "%{item}で探す"
+    share_to_x: 'Xへシェア'
+    copy_to_clipboard: 'クリップボードにコピー'
     message:
       input: "%{item}を入力してください"
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"
-      registerd: "%{item}を登録しました"
+      registered: "%{item}を登録しました"
       not_created: "%{item}を作成できませんでした"
       updated: "%{item}を更新しました"
       not_updated: "%{item}を更新できませんでした"
@@ -29,6 +32,7 @@ ja:
       not_posted: "%{item}を投稿できませんでした"
       delete_confirm: '削除しますか？'
       not_authorized: '権限がありません'
+      copy_to_clipboard: 'クリップボードにコピーしました'
   users:
     new:
       title: 'ユーザー登録'
@@ -51,6 +55,12 @@ ja:
     index:
       title: 'トップページ'
       search_from_region: '産地で探す'
+      search_from_review: 'レビューから探す'
+      recommendation_for_you: 'あなたへのおすすめ'
+    search:
+      title: 'トップページ'
+      search_from_region: '産地で探す'
+      search_from_review: 'レビューから探す'
   beans:
     index:
       title: 'コーヒー豆一覧'
@@ -58,6 +68,7 @@ ja:
       title: 'コーヒー豆登録'
     show:
       title: '商品詳細'
+      share_message: "%{item}%0aCoffee%20Stack%20Log.%0a"
   favorites:
     create:
       success: "%{item}をお気に入り登録しました"
@@ -83,6 +94,8 @@ ja:
       title: 'レビュー作成'
     edit:
       title: 'レビュー編集'
+    image:
+      title: 'レビュー画像'
   likes:
     create:
       success: "%{item}をいいねしました"
@@ -92,6 +105,10 @@ ja:
     index: 
       title: '店舗一覧'
       search_by_location: '現在地から検索'
+      current_display_content: '現在の表示内容:'
+      near_by_current_location: '現在地周辺の店舗'
+      name_include: "%{item}を含む店舗"
+      arround_tokyo: '東京駅周辺の店舗'
     new:
       title: '店舗登録'
       enter_your_location_from_the_map: 'マップから位置情報を入力してください'

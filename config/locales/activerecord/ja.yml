@@ -34,6 +34,7 @@ ja:
         brewing_method: '飲み方'
         brewing_method_id: '飲み方'
         like_count: 'いいね数'
+        created_at: '投稿日時'
       shop:
         name: '店名'
         address: '住所'

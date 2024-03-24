@@ -1,0 +1,6 @@
+ja:
+  javascript:
+    message:
+      copied_to_clipboard: 'クリップボードにコピーしました'
+      fail_get_location: '位置情報の取得に失敗しました。エラーコード：'
+      your_browser_does_not_support: 'お使いのブラウザは対応していません'

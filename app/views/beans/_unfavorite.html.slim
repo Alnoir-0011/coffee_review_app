@@ -1,3 +1,3 @@
-= link_to bean_favorite_path(bean), class: 'link-dark d-flex text-decoration-none', data: { turbo_method: :delete } do
+= link_to bean_favorite_path(bean), class: 'link-dark d-flex justify-content-end text-decoration-none', data: { turbo_method: :delete } do
   i.bi.bi-star-fill
   p = bean.favorited_users.length

@@ -1,6 +1,4 @@
 class Bean < ApplicationRecord
-  mount_uploader :image, ImageUploader
-
   belongs_to :region
   has_many :dealers, dependent: :destroy
   has_many :shops, through: :dealers
@@ -29,7 +27,12 @@ class Bean < ApplicationRecord
     # reviews.average(:evaluation)
     # evs = reviews.pluck(:evaluation)
     evs = reviews.map { |review| review.evaluation }
-    evs.sum.fdiv(evs.length)
+    evs.sum.fdiv(evs.length).round(2)
+  end
+
+  def image_url
+    review_with_image = reviews.where.not(image: nil).order(like_count: :desc).limit(1)[0]
+    review_with_image ? review_with_image.image.url : 'noimage.jpg'
   end
 
   private
