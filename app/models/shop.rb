@@ -10,7 +10,7 @@ class Shop < ApplicationRecord
   validates :name, length: { maximum: 255 }
   validates :place_id, presence: true, uniqueness: true
   validates :place_id, length: { maximum: 255 }
-  validates :address, presence: true, uniqueness: true
+  validates :address, presence: true
   validates :address, length: { maximum: 255 }
   validates :phone_number, length: { maximum: 15 }, if: -> { phone_number }
   validates :latitude, presence: true

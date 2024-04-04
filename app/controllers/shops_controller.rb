@@ -16,7 +16,7 @@ class ShopsController < ApplicationController
         @search_explanation = @shops.first.name
       end
     else
-      @shops = Shop.near([35.6809591, 139.7673068], 10, units: :km)
+      @shops = Shop.near([35.6809591, 139.7673068], 3, units: :km)
       @search_explanation = t('.arround_tokyo')
     end
   end
