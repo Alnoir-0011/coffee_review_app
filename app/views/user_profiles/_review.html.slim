@@ -21,4 +21,5 @@
         .text-break
           = simple_format(h(review.content), class: 'mb-0')
         .d-flex.justify-content-end.fs-4 id="like_#{review.id}"
-          = render 'shared/like/likeicons', review: review
+          - if current_user
+            = render 'shared/like/likeicons', review: review
