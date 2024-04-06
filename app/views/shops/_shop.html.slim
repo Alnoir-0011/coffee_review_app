@@ -7,8 +7,9 @@
     .accordion-collapse.col-12.collapse id="collapse#{shop.id}" aria-labelledby="heading#{shop.id}" data-bs-parent="#accordionShops"
       .accordion-body
         p.mb-2 = shop.address
-        .d-flex.justify-content-between.mb-1 data-controller='clip'
-          a.mb-2 href="#{shop.google_map_uri}" target="_blank" google mapで見る
+        .d-flex.justify-content-between.mb-1.align-items-center data-controller='clip'
+          a href="#{shop.google_map_uri}" target="_blank"
+            = t('shops.index.view_in_google_map')
           / a.btn.btn-dark href="https://twitter.com/share?url=#{shops_url(q: { place_id_eq: shop.place_id })}&text=#{shop.name}" target="_blank"
             = t('defaults.share_to_x')
           input.d-none data-clip-target="source" value="#{shops_url(q: { place_id_eq: shop.place_id })}" readonly="" type="text"
