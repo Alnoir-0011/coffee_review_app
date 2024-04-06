@@ -6,9 +6,9 @@
   = f.text_field :name, id: 'form-name', placeholder: 'チェーン店は店舗名を最後まで入力してください'
   = f.text_field :place_id, id: 'form-place-id'
   = f.text_field :address, id: 'form-address'
-  = f.text_field :phone_number, id: 'form-phonenumber'
   = f.number_field :latitude, id: 'form-lat', step: '0.00000001'
   = f.number_field :longitude, id: 'form-lng', step: '0.00000001'
+  = f.text_field :google_map_uri
   css:
     #map-new {
       height: 25rem;

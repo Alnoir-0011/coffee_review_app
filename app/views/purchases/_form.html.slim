@@ -5,7 +5,7 @@
   .form-group.mb-3.position-relative[data-controller="autocomplete" data-autocomplete-url-value="/shops/search" role="combobox"]
     = f.label :shop_name, Shop.human_attribute_name(:name), class: 'form-label'
     = f.text_field :shop_name, wrapper: false, data: { autocomplete_target: "input" }
-    = f.hidden_field :shop_id, data: { autocomplete_target: "hidden" }
+    = f.hidden_field :shop_place_id, data: { autocomplete_target: "hidden" }
     ul.z-1.list-group.position-absolute.top-100.start-0[data-autocomplete-target="results"]
   .d-flex.align-items-center.justify-content-around
     p.mb-0 = t('defaults.no_candidates', item: Bean.model_name.human)

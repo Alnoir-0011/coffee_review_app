@@ -9,7 +9,7 @@ const initIndexMap = () => {
 
     const map = new google.maps.Map(document.getElementById("map-index"), {
       center: {lat: currentLat || 35.6809591, lng: currentLng || 139.7673068},
-      zoom: 9,
+      zoom: 13,
     });
 
     const list = document.getElementById("accordionShops");
