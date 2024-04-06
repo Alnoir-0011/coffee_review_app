@@ -19,7 +19,7 @@
         = sort_link(@q, :purchase_bean_name, class: 'link-dark ms-1')
         = sort_link(@q, :created_at, class: 'link-dark ms-1')
       - if @reviews.present?
-        .accordion#accordionreviews.accordion-flush
+        .accordion#accordionReviews.accordion-flush
           = render partial: 'review', collection: @reviews
         = paginate @reviews
       - else
