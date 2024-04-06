@@ -27,7 +27,7 @@ class Admin::PurchasesController < Admin::BaseController
   private
 
   def purchase_form_params
-    params.require(:purchase).permit(:shop_name, :bean_name,
+    params.require(:purchase).permit(:shop_name, :shop_place_id, :bean_name, :bean_id,
       :store_roast_option, :store_grind_option, :purchase_at).merge(user_id: current_user.id)
   end
 

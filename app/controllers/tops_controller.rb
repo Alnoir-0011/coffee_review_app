@@ -6,8 +6,8 @@ class TopsController < ApplicationController
     @regions = Region.all
     @q = Review.ransack(params[:q])
 
-    @reviews = if current_user && current_user.recommended_reviews.present?
-                 current_user.recommended_reviews.includes(:brewing_method, purchase: :bean)
+    @reviews = if current_user&.recommended_reviews.present?
+                 current_user.recommended_reviews.includes(:brewing_method, purchase: :bean).page(params[:page]).per(10)
                else
                  Review.all.includes(:brewing_method, purchase: :bean).page(params[:page]).per(10)
                end

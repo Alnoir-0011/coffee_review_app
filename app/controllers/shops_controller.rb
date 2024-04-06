@@ -16,7 +16,7 @@ class ShopsController < ApplicationController
         @search_explanation = @shops.first.name
       end
     else
-      @shops = Shop.near([35.6809591, 139.7673068], 10, units: :km)
+      @shops = Shop.near([35.6809591, 139.7673068], 3, units: :km)
       @search_explanation = t('.arround_tokyo')
     end
   end
@@ -27,6 +27,7 @@ class ShopsController < ApplicationController
 
   def create
     @shop = Shop.new(shop_params)
+    @shop.add_google_map_uri
 
     if @shop.save
       redirect_to mypage_purchases_path, success: t('defaults.message.registered', item: Shop.model_name.human)
@@ -43,6 +44,6 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :place_id, :address, :phone_number, :latitude, :longitude)
+    params.require(:shop).permit(:name, :place_id, :address, :latitude, :longitude)
   end
 end

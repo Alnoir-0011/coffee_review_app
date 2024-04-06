@@ -1,3 +1,4 @@
 - @shops.each do |shop|
-  li.list-group-item.cursor-pointer[role="option" data-autocomplete-value="#{shop.id}" data-autocomplete-label="#{shop.name}"]
-    = shop.name
+  li.d-flex.list-group-item.cursor-pointer[role="option" data-autocomplete-value="#{shop.place_id}" data-autocomplete-label="#{shop.name}"]
+    span.me-2 = shop.name
+    span.fw-lighter = shop.address
