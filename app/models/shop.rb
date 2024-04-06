@@ -8,7 +8,7 @@ class Shop < ApplicationRecord
   has_many :purchases, dependent: :destroy
   has_many :reviews, through: :purchases
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
   validates :name, length: { maximum: 255 }
   validates :place_id, presence: true, uniqueness: true
   validates :place_id, length: { maximum: 255 }
