@@ -10,13 +10,12 @@ function initNewMap() {
   const formnName = document.getElementById("form-name");
   const formPlaceId = document.getElementById("form-place-id");
   const formAddress = document.getElementById("form-address");
-  const formPhonenuber = document.getElementById("form-phonenumber");
   const formLat = document.getElementById("form-lat");
   const formLng = document.getElementById("form-lng");
 
   const options = {
     componentRestrictions: { country: "jp" },
-    fields: ["place_id", "geometry", "name", "formatted_address", "formatted_phone_number"],
+    fields: ["place_id", "geometry", "name", "formatted_address"],
     strictBounds: false,
   };
 
@@ -48,7 +47,6 @@ function initNewMap() {
     formnName.value = place.name;
     formPlaceId.value = place.place_id;
     formAddress.value = place.formatted_address.replace("日本、","");
-    formPhonenuber.value = place.formatted_phone_number;
     formLat.value = place.geometry.location.lat();
     formLng.value = place.geometry.location.lng();
   });

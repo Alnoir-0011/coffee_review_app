@@ -12,6 +12,7 @@ class Admin::ShopsController < Admin::BaseController
 
   def create
     @shop = Shop.new(shop_params)
+    @shop.add_google_map_uri
 
     if @shop.save
       redirect_to admin_shops_path, success: 'create successful'
@@ -42,6 +43,6 @@ class Admin::ShopsController < Admin::BaseController
   end
 
   def shop_params
-    params.require(:shop).permit(:name, :place_id, :address, :phone_number, :latitude, :longitude)
+    params.require(:shop).permit(:name, :place_id, :address, :latitude, :longitude, :google_map_uri)
   end
 end
