@@ -7,7 +7,9 @@
         .text-center.col-10
           h4 = @bean.name
           h4 = @bean.region.name
-          p = @bean.shops.limit(2).pluck(:name).join(',')
+          - @shops.each do |shop|
+            = link_to shop.name, shops_path(q: { place_id_eq: shop.place_id }), class: 'link-dark me-2'
+          / p = @bean.shops.limit(2).pluck(:name).join(',')
           h4 = @bean.reviews.present? ? "#{Bean.human_attribute_name(:average_evaluation)} #{@bean.average_evaluation}" : ''
           h4 = "#{Bean.human_attribute_name(:roast)} #{@bean.roast_i18n}"
           - unless @bean.roast_raw?

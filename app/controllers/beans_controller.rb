@@ -11,6 +11,7 @@ class BeansController < ApplicationController
 
   def show
     @bean = Bean.find(params[:id])
+    @shops = @bean.shops.limit(2)
     @q = @bean.reviews.ransack(params[:q])
     @reviews = @q.result.includes(:tools, :brewing_method, :liked_users, purchase: :user).page(params[:page])
   end
