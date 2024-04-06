@@ -3,7 +3,9 @@ class PurchaseForm
   include ActiveModel::Attributes
 
   attribute :shop_name, :string
+  attribute :shop_place_id, :string
   attribute :bean_name, :string
+  attribute :bean_id, :integer
   attribute :store_roast_option, :string
   attribute :store_grind_option, :string
   attribute :purchase_at, :date
@@ -37,6 +39,7 @@ class PurchaseForm
 
   def save
     return false if invalid?
+
     ActiveRecord::Base.transaction do
       # binding.pry
       @purchase.assign_attributes(user_id: user_id, shop_id: shop.id, bean_id: bean.id,
@@ -80,20 +83,22 @@ class PurchaseForm
   def default_attributes
     {
       shop_name: @purchase.shop.name,
+      shop_place_id: @purchase.shop.place_id,
       bean_name: @purchase.bean.name,
+      bean_id: @purchase.bean_id,
       purchase_at: @purchase.purchase_at,
       store_roast_option: @purchase.store_roast_option,
       store_grind_option: @purchase.store_grind_option,
-      user_id: @purchase.user.id
+      user_id: @purchase.user_id
     }
   end
 
   def bean
-    @bean ||= Bean.find_by(name: bean_name)
+    @bean ||= Bean.find_by(id: bean_id)
   end
 
   def shop
-    @shop ||= Shop.find_by(name: shop_name)
+    @shop ||= Shop.find_by(place_id: shop_place_id)
   end
 
   # def purchase
@@ -125,10 +130,10 @@ class PurchaseForm
   end
 
   def product_does_not_exist
-    errors.add(:bean_name, "商品が存在しません") unless bean# Bean.find_by(name: self.bean_name)
+    errors.add(:bean_name, "商品が存在しません") unless bean_id.present? && bean # Bean.find_by(name: self.bean_name)
   end
 
   def shop_does_not_exist
-    errors.add(:shop_name, "店舗が存在しません") unless shop # Shop.find_by(name: self.shop_name)
+    errors.add(:shop_name, "店舗が存在しません") unless shop_place_id.present? && shop # Shop.find_by(name: self.shop_name)
   end
 end
