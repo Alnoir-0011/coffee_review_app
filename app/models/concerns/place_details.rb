@@ -3,11 +3,11 @@ module PlaceDetails
 
   included do
     def add_google_map_uri
-      p uri = URI.parse("https://places.googleapis.com/v1/places/#{self.place_id}")
+      uri = URI.parse("https://places.googleapis.com/v1/places/#{self.place_id}")
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = uri.scheme === "https"
 
-      p headers = {
+      headers = {
         "Content-Type" => "application/json",
         "X-Goog-Api-Key" => ENV['PLACE_API_KEY'],
         "X-Goog-FieldMask" => "googleMapsUri"
