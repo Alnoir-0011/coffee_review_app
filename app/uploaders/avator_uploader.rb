@@ -28,7 +28,7 @@ class AvatorUploader < CarrierWave::Uploader::Base
   end
 
   # Process files as they are uploaded:
-  process resize_to_fill: [200, 200, gravity = 'Center']
+  process resize_to_fill: [200, 200]
   #
   # def scale(width, height)
   #   # do something

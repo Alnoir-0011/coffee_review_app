@@ -24,7 +24,7 @@ class SliderUploader < CarrierWave::Uploader::Base
   end
 
   # Process files as they are uploaded:
-  process resize_to_fill: [1080, 728, gravity = 'Center']
+  process resize_to_fill: [1080, 728]
   #
   # def scale(width, height)
   #   # do something
