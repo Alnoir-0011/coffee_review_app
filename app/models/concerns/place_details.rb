@@ -20,11 +20,6 @@ module PlaceDetails
       when Net::HTTPOK
         res_body = JSON.parse(response.body)
         self.google_map_uri = res_body['googleMapsUri'] if res_body.present?
-      when Net::HTTPClientError
-        p response.code
-        p "client error: #{JSON.parse(response.body)['error']['message']}"
-      else
-        p "error status: #{response.code}"
       end
     end
   end

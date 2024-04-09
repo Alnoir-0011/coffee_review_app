@@ -12,9 +12,11 @@ class Bean < ApplicationRecord
   validate :raw_cannot_grind
 
   enum :roast,
-       { raw: 0, light: 10, chinamon: 20, medium: 30, high: 40, city: 50, fullcity: 60, french: 70, italian: 80 }, prefix: true
+       { raw: 0, light: 10, chinamon: 20, medium: 30, high: 40, city: 50, fullcity: 60, french: 70, italian: 80 },
+       prefix: true
 
-  enum :fineness, { beans: 0, coarsely: 10, medium: 20, medium_fine: 30, fine: 40, superfine: 50 }, prefix: true
+  enum :fineness, { beans: 0, coarsely: 10, medium: 20, medium_fine: 30, fine: 40, superfine: 50 },
+       prefix: true
 
   def self.ransackable_attributes(auth_object = nil)
     auth_object&.admin? ? super : %w[id name roast fineness region_id]
@@ -27,7 +29,7 @@ class Bean < ApplicationRecord
   def average_evaluation
     # reviews.average(:evaluation)
     # evs = reviews.pluck(:evaluation)
-    evs = reviews.map { |review| review.evaluation }
+    evs = reviews.map(&:evaluation)
     evs.sum.fdiv(evs.length).round(2)
   end
 

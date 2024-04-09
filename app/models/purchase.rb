@@ -12,9 +12,11 @@ class Purchase < ApplicationRecord
   validate :prohibited_before_roasting
 
   enum :store_roast_option,
-       { roasted: 0, light: 10, chinamon: 20, medium: 30, high: 40, city: 50, fullcity: 60, french: 70, italian: 80 }, prefix: true
+       { roasted: 0, light: 10, chinamon: 20, medium: 30, high: 40, city: 50, fullcity: 60, french: 70, italian: 80 },
+       prefix: true
   enum :store_grind_option,
-       { grinded: 0, beans: 10, coarsely: 20, medium: 30, medium_fine: 40, fine: 50, superfine: 60 }, prefix: true
+       { grinded: 0, beans: 10, coarsely: 20, medium: 30, medium_fine: 40, fine: 50, superfine: 60 },
+       prefix: true
 
   def self.ransackable_attributes(auth_object = nil)
     auth_object&.admin? ? super : %w[store_roast_option store_grind_option]
@@ -43,7 +45,7 @@ class Purchase < ApplicationRecord
   private
 
   def future_dates_cannot
-    errors.add(:purchase_at, 'は未来の日付は登録できません') if purchase_at.after? Date.today
+    errors.add(:purchase_at, 'は未来の日付は登録できません') if purchase_at.after? Time.zone.today
   end
 
   def prohibited_before_roasting

@@ -4,6 +4,9 @@ require:
   - rubocop-rails
   - rubocop-rspec
   - rubocop-performance
+  - rubocop-rspec_rails
+  - rubocop-capybara
+  - rubocop-factory_bot
 
 AllCops:
   TargetRubyVersion: 3.2
@@ -34,3 +37,48 @@ Style/AsciiComments:
 Style/BlockComments:
   Exclude:
     - 'spec/spec_helper.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/CaseEquality:
+  Exclude:
+    - 'lib/place_api/text_search.rb'
+    - 'app/models/concerns/place_details.rb'
+
+Style/RedundantFetchBlock:
+  Exclude:
+    - 'config/puma.rb'
+
+Layout/LineLength:
+  Exclude:
+    - 'config/initializers/**.rb'
+
+Style/GlobalStdStream:
+  Exclude:
+    - 'config/environments/**.rb'
+
+ClassAndModuleChildren:
+  EnforcedStyle: compact
+  Exclude:
+    - 'config/application.rb'
+    - 'app/channels/application_cable/**.rb'
+
+Metrics/BlockLength:
+  CountComments: false
+  Exclude:
+    - 'config/**/*'
+    - 'lib/tasks/**.rake'
+    - 'spec/**/*'
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 20
+  Exclude:
+    - 'app/helpers/application_helper.rb'
+
+Style/Documentation:
+  Enabled: false

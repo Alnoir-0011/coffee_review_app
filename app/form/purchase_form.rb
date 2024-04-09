@@ -25,7 +25,6 @@ class PurchaseForm
 
   def initialize(attributes = nil, purchase: Purchase.new)
     @purchase = purchase
-    # binding.pry
     if @purchase.persisted? && attributes
       new_attributes = default_attributes.merge(attributes)
       super(new_attributes)
@@ -41,15 +40,12 @@ class PurchaseForm
     return false if invalid?
 
     ActiveRecord::Base.transaction do
-      # binding.pry
       @purchase.assign_attributes(user_id:, shop_id: shop.id, bean_id: bean.id,
                                   store_roast_option:, store_grind_option:, purchase_at:)
 
       @purchase.save!
-      unless @purchase.shop.beans.include?(@purchase.bean)
-        # binding.pry
-        @purchase.shop.beans << @purchase.bean
-      end
+
+      @purchase.shop.beans << @purchase.bean unless @purchase.shop.beans.include?(@purchase.bean)
     end
     true
   rescue StandardError
@@ -99,18 +95,11 @@ class PurchaseForm
     @shop ||= Shop.find_by(place_id: shop_place_id)
   end
 
-  # def purchase
-  #   @purchase ||= User.find(self.user_id).purchases.new(store_roast_option: store_roast_option,
-  #                 store_grind_option: store_grind_option,purchase_at: purchase_at,
-  #                 bean_id: Bean.find_by(name: bean_name), shop_id: Shop.find_by(name: shop_name))
-  # end
-
   def future_dates_cannot
-    errors.add(:purchase_at, 'は未来の日付は登録できません') if purchase_at.after? Date.today
+    errors.add(:purchase_at, 'は未来の日付は登録できません') if purchase_at.after? Time.zone.today
   end
 
   def roast_status
-    # bean = Bean.find_by(name: self.bean_name)
     if bean.roast_raw? && store_roast_option == 'roasted'
       errors.add(:store_roast_option, 'このコーヒー豆は焙煎前で登録できません')
     elsif !bean.roast_raw? && !store_roast_option == 'roasted'
@@ -119,7 +108,6 @@ class PurchaseForm
   end
 
   def grind_status
-    # bean = Bean.find_by(name: self.bean_name)
     if !bean.fineness_beans? && !store_grind_option == 'grinded'
       errors.add(:store_grind_option, 'このコーヒー豆は粉砕済みです')
     elsif bean.fineness_beans? && store_grind_option == 'grinded'

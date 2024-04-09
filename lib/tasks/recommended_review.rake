@@ -26,9 +26,9 @@ namespace :recommended_review do
         end
       end
 
-      similarity_users_liked_reviews = similarity_users.map do |a|
-                                         a[0].liked_reviews
-                                       end.flatten.uniq { |review| review.id }
+      similarity_users_liked_reviews = similarity_users.map { |a| a[0].liked_reviews }
+      similarity_users_liked_reviews.flatten.uniq!
+
       user.recommended_reviews = similarity_users_liked_reviews.difference(user.liked_reviews).take(10)
     end
   end

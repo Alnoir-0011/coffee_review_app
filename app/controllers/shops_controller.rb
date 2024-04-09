@@ -5,6 +5,7 @@ class ShopsController < ApplicationController
     @lat = params[:lat]
     @lng = params[:lng]
     @q = Shop.ransack(params[:q])
+
     if @lat && @lng
       @shops = Shop.near([@lat, @lng], 10, units: :km)
       @search_explanation = t('.near_by_current_location')
