@@ -30,7 +30,7 @@ class BeansController < ApplicationController
   end
 
   def search
-    @beans = Bean.where("name like ?", "%#{params[:q]}%").includes(purchases: :shop)
+    @beans = Bean.where('name like ?', "%#{params[:q]}%").includes(purchases: :shop)
     render layout: false
   end
 

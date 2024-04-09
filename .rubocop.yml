@@ -1,0 +1,36 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 3.2
+  TargetRailsVersion: 7.0
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
+    - 'Gemfile'
+    - spec/
+
+Rails:
+  Enabled: true
+
+Rails/FilePath:
+  Exclude:
+    - 'spec/rails_helper.rb'
+
+Style/AndOr:
+  Enabled: false
+
+## 日本語コメントを許可します。
+Style/AsciiComments:
+  Enabled: false
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'

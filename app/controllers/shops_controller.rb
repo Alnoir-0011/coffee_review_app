@@ -38,7 +38,7 @@ class ShopsController < ApplicationController
   end
 
   def search
-    @shops = Shop.where("name like ?", "%#{params[:q]}%")
+    @shops = Shop.where('name like ?', "%#{params[:q]}%")
     render layout: false
   end
 
