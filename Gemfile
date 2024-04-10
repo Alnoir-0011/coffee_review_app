@@ -51,21 +51,59 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# ユーザー認証
 gem 'sorcery'
+
+# 検索
 gem 'ransack'
+
+# デコレーター
 gem 'draper'
-gem 'enum_help'
-gem 'factory_bot_rails'
-gem 'gretel'
-gem 'slim-rails'
+
+# 多言語対応
 gem 'rails-i18n'
+gem 'enum_help'
+
+# パンくず
+gem 'gretel'
+
+# slim
+gem 'slim-rails'
 gem 'html2slim', github: "slim-template/html2slim"
+
+# ページネーション
 gem 'kaminari'
+
+# 初期データの投入
 gem 'seed-fu'
+
+# 画像ファイルの保存
 gem 'carrierwave'
 gem 'fog-aws'
+
+# 位置情報
 gem 'geocoder'
+
+# 関連レコード数のカウント
 gem 'counter_culture'
+
+# 環境変数
+gem 'dotenv-rails'
+gem 'config'
+
+# 入力フォーム
+gem 'bootstrap_form'
+
+# (admin用) グラフ表示
+gem "chartkick"
+
+# メタタグ
+gem 'meta-tags', '~> 2.11'
+
+# Vectorクラスの利用
+gem 'matrix', '~> 0.4.2'
+
+gem 'factory_bot_rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -107,10 +145,3 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-gem 'dotenv-rails'
-gem 'config'
-gem 'bootstrap_form'
-gem "chartkick"
-gem 'meta-tags', '~> 2.11'
-gem 'matrix', '~> 0.4.2'
