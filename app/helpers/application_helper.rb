@@ -35,6 +35,7 @@ module ApplicationHelper
       site:,
       title:,
       description:,
+      icon: image_url('favicon.ico'),
       keywords: %w[コーヒー豆 レビュー 購入記録 コーヒー豆販売店検索],
       canonical: request.original_url,
       og: {
