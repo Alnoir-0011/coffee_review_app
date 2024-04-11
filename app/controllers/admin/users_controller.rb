@@ -7,7 +7,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def edit; end
-  
+
   def update
     if @user.update(user_params)
       redirect_to admin_users_path, success: 'user updated'
@@ -20,9 +20,9 @@ class Admin::UsersController < Admin::BaseController
     @user.destroy!
     flash.now[:success] = 'user deleted'
   end
-  
+
   private
-  
+
   def set_user
     @user = User.find(params[:id])
   end

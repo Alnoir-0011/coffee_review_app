@@ -10,7 +10,7 @@ MetaTags.configure do |config|
   # config.truncate_site_title_first = false
 
   # Add HTML attributes to the <title> HTML tag. Default is {}.
-  config.title_tag_attributes = {id: 'page-title'}
+  config.title_tag_attributes = { id: 'page-title' }
 
   # Add HTML attributes to the <title> HTML tag. Default is {}.
   # config.title_tag_attributes = {}

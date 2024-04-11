@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
 
-  post "oauth/callback", to: "oauths#callback"
-  get "oauth/callback", to: "oauths#callback"
-  get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
+  post 'oauth/callback', to: 'oauths#callback'
+  get 'oauth/callback', to: 'oauths#callback'
+  get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
 
   get 'terms_of_use', to: 'static_pages#terms_of_use'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   resources :shops, only: %i[index new create] do
     get :search, on: :collection
   end
-  
+
   namespace :mypage do
     root to: redirect('mypage/purchases')
     resources :purchases, only: %i[index destroy]

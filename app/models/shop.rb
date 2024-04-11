@@ -22,7 +22,7 @@ class Shop < ApplicationRecord
   validates :google_map_uri, length: { maximum: 255 }
 
   def self.ransackable_attributes(auth_object = nil)
-    auth_object&.admin? ? super : %w(name place_id)
+    auth_object&.admin? ? super : %w[name place_id]
   end
 
   def self.ransackable_associations(auth_object = nil)
