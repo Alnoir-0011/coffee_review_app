@@ -1,8 +1,4 @@
 - flash.each do |message_type, message|
-  / .alert.alert-dismissible[class="alert-#{message_type}"]
-    button.btn-close[type="button" data-bs-dismiss="alert"]
-    = message
-
   .toast.align-items-center.opacity-100.mb-2.border-3.hide.bg-light class="boader-#{message_type}" role="alert" aria-live="assertive" aria-atomic="true" data-controller="toast"
     .d-flex
       .toast-body = message
