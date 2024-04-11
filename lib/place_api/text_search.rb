@@ -1,7 +1,7 @@
 def get_coffee_shop_from_viewport(lat, lng, lat_gap, lng_gap)
   uri = URI.parse('https://places.googleapis.com/v1/places:searchText')
   http = Net::HTTP.new(uri.host, uri.port)
-  http.use_ssl = uri.scheme === 'https'
+  http.use_ssl = uri.scheme == 'https'
 
   response = http.post(uri.path, text_search_params(lat, lng, lat_gap, lng_gap).to_json, text_search_headers)
 

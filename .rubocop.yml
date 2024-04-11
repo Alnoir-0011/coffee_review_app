@@ -17,8 +17,6 @@ AllCops:
     - 'db/**/*'
     - 'tmp/**/*'
     - 'node_modules/**/*'
-    - 'Gemfile'
-    - spec/
 
 Rails:
   Enabled: true
@@ -40,15 +38,6 @@ Style/BlockComments:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
-
-Style/CaseEquality:
-  Exclude:
-    - 'lib/place_api/text_search.rb'
-    - 'app/models/concerns/place_details.rb'
-
-Style/RedundantFetchBlock:
-  Exclude:
-    - 'config/puma.rb'
 
 Layout/LineLength:
   Exclude:
@@ -81,4 +70,12 @@ Metrics/MethodLength:
     - 'app/helpers/application_helper.rb'
 
 Style/Documentation:
+  Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Exclude:
+    - 'app/models/user.rb'
+    - 'app/models/shop.rb'
+
+Bundler/OrderedGems:
   Enabled: false
