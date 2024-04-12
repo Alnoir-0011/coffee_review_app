@@ -7,7 +7,6 @@
       = f.password_field :password
       = f.submit t('defaults.login'), class: 'd-block btn btn-secondary col-8 offset-2'
     .col-10.offset-1.mb-3
-      / = link_to auth_at_provider_path(provider: :google), class: 'd-block border rounded shadow text-center py-2 text-decoration-none link-dark' do
       = link_to auth_at_provider_path(provider: :google), class: 'd-block btn btn-outline-primary' do
         i.bi.bi-google.me-1
         span = t('.sign_in_with_google')

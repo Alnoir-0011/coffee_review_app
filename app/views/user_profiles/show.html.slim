@@ -1,17 +1,6 @@
 - assign_meta_tags title: t('.title')
 .container.mb-3
   .col-md-10.offset-md-1.col-lg-8.offset-lg-2
-    / .card.my-3
-      .col-10.offset-1
-        .row.align-items-center.my-3
-          = image_tag @user.avatar_url, class: 'rounded-circle col-4'
-          h5.lh-1.fs-4.col-8 = @user.name
-        .mb-1
-          label 所有器具
-          p = @user.decorate.tool_names
-        .mb-1
-          label 好きな飲み方
-          p = @user.decorate.brewing_method_names
     = render 'shared/user_profile', user: @user
     = turbo_frame_tag 'review-list' do
       .d-flex.justify-content-end

@@ -31,7 +31,6 @@
         - if @purchases.present?
           .accordion.accordion-flush#accordionPurchases
             = render @purchases
-            / = render 'purchase'
           = paginate @purchases
         - else
           h3.col-10.offset-1 = t('defaults.nothing', item: Purchase.model_name.human)
