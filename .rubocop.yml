@@ -75,7 +75,6 @@ Style/Documentation:
 Rails/UniqueValidationWithoutIndex:
   Exclude:
     - 'app/models/user.rb'
-    - 'app/models/shop.rb'
 
 Bundler/OrderedGems:
   Enabled: false
