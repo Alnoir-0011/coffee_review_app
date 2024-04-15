@@ -7,31 +7,31 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
       expect(user.errors).to be_empty
     end
-    
+
     it 'is invalid without email' do
       user = build(:user, email: '')
       expect(user).to be_invalid
       expect(user.errors[:email]).to eq ['を入力してください']
     end
-    
+
     it 'is invalid without name' do
       user = build(:user, name: '')
       expect(user).to be_invalid
       expect(user.errors[:name]).to eq ['を入力してください']
     end
-    
+
     it 'is invalid without password' do
       user = build(:user, password: '')
       expect(user).to be_invalid
       expect(user.errors[:password]).to eq ['は8文字以上で入力してください']
     end
-    
+
     it 'is invalid without password_confirmation' do
       user = build(:user, password_confirmation: '')
       expect(user).to be_invalid
-      expect(user.errors[:password_confirmation]).to eq ['とパスワードの入力が一致しません', 'を入力してください']
+      expect(user.errors[:password_confirmation]).to eq %w[とパスワードの入力が一致しません を入力してください]
     end
-    
+
     it 'is valid without image' do
       user = build(:user, avatar: nil)
       expect(user).to be_valid
@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'is valid with another email' do
-      user = create(:user)
+      create(:user)
       user_with_another_email = build(:user)
       expect(user_with_another_email).to be_valid
       expect(user_with_another_email.errors).to be_empty

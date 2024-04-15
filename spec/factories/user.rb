@@ -4,7 +4,7 @@ FactoryBot.define do
     sequence(:name, 'testuser')
     password { 'password' }
     password_confirmation { 'password' }
-    avatar { File.open("#{Rails.root}/public/images/test_avatar.jpg")}
+    avatar { File.open(Rails.root.join('public/images/test_avatar.jpg').to_s) }
     role { 'general' }
   end
 end

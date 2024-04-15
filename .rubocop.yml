@@ -78,3 +78,6 @@ Rails/UniqueValidationWithoutIndex:
 
 Bundler/OrderedGems:
   Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
