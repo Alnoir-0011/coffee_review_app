@@ -1,4 +1,8 @@
 # [Coffee Stack Log.]
+[![Image from Gyazo](https://i.gyazo.com/ffc21c6528701bf83fac03c5d019ad1c.png)](https://gyazo.com/ffc21c6528701bf83fac03c5d019ad1c)
+
+## アプリURL
+[URL](https://www.coffeestacklog.com)
 
 ## ER図
 [URL](https://gyazo.com/ea514eefcb7ac2457b985cacc430e24d)
@@ -7,7 +11,6 @@
 [figma](https://www.figma.com/file/frDfOydyzsAVZaFIgzxdCp/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=Epi3OEB0cMYuXvA5-1)
 
 ## サービス概要
-短い文章でサービスの概要（提供価値）を説明します。
 Coffee Stack Log. は買ったコーヒー豆を記録し、それを使って淹れたコーヒーのレビューを投稿できるサービスです
 
 ##　想定されるユーザー層
@@ -19,11 +22,36 @@ Coffee Stack Log. は買ったコーヒー豆を記録し、それを使って�
 
 コーヒー豆を選んで買うときに以前どの種類を買ったのか記録していないと、「前に好みの豆があったけどどの商品だったのか思い出せない」といった事象や、そもそも瓶やマシンに移し替えて袋を早々に捨ててしまうと今飲んでいるコーヒーの豆の種類さえわからないと言った事態があり、自分自身も色々と豆の種類を試していた時期は前回までは覚えていてもそれ以前はわからなくなっていました。  
 またコーヒーに特化してユーザー側のレビューを集約したサイトは検索した限り出てこず、実際に店舗で売られているどの豆でどの炒り具合が美味しかったなどの情報が集めづらく感じます。  
-『珈琲レビュアーズ』を利用し買った豆の記録し淹れたコーヒーのレビューを投稿することで、自分好みのコーヒー豆の把握、そして他ユーザーの投稿を見ることで新しく購入するコーヒー豆を選ぶ参考になればと思い考案しました。  
+『Coffee Stack Log.』を利用し買った豆の記録し淹れたコーヒーのレビューを投稿することで、自分好みのコーヒー豆の把握、そして他ユーザーの投稿を見ることで新しく購入するコーヒー豆を選ぶ参考になればと思い考案しました。  
 
 
-## 実装を予定している機能
-### MVP
+##　 使用技術
+* ruby 3.2.2
+* Ruby on Rails 7.0.8
+* Node.js 18.19.0
+* Docker
+* PostgreSQL
+* Heroku
+* Bootstrap 5.3.1
+* Esbuild
+* Stimulus
+* Stimulus-autocomplete
+* Sorcery
+* Ransack
+* Geocoder
+* Slim
+* CarrierWave
+* Fog-aws
+* Swiper
+
+## Set up
+```
+git clone git@github.com:Alnoir-0011/coffee_review_app.git
+docker-compose build && docker-compose up -d
+docker-compose exec web rails db:migarte && docker-compose exec web rails db:seed_fu
+```
+
+## 実装している機能
 * 会員登録
 * ログイン
 * プロフィール登録(抽出機器、グラインダー、好きな飲み方の登録)
@@ -38,8 +66,5 @@ Coffee Stack Log. は買ったコーヒー豆を記録し、それを使って�
   * 販売店を選択すると投稿されたレビューを表示
 * レビュー閲覧
   * 他ユーザーのレビューへのいいね機能
-
-
-### その後の機能
+    * いいねに基づくレコメンド機能
 * 購入店舗、商品名のオートコンプリート
-* 購入記録に基づくレコメンド機能
