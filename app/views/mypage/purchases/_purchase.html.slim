@@ -17,7 +17,7 @@
             p = purchase.grind_situation
             p = l purchase.purchase_at, format: :long
           .ms-auto.d-flex.flex-column
-            - if purchase.review.present?
+            - if purchase.reviews.present?
               .d-flex.ms-auto.align-items-center.mb-5
                 .btn.btn-secondary.me-2.disabled = t('mypage.purchases.index.review_posted')
             - else
