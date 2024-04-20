@@ -3,12 +3,16 @@ class ReviewsController < ApplicationController
 
   def new
     @purchase = current_user.purchases.find(params[:purchase_id])
-    @review = @purchase.build_review
+    redirect_to mypage_reviews_path, alert: t('defaults.message.already_taken', item: Review.model_name.human) if @purchase.reviews.present?
+
+    @review = @purchase.reviews.new
   end
 
   def create
     @purchase = current_user.purchases.find(params[:purchase_id])
-    @review = @purchase.build_review(review_params)
+    redirect_to mypage_reviews_path, alert: t('defaults.message.already_taken', item: Review.model_name.human) if @purchase.reviews.present?
+
+    @review = @purchase.reviews.new(review_params)
     if @review.save_with_tools(form_tool_ids: params[:review][:tool_ids])
       redirect_to mypage_reviews_path, success: t('defaults.message.posted', item: Review.model_name.human)
     else

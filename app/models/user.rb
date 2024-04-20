@@ -30,6 +30,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true, length: { maximum: 255 }
   validates :name, presence: true, length: { maximum: 255 }
+  validates :role, presence: true
 
   def self.ransackable_attributes(auth_object = nil)
     auth_object&.admin? ? super : []
