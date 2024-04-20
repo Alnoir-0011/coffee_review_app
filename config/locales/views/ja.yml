@@ -33,6 +33,7 @@ ja:
       delete_confirm: '削除しますか？'
       not_authorized: '権限がありません'
       copy_to_clipboard: 'クリップボードにコピーしました'
+      already_taken: "%{item}がすでに存在します"
   users:
     new:
       title: 'ユーザー登録'

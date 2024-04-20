@@ -5,6 +5,7 @@ class ShopsController < ApplicationController
     @lat = params[:lat]
     @lng = params[:lng]
     @q = Shop.ransack(params[:q])
+
     if @lat && @lng
       @shops = Shop.near([@lat, @lng], 10, units: :km)
       @search_explanation = t('.near_by_current_location')
@@ -38,7 +39,7 @@ class ShopsController < ApplicationController
   end
 
   def search
-    @shops = Shop.where("name like ?", "%#{params[:q]}%")
+    @shops = Shop.where('name like ?', "%#{params[:q]}%")
     render layout: false
   end
 

@@ -6,13 +6,13 @@ class TopSlider < ApplicationRecord
 
   validate :past_date_cannot, unless: -> { end_of_publication.nil? }
 
-  scope :deadline_exceeded, -> { where('end_of_publication < ?', Date.today)}
+  scope :deadline_exceeded, -> { where('end_of_publication < ?', Time.zone.today) }
 
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     authorizable_ransackable_attributes
   end
 
-  def self.ransackable_associations(auth_object = nil)
+  def self.ransackable_associations(_auth_object = nil)
     authorizable_ransackable_associations
   end
 

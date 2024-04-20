@@ -1,22 +1,22 @@
 module ApplicationHelper
   def turbo_stream_flash
-    turbo_stream.append "flashes", partial: "shared/flash"
+    turbo_stream.append 'flashes', partial: 'shared/flash'
   end
 
   def bg_if(controller_name)
-    return 'bg-secondary' if controller_name == params[:controller]
+    'bg-secondary' if controller_name == params[:controller]
   end
 
   def link_color_if(controller_name)
     if controller_name == params[:controller]
-      'link-light' 
+      'link-light'
     else
       'link-dark'
     end
   end
 
   def active_if(controller_name)
-    return 'active' if controller_name == params[:controller]
+    'active' if controller_name == params[:controller]
   end
 
   def show_meta_tags
@@ -35,6 +35,7 @@ module ApplicationHelper
       site:,
       title:,
       description:,
+      icon: image_url('favicon.ico'),
       keywords: %w[コーヒー豆 レビュー 購入記録 コーヒー豆販売店検索],
       canonical: request.original_url,
       og: {
