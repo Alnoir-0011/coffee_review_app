@@ -35,7 +35,7 @@ RSpec.describe Bean, type: :model do
     it 'is valid with duplicate name' do
       bean = create(:bean)
       bean_with_duplicate_name = build(:bean, name: bean.name)
-      expect(bean_with_duplicate_name).to be_ivalid
+      expect(bean_with_duplicate_name).to be_valid
       expect(bean_with_duplicate_name.errors).to be_empty
     end
 
