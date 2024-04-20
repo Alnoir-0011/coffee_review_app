@@ -42,6 +42,7 @@ Coffee Stack Log. は買ったコーヒー豆を記録し、それを使って�
 * Slim
 * CarrierWave
 * Fog-aws
+* Amazon S3
 * Swiper
 
 ## Set up
