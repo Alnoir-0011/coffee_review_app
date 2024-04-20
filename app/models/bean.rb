@@ -8,8 +8,10 @@ class Bean < ApplicationRecord
   has_many :favorited_users, through: :favorites, source: :user
 
   validates :name, presence: true, length: { maximum: 255 }
+  validates :roast, presence: true
+  validates :fineness, presence: true
 
-  validate :raw_cannot_grind
+  validate :raw_cannot_grind, if: -> { roast.present? && fineness.present? }
 
   enum :roast,
        { raw: 0, light: 10, chinamon: 20, medium: 30, high: 40, city: 50, fullcity: 60, french: 70, italian: 80 },

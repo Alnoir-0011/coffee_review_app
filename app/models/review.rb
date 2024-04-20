@@ -16,10 +16,10 @@ class Review < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 255 }
   validates :content, length: { maximum: 65_535 }
+  validates :fineness, presence: true
   validates :evaluation, numericality: { in: 1..5 }
-  validates :purchase_id, uniqueness: true
-
-  validate :fineness_status
+  validates :purchase_id, uniqueness: { message: '1つにつきレビュー投稿は1度までしかできません' }
+  validate :fineness_status, if: -> { purchase && fineness }
 
   enum :fineness, { grinded: 0, coarsely: 10, medium: 20, medium_fine: 30, fine: 40, superfine: 50 }, prefix: true
 

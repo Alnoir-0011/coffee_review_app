@@ -101,7 +101,7 @@ class PurchaseForm
 
   def roast_status
     if bean.roast_raw? && store_roast_option == 'roasted'
-      errors.add(:store_roast_option, 'このコーヒー豆は焙煎前で登録できません')
+      errors.add(:store_roast_option, 'このコーヒー豆は焙煎済みで登録できません')
     elsif !bean.roast_raw? && !store_roast_option == 'roasted'
       errors.add(:store_roast_option, 'このコーヒー豆は焙煎済みです')
     end
