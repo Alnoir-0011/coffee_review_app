@@ -1,4 +1,4 @@
 - @beans.each do |bean|
   li.d-flex.list-group-item.cursor-pointer[role="option" data-autocomplete-value="#{bean.id}" data-autocomplete-label="#{bean.name}"]
     span.me-2 = bean.name
-    span.fw-lighter = bean.shops.first.name
+    span.fw-lighter = bean.shops.first.name if bean.shops.present?
