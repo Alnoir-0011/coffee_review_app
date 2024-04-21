@@ -81,3 +81,7 @@ Bundler/OrderedGems:
 
 RSpec/MultipleExpectations:
   Enabled: false
+
+Lint/AssignmentInCondition:
+  Exclude:
+    - 'app/controllers/oauths_controller.rb'

@@ -40,7 +40,7 @@ RSpec.describe Review, type: :model do
 
     it 'is invalid with duplicate purchase' do
       purchase = create(:purchase)
-      review = create(:review, purchase:)
+      create(:review, purchase:)
       review_with_duplicate_purchase = build(:review, purchase:)
       expect(review_with_duplicate_purchase).to be_invalid
       expect(review_with_duplicate_purchase.errors[:purchase_id]).to eq ['1つにつきレビュー投稿は1度までしかできません']
