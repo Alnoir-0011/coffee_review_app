@@ -4,6 +4,7 @@
     = turbo_frame_tag 'list-with-tab' do
       = render 'shared/tab_buttons'
       - assign_meta_tags title: t('.title')
+      - breadcrumb :mypage_reviews
       = search_form_for @q, url: mypage_reviews_path,
                         html: { data: { turbo_frame: "reviews-list" } },
                         class: 'row  align-items-center justify-content-center g-2 mb-3 ms-0' do |f|

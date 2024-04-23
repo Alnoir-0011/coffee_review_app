@@ -28,6 +28,7 @@ html
       = render 'shared/header'
     - else
       = render 'shared/before_login_header'
+    = breadcrumbs separator: " &rsaquo; ", link_class: 'link-dark'
     = yield
     = render 'shared/footer'
     = turbo_frame_tag 'modal'
