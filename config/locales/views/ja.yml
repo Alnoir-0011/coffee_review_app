@@ -123,6 +123,7 @@ ja:
     terms_of_use:
       title: '利用規約'
   mypage:
+    title: 'マイページ'
     purchases:
       index:
         title: '購入記録一覧'
