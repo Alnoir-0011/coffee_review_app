@@ -5,4 +5,4 @@
     .d-flex.justify-content-between.mb-3.mt-5.align-items-center
       h1.mb-0 = t('.title')
       = link_to t('defaults.cancel'), mypage_purchases_path, class: 'btn btn-outline-info my-2'
-    = render 'form', { purchase_form: @purchase_form, url: purchase_path(@purchase) }
+    = render 'form', { purchase_form: @purchase_form }
