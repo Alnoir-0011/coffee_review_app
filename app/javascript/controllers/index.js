@@ -19,6 +19,9 @@ application.register("location", LocationController)
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
 
+import SwiperController from "./swiper_controller"
+application.register("swiper", SwiperController)
+
 import ToastController from "./toast_controller"
 application.register("toast", ToastController)
 
