@@ -1,4 +1,4 @@
-= bootstrap_form_with model: review, url: url do |f|
+= bootstrap_form_with model: review, url: url, data: { controller: 'image-preview' } do |f|
   = f.text_field :title
   = f.select :fineness, Review.finenesses_i18n.invert, {}, disabled: review.already_grinded?
   = f.label :tool_ids, class: 'mb-2'
@@ -10,8 +10,8 @@
       - 1.upto(5) do |i|
         = f.radio_button :evaluation, i, label: i, inline: true
   = f.text_area :content
-  = f.file_field :image, id: 'file-field'
+  = f.file_field :image, data: { image_preview_target: 'field', action: 'image-preview#preview' }
   = f.hidden_field :image_cache
-  .mb-3#preview-field
-    = image_tag review.image.url, id: 'preview', class: 'image-preview object-fit-cover'
+  .mb-3
+    = image_tag review.image.url, class: 'image-preview object-fit-cover', data: { image_preview_target: 'image' }
   = f.submit

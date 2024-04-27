@@ -1,13 +1,13 @@
 = turbo_frame_tag 'profile' do
   .card.mb-3.mt-3.pb-3
     .col-10.offset-1
-      = bootstrap_form_with model: @user, url: mypage_profile_path do |f|
+      = bootstrap_form_with model: @user, url: mypage_profile_path, data: { controller: 'image-preview' } do |f|
         .my-3
-          .d-flex.justify-content-between.align-content-center#preview-field
-            = image_tag @user.avatar.url, class: 'col-auto p-0 rounded-circle avatar-preview object-fit-cover', id: 'preview'
+          .d-flex.justify-content-between.align-content-center
+            = image_tag @user.avatar.url, class: 'col-auto p-0 rounded-circle avatar-preview object-fit-cover', data: { image_preview_target: 'image' }
             = link_to t('defaults.cancel'), mypage_profile_path, class: 'col-auto badge rounded-pill text-decoration-none text-bg-secondary fs-5 ms-auto shadow-sm my-5', data: { turbo_frame: 'profile'}
           = f.text_field :name
-          = f.file_field :avatar, id: 'file-field'
+          = f.file_field :avatar, data: { image_preview_target: 'field', action: 'image-preview#preview' }
           = f.hidden_field :avatar_cache
         = f.email_field :email
         = f.label :tools

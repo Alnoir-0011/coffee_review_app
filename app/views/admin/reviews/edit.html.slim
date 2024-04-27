@@ -4,7 +4,7 @@
     .d-flex.justify-content-between.align-items-center.my-3
       h1.mb-0 Edit review
       = link_to 'back', admin_reviews_path, class: 'btn btn-outline-danger'
-    = bootstrap_form_with model: @review, url: admin_review_path(@review) do |f|
+    = bootstrap_form_with model: @review, url: admin_review_path(@review), data: { controller: 'image-preview' } do |f|
       = f.text_field :title
       .form-coltrol = @review.bean.name
       = f.select :fineness, Review.finenesses.keys.to_a, {}, disabled: @review.already_grinded?
@@ -17,8 +17,8 @@
           - 1.upto(5) do |i|
             = f.radio_button :evaluation, i, label: i, inline: true
       = f.text_area :content
-      = f.file_field :image, id: 'file-field'
+      = f.file_field :image, data: { image_preview_target: 'field', action: 'image-preview#preview' }
       = f.hidden_field :image_cache
-      .mb-3#preview-field
-        = image_tag @review.image.url, id: 'preview', class: 'image-preview object-fit-cover'
+      .mb-3
+        = image_tag @review.image.url, class: 'image-preview object-fit-cover', data: { image_preview_target: 'image' }
       = f.submit
