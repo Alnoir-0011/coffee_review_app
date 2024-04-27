@@ -26,7 +26,7 @@
         ul.z-2.list-group.position-absolute.top-100.start-0[data-autocomplete-target="results"]
 
     - if @shops.present?
-      .accordion.overflow-y-auto#accordionShops
+      .accordion.overflow-y-auto#accordionShops data-controller="tooltip"
         = render @shops
     - else
       .d-flex.align-items-center.justify-content-around
