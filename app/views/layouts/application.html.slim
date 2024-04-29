@@ -4,6 +4,7 @@ html
     meta[name="google-site-verification" content="#{ ENV['GOOGLE_SITE_VERIFICATION_CONTENT'].html_safe }"]
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     meta[name="turbo-cache-control" content="no-cache"]
+    meta[name="map_api" content="#{ ENV['GOOGLE_MAP_API_KEY'] }"]
     = csrf_meta_tags
     = csp_meta_tag
     = show_meta_tags
@@ -12,8 +13,8 @@ html
     javascript:
       window.I18n = #{ t("javascript").to_json.html_safe };
 
-    - googlemap_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API_KEY'] }&libraries=places".html_safe
-    script{defer src = googlemap_api }
+    / - googlemap_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API_KEY'] }&libraries=places".html_safe
+    / script{defer src = googlemap_api }
     - google_analytics = "https://www.googletagmanager.com/gtag/js?id=#{ ENV['GOOGLE_ANALYTICS_ID'] }".html_safe
     script{async src = google_analytics }
     javascript:
