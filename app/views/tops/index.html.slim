@@ -1,6 +1,6 @@
 - assign_meta_tags title: t('.title')
 - breadcrumb :root
-.swiper
+.swiper data-controller="swiper"
   .swiper-wrapper
     - if @top_sliders.present?
       - if @top_sliders.count < 4 && @top_sliders.count > 1

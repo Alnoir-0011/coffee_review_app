@@ -1,8 +1,9 @@
-import Swiper from 'swiper/bundle';
+import { Controller } from "@hotwired/stimulus"
+import Swiper from "swiper/bundle"
 
-const initSwiper = () => {
-  if(document.querySelector('.swiper')) {
-    console.log('swiper!');
+// Connects to data-controller="swiper"
+export default class extends Controller {
+  connect() {
     const swiper = new Swiper('.swiper', {
       // centerInsufficientSlides: true,
       centeredSlides: true,
@@ -35,15 +36,5 @@ const initSwiper = () => {
       //   el: '.swiper-scrollbar',
       // },
     });
-  };
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-  // console.log('event!');
-  initSwiper();
-});
-
-document.addEventListener('turbo:load', () => {
-  // console.log('turbo!');
-  initSwiper();
-});
+  }
+}

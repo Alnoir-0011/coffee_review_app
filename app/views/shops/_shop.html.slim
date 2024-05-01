@@ -4,7 +4,7 @@
       button.pe-4.accordion-button.collapsed type="button" data-bs-toggle="collapse" data-bs-target="#collapse#{shop.id}" aria-expanded="true" aria-controls="collapse#{shop.id}"
         .col-12.align-items-center
           h5.me-3.mb-0 = shop.name
-    .accordion-collapse.col-12.collapse id="collapse#{shop.id}" aria-labelledby="heading#{shop.id}" data-bs-parent="#accordionShops"
+    .accordion-collapse.col-12.collapse id="collapse#{shop.id}" aria-labelledby="heading#{shop.id}" data-bs-parent="#accordionShops" data-shop-index-target="shop"
       .accordion-body
         p.mb-2 = shop.address
         .d-flex.justify-content-between.mb-1.align-items-center data-controller='clip'
@@ -14,7 +14,7 @@
             = t('defaults.share_to_x')
           input.d-none data-clip-target="source" value="#{shops_url(q: { place_id_eq: shop.place_id })}" readonly="" type="text"
           / = button_to '', class: 'btn btn-dark', data: { action: 'clip#copy' } do
-          button.btn.btn-dark data-action="clip#copy" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="#{t('defaults.copy_to_clipboard')}"
+          button.btn.btn-dark data-action="clip#copy" data-tooltip-target="element" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="#{t('defaults.copy_to_clipboard')}"
             i.bi.bi-clipboard2-fill
         .row.g-2
           = render 'reviews', reviews: shop.reviews.order(created_at: :desc).limit(3)

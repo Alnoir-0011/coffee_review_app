@@ -1,14 +1,17 @@
 - assign_meta_tags title: t('.title')
 - breadcrumb :shops
 .container.mb-3
-  .col-md-10.offset-md-1.col-lg-8.offset-lg-2
+  .col-md-10.offset-md-1.col-lg-8.offset-lg-2 data-controller="shop-index"
     .d-flex.justify-content-between.align-items-center.my-3 data-controller="location"
       h1.mb-0 = t('.title')
-      button#get-position.btn.btn-dark.my-2 data-action="click->location#current" data-lat="#{ @lat || '' }" data-lng="#{ @lng || '' }" = t('.search_by_location')
+      input type="hidden" data-shop-index-target="lat" value="#{@lat}"
+      input type="hidden" data-shop-index-target="lng" value="#{@lng}"
+      button#get-position.btn.btn-dark.my-2 data-shop-index-target="location" data-action="click->location#current" data-lat="#{ @lat || '' }" data-lng="#{ @lng || '' }" = t('.search_by_location')
     .d-flex.align-items-end
       h5.mb-0.me-1 = t('.current_display_content')
       h5.mb-0 = @search_explanation
-    #map-index.mb-3
+
+    .mb-3 data-shop-index-target="map"
     css:
       #map-index{
         height: 37.5rem;
@@ -26,7 +29,7 @@
         ul.z-2.list-group.position-absolute.top-100.start-0[data-autocomplete-target="results"]
 
     - if @shops.present?
-      .accordion.overflow-y-auto#accordionShops
+      .accordion.overflow-y-auto#accordionShops data-controller="tooltip" data-shop-index-target="list"
         = render @shops
     - else
       .d-flex.align-items-center.justify-content-around
