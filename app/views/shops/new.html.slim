@@ -1,6 +1,7 @@
 - assign_meta_tags title: t('.title')
+- breadcrumb :new_shop
 .container.mb-3
-  .col-md-10.offset-md-1.col-lg-8.offset-lg-2.col-xl-6.offset-xl-3
+  .col-md-10.offset-md-1.col-lg-8.offset-lg-2.col-xl-6.offset-xl-3 data-controller="shop-new"
     .d-flex.justify-content-between.mb-3.mt-5
       h1.mb-0 = t('.title')
       = link_to t('defaults.cancel'), mypage_purchases_path, class: 'btn btn-outline-info my-2'
@@ -8,15 +9,15 @@
       - if f.object.errors.present?
         .alert.alert-danger
           = t('.enter_your_location_from_the_map')
-      = text_field :search, :search, id: 'pac-input', class: 'form-control'
+      = text_field :search, :search, class: 'form-control', data: { shop_new_target: 'input' }
 
-      #map-new.mb-3
+      .mb-3 data-shop-new-target="map"
 
-      = f.hidden_field :name, id: 'form-name'
-      = f.hidden_field :place_id, id: 'form-place-id'
-      = f.hidden_field :address, id: 'form-address'
-      = f.hidden_field :latitude, id: 'form-lat'
-      = f.hidden_field :longitude, id: 'form-lng'
+      = f.hidden_field :name, data: { shop_new_target: 'name' }
+      = f.hidden_field :place_id, data: { shop_new_target: 'placeId' }
+      = f.hidden_field :address, data: { shop_new_target: 'address' }
+      = f.hidden_field :latitude, data: { shop_new_target: 'lat' }
+      = f.hidden_field :longitude, data: { shop_new_target: 'lng' }
 
       css:
         #map-new {

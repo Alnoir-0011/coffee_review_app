@@ -1,4 +1,4 @@
-= bootstrap_form_with model: purchase_form, url: url do |f|
+= bootstrap_form_with model: purchase_form do |f|
   .d-flex.align-items-center.justify-content-around
     p.mb-0 = t('defaults.no_candidates', item: Shop.model_name.human)
     = link_to t('defaults.register', item: Shop.model_name.human), new_shop_path, class: 'btn btn-outline-secondary'

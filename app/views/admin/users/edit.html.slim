@@ -4,10 +4,10 @@
     .d-flex.justify-content-between.align-items-center.my-3
       h1.mb-0 Edit user
       = link_to 'back', admin_users_path, class: 'btn btn-outline-danger'
-    = bootstrap_form_with model: @user, url: admin_user_path(@user) do |f|
+    = bootstrap_form_with model: @user, url: admin_user_path(@user), data: { controller: 'image-preview' } do |f|
       = f.email_field :email
       = f.text_field :name
-      = f.file_field :avatar, id: 'file-field'
+      = f.file_field :avatar, data: { image_preview_target: 'image', action: 'image-preview#preview' }
       = f.hidden_field :avatar_cache
       .mb-3#preview-field
         = image_tag @user.avatar.url, id: 'preview', class: 'avatar-preview object-fit-cover'
