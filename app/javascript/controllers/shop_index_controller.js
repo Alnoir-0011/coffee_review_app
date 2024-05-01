@@ -11,7 +11,7 @@ export default class extends Controller {
     const loader = new Loader({
       apiKey: document.head.querySelector("meta[name=map_api]").content,
       version: "weekly",
-      libraries: ["marker"]
+      libraries: ["marker", "places"]
     })
 
     loader
