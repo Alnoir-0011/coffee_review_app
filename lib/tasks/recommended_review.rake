@@ -65,7 +65,7 @@ namespace :recommended_review do
       recommended_beans = similarity_users_purchard_bean_ids.map { |id| Bean.find(id) }
 
       user.recommended_reviews = recommended_beans.map { |bean| bean.reviews.order(like_count: :desc).limit(1) }
-                                                  .flatten
+                                                  .flatten.take(10)
     end
   end
 end
