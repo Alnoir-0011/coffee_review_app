@@ -102,15 +102,15 @@ class PurchaseForm
   def roast_status
     if bean.roast_raw? && store_roast_option == 'roasted'
       errors.add(:store_roast_option, 'このコーヒー豆は焙煎済みで登録できません')
-    elsif !bean.roast_raw? && !store_roast_option == 'roasted'
+    elsif !bean.roast_raw? && store_roast_option != 'roasted'
       errors.add(:store_roast_option, 'このコーヒー豆は焙煎済みです')
     end
   end
 
   def grind_status
-    if !bean.fineness_beans? && !store_grind_option == 'grinded'
+    if !bean.fineness_beans? && store_grind_option != 'grinded' # 商品が挽いてあるかつ挽き方が粉砕済み以外
       errors.add(:store_grind_option, 'このコーヒー豆は粉砕済みです')
-    elsif bean.fineness_beans? && store_grind_option == 'grinded'
+    elsif bean.fineness_beans? && store_grind_option == 'grinded' # 商品が豆のままかつ挽き方が粉砕済み
       errors.add(:store_grind_option, 'このコーヒー豆は粉砕前です')
     end
   end

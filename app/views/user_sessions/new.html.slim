@@ -3,8 +3,8 @@
   .col-md-8.offset-md-2.col-lg-6.offset-lg-3.col-xl-4.offset-xl-4
     h1.mb-3.mt-5 = t('.title')
     = bootstrap_form_with model: @user, url: login_path, class: 'mb-3' do |f|
-      = f.email_field :email
-      = f.password_field :password
+      = f.email_field :email, label: t('.email')
+      = f.password_field :password, label: t('.password')
       = f.submit t('defaults.login'), class: 'd-block btn btn-secondary col-8 offset-2'
     .col-10.offset-1.mb-3
       = link_to auth_at_provider_path(provider: :google), class: 'd-block btn btn-outline-primary' do

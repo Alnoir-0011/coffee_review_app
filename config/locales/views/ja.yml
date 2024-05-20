@@ -40,6 +40,8 @@ ja:
   user_sessions:
     new:
       title: 'ログイン'
+      email: 'メールアドレス'
+      password: 'パスワード'
       sign_in_with_google: 'googleでログイン'
       sign_up: 'ユーザー登録'
       forgot_password: 'パスワードを忘れた場合はこちら'
