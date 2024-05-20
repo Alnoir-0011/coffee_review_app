@@ -42,9 +42,13 @@ RSpec.describe 'Purchases', type: :system do
           fill_in '購入日', with: Date.yesterday
           click_button '登録する'
           expect(page).to have_content '購入記録を作成しました'
+          expect(page).to have_current_path mypage_purchases_path
           expect(page).to have_content shop.name
           expect(page).to have_content bean.name
-          expect(page).to have_current_path mypage_purchases_path
+          click_on bean.name
+          expect(page).to have_content 'ミディアム'
+          expect(page).to have_content '粉砕前'
+          expect(page).to have_content I18n.l(Date.yesterday, format: :long)
         end
       end
 
@@ -254,7 +258,13 @@ RSpec.describe 'Purchases', type: :system do
           fill_in '購入日', with: Time.zone.today
           click_button '更新する'
           expect(page).to have_content '購入記録を更新しました'
+          expect(page).to have_content another_shop.name
+          expect(page).to have_content another_bean.name
+          click_on another_bean.name
+          expect(page).to have_content 'ハイ'
+          expect(page).to have_content '中挽き'
           expect(page).to have_current_path mypage_purchases_path
+          expect(page).to have_content I18n.l(Time.zone.today, format: :long)
         end
       end
 
