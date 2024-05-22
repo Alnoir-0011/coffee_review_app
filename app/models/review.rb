@@ -17,7 +17,7 @@ class Review < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255 }
   validates :content, length: { maximum: 65_535 }
   validates :fineness, presence: true
-  validates :evaluation, numericality: { in: 1..5 }
+  validates :evaluation, numericality: { in: 1..5, message: 'を選択してください' }
   validates :purchase_id, uniqueness: { message: '1つにつきレビュー投稿は1度までしかできません' }
   validate :fineness_status, if: -> { purchase && fineness }
 
@@ -54,7 +54,7 @@ class Review < ApplicationRecord
   end
 
   def already_grinded?
-    purchase.store_grind_option_grinded?
+    !purchase.store_grind_option_beans?
   end
 
   def own?(user)

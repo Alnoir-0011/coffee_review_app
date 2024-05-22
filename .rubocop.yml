@@ -89,6 +89,9 @@ RSpec/ExampleLength:
 RSpec/MultipleExpectations:
   Enabled: false
 
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
 RSpec/NestedGroups:
   Exclude:
     - 'spec/system/**.rb'
