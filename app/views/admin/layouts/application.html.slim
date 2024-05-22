@@ -2,13 +2,15 @@ doctype html
 html
   head
     meta[name="viewport" content="width=device-width,initial-scale=1"]
+    meta[name="turbo-cache-control" content="no-cache"]
+    meta[name="map_api" content="#{ ENV['GOOGLE_MAP_API_KEY'] }"]
     = csrf_meta_tags
     = csp_meta_tag
     = show_meta_tags
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
-    - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API_KEY'] }&libraries=places".html_safe
-    script{defer src = google_api }
+    javascript:
+      window.I18n = #{ t("javascript").to_json.html_safe };
   body.d-flex
     = render 'admin/shared/sidebar'
     .d-flex.flex-column.flex-grow-1

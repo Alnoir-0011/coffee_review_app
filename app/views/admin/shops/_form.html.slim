@@ -1,13 +1,13 @@
 = bootstrap_form_with model: shop, url: url, class: 'mb-3' do |f|
-  = text_field :search, :search, id: 'pac-input', class: 'form-control'
+  = text_field :search, :search, id: 'pac-input', class: 'form-control', data: { shop_new_target: 'input' }
 
-  #map-new.mb-3
+  #map-new.mb-3 data-shop-new-target="map"
 
-  = f.text_field :name, id: 'form-name', placeholder: 'チェーン店は店舗名を最後まで入力してください'
-  = f.text_field :place_id, id: 'form-place-id'
-  = f.text_field :address, id: 'form-address'
-  = f.number_field :latitude, id: 'form-lat', step: '0.00000001'
-  = f.number_field :longitude, id: 'form-lng', step: '0.00000001'
+  = f.text_field :name, placeholder: 'チェーン店は店舗名を最後まで入力してください', data: { shop_new_target: 'name' }
+  = f.text_field :place_id, data: { shop_new_target: 'placeId' }
+  = f.text_field :address, data: { shop_new_target: 'address' }
+  = f.number_field :latitude, step: '0.00000001', data: { shop_new_target: 'lat' }
+  = f.number_field :longitude, step: '0.00000001', data: { shop_new_target: 'lng' }
   = f.text_field :google_map_uri
   css:
     #map-new {
