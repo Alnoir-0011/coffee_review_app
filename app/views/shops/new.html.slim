@@ -11,7 +11,7 @@
           = t('.enter_your_location_from_the_map')
       = text_field :search, :search, class: 'form-control', data: { shop_new_target: 'input' }
 
-      .mb-3 data-shop-new-target="map"
+      .mb-3#map-new data-shop-new-target="map"
 
       = f.hidden_field :name, data: { shop_new_target: 'name' }
       = f.hidden_field :place_id, data: { shop_new_target: 'placeId' }
