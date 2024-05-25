@@ -3,7 +3,7 @@
   - if review.already_grinded?
     = f.select :fineness, [[Review.human_attribute_name('fineness.grinded'), 'grinded']], {}, disabled: true
   - else
-    = f.select :fineness, Review.finenesses_i18n.invert.to_h, { prompt: Review.human_attribute_name(:fineness), selected: review.persisted? ? review.fineness : '' }
+    = f.select :fineness, Review.finenesses_i18n.invert
   = f.label :tool_ids, class: 'mb-2'
   = f.collection_check_boxes :tool_ids, Tool.all, :id, :name, inline: true, hide_label: true
   = f.select :brewing_method_id, BrewingMethod.pluck(:name, :id), prompt: Review.human_attribute_name(:brewing_method)
