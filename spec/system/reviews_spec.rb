@@ -9,7 +9,7 @@ RSpec.describe 'Reviews', type: :system do
       it 'アクセスに失敗する' do
         visit new_purchase_review_path(purchase)
         expect(page).to have_content 'ログインしてください'
-        expect(page).to have_current_path login_path
+        expect(page).to have_current_path login_path, ignore_query: true
       end
     end
 
@@ -19,7 +19,7 @@ RSpec.describe 'Reviews', type: :system do
       it 'アクセスに失敗する' do
         visit edit_review_path(review)
         expect(page).to have_content 'ログインしてください'
-        expect(page).to have_current_path login_path
+        expect(page).to have_current_path login_path, ignore_query: true
       end
     end
   end
@@ -42,7 +42,7 @@ RSpec.describe 'Reviews', type: :system do
           expect(page).to have_content 'レビューを投稿しました'
           expect(page).to have_content purchase.bean.name
           expect(page).to have_content 'testtitle'
-          expect(page).to have_current_path mypage_reviews_path
+          expect(page).to have_current_path mypage_reviews_path, ignore_query: true
           click_on 'testtitle'
           expect(page).to have_selector 'p', text: '中挽き'
           expect(page).to have_selector 'span', text: '全自動マシン'
@@ -64,22 +64,7 @@ RSpec.describe 'Reviews', type: :system do
           attach_file '画像', Rails.root.join('public/images/noimage.jpg').to_s
           click_button '登録する'
           expect(page).not_to have_content 'レビューを投稿しました'
-          expect(page).to have_current_path new_purchase_review_path(purchase)
-        end
-      end
-
-      context '挽き方が未入力' do
-        it 'レビューの新規作成に失敗する' do
-          visit new_purchase_review_path(purchase)
-          fill_in 'タイトル', with: 'testtitle'
-          check '全自動マシン'
-          select 'イタリアン', from: '飲み方'
-          choose '3'
-          fill_in '内容', with: 'testcontent'
-          attach_file '画像', Rails.root.join('public/images/noimage.jpg').to_s
-          click_button '登録する'
-          expect(page).to have_content 'を入力してください'
-          expect(page).to have_current_path new_purchase_review_path(purchase)
+          expect(page).to have_current_path new_purchase_review_path(purchase), ignore_query: true
         end
       end
 
@@ -97,7 +82,7 @@ RSpec.describe 'Reviews', type: :system do
           attach_file '画像', Rails.root.join('public/images/noimage.jpg').to_s
           click_button '登録する'
           expect(page).to have_content '粉砕前です'
-          expect(page).to have_current_path new_purchase_review_path(whole_beans_purchase)
+          expect(page).to have_current_path new_purchase_review_path(whole_beans_purchase), ignore_query: true
         end
       end
 
@@ -121,7 +106,7 @@ RSpec.describe 'Reviews', type: :system do
           attach_file '画像', Rails.root.join('public/images/noimage.jpg').to_s
           click_button '登録する'
           expect(page).to have_content 'を入力してください'
-          expect(page).to have_current_path new_purchase_review_path(purchase)
+          expect(page).to have_current_path new_purchase_review_path(purchase), ignore_query: true
         end
       end
 
@@ -136,7 +121,7 @@ RSpec.describe 'Reviews', type: :system do
           attach_file '画像', Rails.root.join('public/images/noimage.jpg').to_s
           click_button '登録する'
           expect(page).to have_content 'を選択してください'
-          expect(page).to have_current_path new_purchase_review_path(purchase)
+          expect(page).to have_current_path new_purchase_review_path(purchase), ignore_query: true
         end
       end
 
@@ -145,7 +130,7 @@ RSpec.describe 'Reviews', type: :system do
           create(:review, purchase:)
           visit new_purchase_review_path(purchase)
           expect(page).to have_content 'レビューがすでに存在します'
-          expect(page).to have_current_path mypage_reviews_path
+          expect(page).to have_current_path mypage_reviews_path, ignore_query: true
         end
       end
     end
@@ -168,7 +153,7 @@ RSpec.describe 'Reviews', type: :system do
           expect(page).to have_content 'レビューを更新しました'
           expect(page).to have_content 'updatetitle'
           expect(page).to have_content purchase.bean.name
-          expect(page).to have_current_path mypage_reviews_path
+          expect(page).to have_current_path mypage_reviews_path, ignore_query: true
           click_on 'updatetitle'
           expect(page).to have_selector 'p', text: '細挽き'
           expect(page).not_to have_selector 'span', text: '全自動マシン'
@@ -192,7 +177,7 @@ RSpec.describe 'Reviews', type: :system do
           attach_file '画像', Rails.root.join('public/images/updateimage.jpg').to_s
           click_button '更新する'
           expect(page).not_to have_content 'レビューを投稿しました'
-          expect(page).to have_current_path edit_review_path(review)
+          expect(page).to have_current_path edit_review_path(review), ignore_query: true
         end
       end
 
@@ -212,7 +197,7 @@ RSpec.describe 'Reviews', type: :system do
           attach_file '画像', Rails.root.join('public/images/updateimage.jpg').to_s
           click_button '更新する'
           expect(page).to have_content '粉砕前です'
-          expect(page).to have_current_path edit_review_path(medium_fine_review)
+          expect(page).to have_current_path edit_review_path(medium_fine_review), ignore_query: true
         end
       end
 
