@@ -14,8 +14,8 @@ ja:
         name: '商品名'
         roast: '焙煎'
         fineness: '挽き方'
-        image: '画像'
         average_evaluation: '平均評価'
+        region_id: '産地'
       brewing_method:
         name: '名前'
       purchase:
@@ -35,6 +35,14 @@ ja:
         brewing_method_id: '飲み方'
         like_count: 'いいね数'
         created_at: '投稿日時'
+        image: '画像'
+      review/fineness:
+        grinded: '粉砕済み'
+        coarsely: '粗挽き'
+        medium: '中挽き'
+        medium_fine: '中細挽き'
+        fine: '細挽き'
+        superfine: '極細挽き'
       shop:
         name: '店名'
         address: '住所'

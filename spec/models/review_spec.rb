@@ -23,7 +23,7 @@ RSpec.describe Review, type: :model do
     it 'is invalid without evaluation' do
       review = build(:review, evaluation: '')
       expect(review).to be_invalid
-      expect(review.errors[:evaluation]).to eq %w[は数値で入力してください]
+      expect(review.errors[:evaluation]).to eq %w[を選択してください]
     end
 
     it 'is valid without content' do

@@ -21,6 +21,9 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
+      SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
+      CAPYBARA_SERVER_HOST: rails
+      CAPYBARA_APP_HOST: http://rails
     # ホストのカレントディレクトリ(.)とイメージ内の/myappディレクトリを同期させている
     volumes:
       - .:/myapp
@@ -31,5 +34,9 @@ services:
     stdin_open: true # サービス コンテナに標準入力を割り当てて実行するよう設定(https://docs.docker.jp/compose/compose-file/index.html#stdin-open)。
     depends_on:
       - db
+  selenium_chrome:
+    image: seleniarm/standalone-chromium:4.17.0
+    ports:
+      - '4444:4444'
 volumes:
   postgres_volume:

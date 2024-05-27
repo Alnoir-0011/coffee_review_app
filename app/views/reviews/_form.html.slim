@@ -1,6 +1,9 @@
 = bootstrap_form_with model: review, url: url, data: { controller: 'image-preview' } do |f|
   = f.text_field :title
-  = f.select :fineness, Review.finenesses_i18n.invert, {}, disabled: review.already_grinded?
+  - if review.already_grinded?
+    = f.select :fineness, [[Review.human_attribute_name('fineness.grinded'), 'grinded']], {}, disabled: true
+  - else
+    = f.select :fineness, Review.finenesses_i18n.invert
   = f.label :tool_ids, class: 'mb-2'
   = f.collection_check_boxes :tool_ids, Tool.all, :id, :name, inline: true, hide_label: true
   = f.select :brewing_method_id, BrewingMethod.pluck(:name, :id), prompt: Review.human_attribute_name(:brewing_method)
@@ -9,6 +12,8 @@
     .d-flex.justify-content-around
       - 1.upto(5) do |i|
         = f.radio_button :evaluation, i, label: i, inline: true
+  - if review.errors[:evaluation].present?
+    .d-block.invalid-feedback = review.errors[:evaluation][0].to_s
   = f.text_area :content
   = f.file_field :image, data: { image_preview_target: 'field', action: 'image-preview#preview' }
   = f.hidden_field :image_cache
