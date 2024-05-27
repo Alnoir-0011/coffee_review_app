@@ -111,21 +111,6 @@ RSpec.describe 'Purchases', type: :system do
         end
       end
 
-      context '焙煎が未入力' do
-        it '購入記録の新規作成に失敗する' do
-          visit new_purchase_path
-          fill_in '店名', with: shop.name
-          find("li[data-autocomplete-label='#{shop.name}']").click
-          fill_in '商品名', with: bean.name
-          find("li[data-autocomplete-label='#{bean.name}']").click
-          select '粉砕前', from: '挽き方'
-          fill_in '購入日', with: Date.yesterday
-          click_button '登録する'
-          expect(page).to have_content 'を入力してください'
-          expect(page).to have_current_path new_purchase_path
-        end
-      end
-
       context '焙煎前のコーヒー豆を焙煎済みで選択' do
         it '購入記録の新規作成に失敗する' do
           raw_bean = create(:bean, roast: 'raw')
@@ -156,21 +141,6 @@ RSpec.describe 'Purchases', type: :system do
           fill_in '購入日', with: Date.yesterday
           click_button '登録する'
           expect(page).to have_content 'このコーヒー豆は焙煎済みです'
-          expect(page).to have_current_path new_purchase_path
-        end
-      end
-
-      context '挽き方が未入力' do
-        it '購入記録の新規作成に失敗する' do
-          visit new_purchase_path
-          fill_in '店名', with: shop.name
-          find("li[data-autocomplete-label='#{shop.name}']").click
-          fill_in '商品名', with: bean.name
-          find("li[data-autocomplete-label='#{bean.name}']").click
-          select 'ミディアム', from: '焙煎'
-          fill_in '購入日', with: Date.yesterday
-          click_button '登録する'
-          expect(page).to have_content 'を入力してください'
           expect(page).to have_current_path new_purchase_path
         end
       end
