@@ -15,6 +15,7 @@ ja:
         roast: '焙煎'
         fineness: '挽き方'
         average_evaluation: '平均評価'
+        region_id: '産地'
       brewing_method:
         name: '名前'
       purchase:
