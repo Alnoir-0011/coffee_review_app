@@ -15,7 +15,7 @@
     = f.text_field :bean_name, wrapper: false , data: { autocomplete_target: "input" }
     = f.hidden_field :bean_id, data: { autocomplete_target: "hidden" }
     ul.list-group.position-absolute.top-100.start-0[data-autocomplete-target="results"]
-  = f.select :store_roast_option, Purchase.store_roast_options_i18n.invert, prompt: Purchase.human_attribute_name(:store_roast_option), label: Purchase.human_attribute_name(:store_roast_option)
-  = f.select :store_grind_option, Purchase.store_grind_options_i18n.invert, prompt: Purchase.human_attribute_name(:store_grind_option), label: Purchase.human_attribute_name(:store_grind_option)
+  = f.select :store_roast_option, Purchase.store_roast_options_i18n.invert, label: Purchase.human_attribute_name(:store_roast_option)
+  = f.select :store_grind_option, Purchase.store_grind_options_i18n.invert, label: Purchase.human_attribute_name(:store_grind_option)
   = f.date_field :purchase_at, label: Purchase.human_attribute_name(:purchase_at)
   = f.submit

@@ -32,9 +32,9 @@
           .me-auto
             i.bi.bi-hand-thumbs-up
             span = review.like_count
-          = link_to edit_review_path(review), class: 'link-dark me-1', data: { turbo_frame: '_top' } do
+          = link_to edit_review_path(review), class: 'link-dark me-1', id: "edit_review_#{review.id}", data: { turbo_frame: '_top' } do
             i.bi.bi-pencil
-          = link_to mypage_review_path(review), class: 'link-dark', data: { turbo_method: :delete, turbo_frame: '_top' } do
+          = link_to mypage_review_path(review), class: 'link-dark', id: "delete_review_#{review.id}", data: { turbo_method: :delete, turbo_confirm: t('defaults.message.delete_confirm'), turbo_frame: '_top' } do
             i.bi.bi-trash
         - else
           div id="like_#{review.id}"

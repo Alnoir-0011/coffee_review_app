@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     if @user.save
       auto_login(@user)
-      redirect_to root_path, success: t('defaults.message.registerd', item: User.model_name.human)
+      redirect_to root_path, success: t('defaults.message.registered', item: User.model_name.human)
     else
       render :new, status: :unprocessable_entity
     end

@@ -3,7 +3,7 @@
   = turbo_frame_tag @bean do
     = bootstrap_form_with model: @bean, data: { action: "turbo:submit-end->modal#close" } do |f|
       = f.text_field :name
-      = f.select :roast, Bean.roasts_i18n.invert, prompt: Bean.human_attribute_name(:roast)
-      = f.select :fineness, Bean.finenesses_i18n.invert, prompt: Bean.human_attribute_name(:fineness)
+      = f.select :roast, Bean.roasts_i18n.invert
+      = f.select :fineness, Bean.finenesses_i18n.invert
       = f.select :region_id, Region.pluck(:name, :id), prompt: Region.model_name.human
       = f.submit
