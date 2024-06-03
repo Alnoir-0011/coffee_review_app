@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ListInputController from "./list_input_controller"
+application.register("list-input", ListInputController)
+
 import ClipController from "./clip_controller"
 application.register("clip", ClipController)
 
