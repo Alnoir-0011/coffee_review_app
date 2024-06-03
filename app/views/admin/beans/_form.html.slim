@@ -1,6 +1,18 @@
-= bootstrap_form_with model: bean, url: url, class: 'mb-3' do |f|
+= bootstrap_form_with model: bean, url: url, class: 'mb-3', data: { controller: 'list-input'} do |f|
   = f.text_field :name
   = f.select :roast, Bean.roasts.keys.to_a
   = f.select :fineness, Bean.finenesses.keys.to_a
   = f.select :region_id, Region.pluck(:name, :id)
+  .form-group.mb-3.position-relative[data-controller="autocomplete" data-autocomplete-url-value="/shops/search" role="combobox"]
+    = f.label :shop_name, Shop.human_attribute_name(:name), class: 'form-label'
+    = f.text_field :shop_name, wrapper: false , data: { autocomplete_target: "input", list_input_target: 'input' }
+    = f.hidden_field :shop_id, data: { autocomplete_target: "hidden", list_input_target: 'id' }
+    ul.list-group.position-absolute.top-100.start-0.z-1[data-autocomplete-target="results"]
+    = f.hidden_field :shop_ids, data: { list_input_target: 'ids' }, value: @shops&.pluck(:place_id)&.join(',')
+  ul.mb-3.list-group.bg-secondary data-list-input-target="area"
+    - if @shops
+      - @shops.each do |shop|
+        li.list-group-item.d-flex.justify-content-between.bg-body-secondary data-id="#{shop.place_id}"
+          span = shop.name
+          button.btn-close type="button" data-action="list-input#delete"
   = f.submit
