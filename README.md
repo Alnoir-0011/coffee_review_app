@@ -1,11 +1,11 @@
 # [Coffee Stack Log.]
 [![Image from Gyazo](https://i.gyazo.com/ffc21c6528701bf83fac03c5d019ad1c.png)](https://gyazo.com/ffc21c6528701bf83fac03c5d019ad1c)
 
-## アプリURL
-[URL](https://www.coffeestacklog.com)
+## [アプリURL](https://www.coffeestacklog.com)
+
 
 ## ER図
-[URL](https://gyazo.com/ea514eefcb7ac2457b985cacc430e24d)
+[![Image from Gyazo](https://i.gyazo.com/43d7623325cbf66b0a2b0fe8fd2943ae.jpg)](https://gyazo.com/43d7623325cbf66b0a2b0fe8fd2943ae)
 
 ## 画面遷移図
 [figma](https://www.figma.com/file/frDfOydyzsAVZaFIgzxdCp/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=Epi3OEB0cMYuXvA5-1)
@@ -13,8 +13,7 @@
 ## サービス概要
 Coffee Stack Log. は買ったコーヒー豆を記録し、それを使って淹れたコーヒーのレビューを投稿できるサービスです
 
-##　 想定されるユーザー層
-
+## 想定されるユーザー層
 自分好みのコーヒー豆に出会えていない人  
 新しいコーヒー豆に手を出してみたいがどれがいいのかわからない人  
 
@@ -25,7 +24,7 @@ Coffee Stack Log. は買ったコーヒー豆を記録し、それを使って�
 『Coffee Stack Log.』を利用し買った豆の記録し淹れたコーヒーのレビューを投稿することで、自分好みのコーヒー豆の把握、そして他ユーザーの投稿を見ることで新しく購入するコーヒー豆を選ぶ参考になればと思い考案しました。  
 
 
-##　 使用技術
+## 使用技術
 * ruby 3.2.2
 * Ruby on Rails 7.0.8
 * Node.js 18.19.0
