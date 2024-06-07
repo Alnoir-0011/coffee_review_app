@@ -5,7 +5,7 @@
 
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/bfbd1aedb163779c224e10c9696a3ccc.jpg)](https://gyazo.com/bfbd1aedb163779c224e10c9696a3ccc)
+[![Image from Gyazo](https://i.gyazo.com/5a292384d84a0c9bee15940ef0f90c7d.jpg)](https://gyazo.com/5a292384d84a0c9bee15940ef0f90c7d)
 
 ## 画面遷移図
 [figma](https://www.figma.com/file/frDfOydyzsAVZaFIgzxdCp/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=Epi3OEB0cMYuXvA5-1)
