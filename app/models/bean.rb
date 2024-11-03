@@ -40,6 +40,18 @@ class Bean < ApplicationRecord
     review_with_image ? review_with_image.image.url : 'noimage.jpg'
   end
 
+  def save_with_shops(shops)
+    return false if invalid?
+
+    ActiveRecord::Base.transaction do
+      save!
+      self.shops = shops
+      true
+    rescue StandardError
+      false
+    end
+  end
+
   private
 
   def raw_cannot_grind

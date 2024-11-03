@@ -12,20 +12,24 @@ class Admin::BeansController < Admin::BaseController
 
   def create
     @bean = Bean.new(bean_params)
+    @shops = Shop.where(place_id: params[:bean][:shop_ids].split(','))
 
-    if @bean.save
+    if @bean.save_with_shops(@shops)
       redirect_to admin_beans_path, success: 'create successful'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def edit; end
+  def edit
+    @shops = @bean.shops
+  end
 
   def update
+    @shops = Shop.where(place_id: params[:bean][:shop_ids].split(','))
     @bean.assign_attributes(bean_params)
 
-    if @bean.save
+    if @bean.save_with_shops(@shops)
       redirect_to admin_beans_path, success: 'update successful'
     else
       render :edit, status: :unprocessable_entity
