@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   resources :shops, only: %i[index new create] do
     get :search, on: :collection
+    get :reviews, on: :member
   end
 
   namespace :mypage do

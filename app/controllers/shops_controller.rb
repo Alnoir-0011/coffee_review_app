@@ -1,26 +1,22 @@
 class ShopsController < ApplicationController
-  skip_before_action :require_login, only: %i[index search]
+  skip_before_action :require_login, only: %i[index search reviews]
 
   def index
-    @lat = params[:lat]
-    @lng = params[:lng]
-    @q = Shop.ransack(params[:q])
+    return unless params[:content_type] == 'application/json'
 
-    if @lat && @lng
-      @shops = Shop.near([@lat, @lng], 10, units: :km)
-      @search_explanation = t('.near_by_current_location')
-    elsif params[:q].present?
-      @shops = @q.result
+    lat = params[:lat]
+    lng = params[:lng]
+    q = Shop.ransack(params[:q])
 
-      if params[:q][:name_cont].present?
-        @search_explanation = t('.name_include', item: params[:q][:name_cont])
-      elsif params[:q][:place_id_eq].present?
-        @search_explanation = @shops.first.name
-      end
-    else
-      @shops = Shop.near([35.6809591, 139.7673068], 3, units: :km)
-      @search_explanation = t('.arround_tokyo')
-    end
+    shops = if lat && lng
+              Shop.near([lat, lng], 3, units: :km)
+            elsif params[:q].present?
+              q.result
+            else
+              Shop.near([35.6809591, 139.7673068], 3, units: :km)
+            end
+
+    render json: shops
   end
 
   def new
@@ -41,6 +37,12 @@ class ShopsController < ApplicationController
   def search
     @shops = Shop.where('name like ?', "%#{params[:q]}%")
     render layout: false
+  end
+
+  def reviews
+    shop = Shop.find(params[:id])
+    reviews = shop.reviews.limit(3)
+    render json: reviews
   end
 
   private

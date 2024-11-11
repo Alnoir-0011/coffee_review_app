@@ -16,14 +16,8 @@ application.register("hello", HelloController)
 import ImagePreviewController from "./image_preview_controller"
 application.register("image-preview", ImagePreviewController)
 
-import LocationController from "./location_controller"
-application.register("location", LocationController)
-
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
-
-import ShopIndexController from "./shop_index_controller"
-application.register("shop-index", ShopIndexController)
 
 import ShopNewController from "./shop_new_controller"
 application.register("shop-new", ShopNewController)

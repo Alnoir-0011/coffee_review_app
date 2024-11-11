@@ -1,37 +1,5 @@
 - assign_meta_tags title: t('.title')
 - breadcrumb :shops
 .container.mb-3
-  .col-md-10.offset-md-1.col-lg-8.offset-lg-2 data-controller="shop-index"
-    .d-flex.justify-content-between.align-items-center.my-3 data-controller="location"
-      h1.mb-0 = t('.title')
-      input type="hidden" data-shop-index-target="lat" value="#{@lat}"
-      input type="hidden" data-shop-index-target="lng" value="#{@lng}"
-      button#get-position.btn.btn-dark.my-2 data-shop-index-target="location" data-action="click->location#current" data-lat="#{ @lat || '' }" data-lng="#{ @lng || '' }" = t('.search_by_location')
-    .d-flex.align-items-end
-      h5.mb-0.me-1 = t('.current_display_content')
-      h5.mb-0 = @search_explanation
-
-    .mb-3#map-index data-shop-index-target="map"
-    css:
-      #map-index{
-        height: 37.5rem;
-      }
-      #accordionShops{
-        max-height: 25rem;
-      }
-
-    = search_form_for @q, url: shops_path, class: 'mb-3' do |f|
-      .position-relative[data-controller="autocomplete" data-autocomplete-url-value="/shops/search" role="combobox"]
-        .input-group
-          = f.text_field :name_cont, placeholder: t('defaults.search_by', item: Shop.human_attribute_name(:name)), class: 'form-control', data: { autocomplete_target: "input" }
-          = f.submit class: 'btn btn-secondary'
-        = f.hidden_field :name, data: { autocomplete_target: "hidden" }
-        ul.z-2.list-group.position-absolute.top-100.start-0[data-autocomplete-target="results"]
-
-    - if @shops.present?
-      .accordion.overflow-y-auto#accordionShops data-controller="tooltip" data-shop-index-target="list"
-        = render @shops
-    - else
-      .d-flex.align-items-center.justify-content-around
-        span = t('defaults.nothing', item: Shop.model_name.human)
-        = link_to t('defaults.register', item: Shop.model_name.human), new_shop_path, class: 'btn btn-outline-secondary'
+  .col-md-10.offset-md-1.col-lg-8.offset-lg-2 
+    #shop_index
