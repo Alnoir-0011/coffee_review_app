@@ -15,12 +15,14 @@
     "nodemon": "^3.0.1",
     "postcss": "^8.4.29",
     "postcss-cli": "^10.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "sass": "^1.66.1",
     "stimulus-autocomplete": "^3.1.0",
     "swiper": "^11.0.3"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --loader:.js=jsx --outdir=app/assets/builds --public-path=/assets",
     "build:css:compile": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "build:css:prefix": "postcss ./app/assets/builds/application.css --use=autoprefixer --output=./app/assets/builds/application.css",
     "build:css": "yarn build:css:compile && yarn build:css:prefix",
