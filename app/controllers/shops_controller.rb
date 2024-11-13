@@ -9,7 +9,7 @@ class ShopsController < ApplicationController
     q = Shop.ransack(params[:q])
 
     shops = if lat && lng
-              Shop.near([lat, lng], 3, units: :km)
+              Shop.near([lat, lng], 10, units: :km)
             elsif params[:q].present?
               q.result
             else
@@ -41,7 +41,7 @@ class ShopsController < ApplicationController
 
   def reviews
     shop = Shop.find(params[:id])
-    reviews = shop.reviews.limit(3)
+    reviews = shop.reviews.limit(3).includes(purchase: :bean)
     render json: reviews
   end
 
