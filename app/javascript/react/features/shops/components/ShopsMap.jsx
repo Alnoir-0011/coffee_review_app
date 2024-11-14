@@ -8,7 +8,7 @@ const initialLatLng = { lat: 35.6809591, lng: 139.7673068 } // 東京駅
 
 export default function ShopsMap({ searchCondition, setFocus }) {
   const mapRef = useRef();
-  const markerRef = useRef();
+  const [markers, setMarkers] = useState([]);
   const [explanation, setExplanation] = useState('東京駅周辺の店舗');
 
   const loader = new Loader({
@@ -19,6 +19,7 @@ export default function ShopsMap({ searchCondition, setFocus }) {
 
   useEffect(() => {
     (async () => {
+      // 初回レンダリングのみ実行
       if (!mapRef.current) {
         const { Map } = await loader.importLibrary("maps");
 
@@ -46,6 +47,8 @@ export default function ShopsMap({ searchCondition, setFocus }) {
       } catch(e) {
         window.alert('リクエストに失敗しました')
       }
+      // 古いマーカーの削除
+      markers.map(marker => { marker.setMap(null) })
 
       const newMarkers = shops.map(shop => {
         const glyphImg = document.createElement("img");
@@ -74,9 +77,9 @@ export default function ShopsMap({ searchCondition, setFocus }) {
         });
         return marker;
       })
-      markerRef.current = newMarkers;
+      setMarkers(newMarkers);
 
-      if('q[name_cont]' in searchCondition && newMarkers.length !== 0) {
+      if('q[name_cont]' in searchCondition) {
         setExplanation(`${searchCondition['q[name_cont]']}を含む店舗`)
         if(newMarkers.length !== 0) {
           map.setZoom(10);
@@ -90,14 +93,6 @@ export default function ShopsMap({ searchCondition, setFocus }) {
         map.setCenter({ lat: searchCondition["lat"], lng: searchCondition["lng"] })
       }
     })()
-    // クリーンアップ
-    return () => {
-      const markers = markerRef.current
-      if (markers.length !== 0) {
-        markers.map(marker => { marker.position = null })
-        markerRef.current = [];
-      }
-    }
   },[searchCondition]);
 
   return (
