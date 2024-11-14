@@ -2,7 +2,7 @@ class ShopsController < ApplicationController
   skip_before_action :require_login, only: %i[index search reviews]
 
   def index
-    return unless params[:content_type] == 'application/json'
+    return unless params[:CONTENT_TYPE] == 'application/json'
 
     lat = params[:lat]
     lng = params[:lng]
@@ -16,7 +16,7 @@ class ShopsController < ApplicationController
               Shop.near([35.6809591, 139.7673068], 3, units: :km)
             end
 
-    render json: shops
+    render json: ShopSerializer.new(shops).serializable_hash.to_json
   end
 
   def new
@@ -42,7 +42,7 @@ class ShopsController < ApplicationController
   def reviews
     shop = Shop.find(params[:id])
     reviews = shop.reviews.limit(3).includes(purchase: :bean)
-    render json: reviews
+    render json: ReviewSerializer.new(reviews).serializable_hash.to_json
   end
 
   private

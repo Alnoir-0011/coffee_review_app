@@ -13,7 +13,7 @@ export default function ShopReviews({ focus }) {
   
         if(response.ok) {
           const data = await response.json();
-          setReviews(data)
+          setReviews(data['data'])
         } else {
           window.alert('レビューを読み込めませんでした')
         }
@@ -43,9 +43,9 @@ export default function ShopReviews({ focus }) {
 
   return (
     <div>
-      <h3>{focus.name}の商品レビュー</h3>
-      <div>
-        {reviews.length !== 0 ? reviews.map(review => (<ReviewCard review={review} />)) : <h5>レビューがまだありません</h5>}
+      <h3>{focus.attributes.name}の商品レビュー</h3>
+      <div className='row g-2'>
+        {reviews.length !== 0 ? reviews.map(review => (<ReviewCard key={review.id} review={review} />)) : <h5>レビューがまだありません</h5>}
       </div>
     </div>
   )

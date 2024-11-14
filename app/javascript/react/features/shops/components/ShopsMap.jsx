@@ -9,6 +9,7 @@ const initialLatLng = { lat: 35.6809591, lng: 139.7673068 } // 東京駅
 export default function ShopsMap({ searchCondition, setFocus }) {
   const mapRef = useRef();
   const markerRef = useRef();
+  const [explanation, setExplanation] = useState('東京駅周辺の店舗');
 
   const loader = new Loader({
     apiKey: document.head.querySelector("meta[name=map_api]").content,
@@ -34,11 +35,11 @@ export default function ShopsMap({ searchCondition, setFocus }) {
       const { AdvancedMarkerElement, PinElement } = await loader.importLibrary("marker");
       try {
         const params = new URLSearchParams(searchCondition);
-        const response = await fetch(`/shops?content_type=application/json&${params.toString()}`)
+        const response = await fetch(`/shops?CONTENT_TYPE=application/json&${params.toString()}`)
 
         if (response.ok) {
           const data = await response.json();
-          shops = data;
+          shops = data['data'];
         } else {
           window.alert('店舗を読み込めませんでした')
         }
@@ -55,11 +56,11 @@ export default function ShopsMap({ searchCondition, setFocus }) {
           borderColor: "#641F1F"
         });
 
-        const marker = new AdvancedMarkerElement({ map, position: { lat: shop.latitude, lng: shop.longitude }, content: glyphSvgPinElement.element });
+        const marker = new AdvancedMarkerElement({ map, position: { lat: shop.attributes.latitude, lng: shop.attributes.longitude }, content: glyphSvgPinElement.element });
 
         const infowindow = new google.maps.InfoWindow({
           content: renderToString(<Infowindow shop={shop} />),
-          ariaLabel: shop.name,
+          ariaLabel: shop.attributes.name,
         });
 
         marker.addListener('click', () => {
@@ -76,11 +77,15 @@ export default function ShopsMap({ searchCondition, setFocus }) {
       markerRef.current = newMarkers;
 
       if('q[name_cont]' in searchCondition && newMarkers.length !== 0) {
-        map.setZoom(10);
-        map.setCenter(newMarkers[0].position);
+        setExplanation(`${searchCondition['q[name_cont]']}を含む店舗`)
+        if(newMarkers.length !== 0) {
+          map.setZoom(10);
+          map.setCenter(newMarkers[0].position);
+        }
       }
 
       if('lat' in searchCondition) {
+        setExplanation('現在地周辺の店舗')
         map.setZoom(13);
         map.setCenter({ lat: searchCondition["lat"], lng: searchCondition["lng"] })
       }
@@ -88,7 +93,6 @@ export default function ShopsMap({ searchCondition, setFocus }) {
     // クリーンアップ
     return () => {
       const markers = markerRef.current
-      console.log('clean')
       if (markers.length !== 0) {
         markers.map(marker => { marker.position = null })
         markerRef.current = [];
@@ -97,6 +101,9 @@ export default function ShopsMap({ searchCondition, setFocus }) {
   },[searchCondition]);
 
   return (
-    <div id="map" className="mb-3" style={{ height: "37.5rem" }}></div>
+    <>
+      <h6>現在の表示内容:{explanation}</h6>
+      <div id="map" className="mb-3" style={{ height: "37.5rem" }}></div>
+    </>
   )
 }
