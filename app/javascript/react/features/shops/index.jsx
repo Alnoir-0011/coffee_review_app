@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
 import ShopsMap from './components/ShopsMap';
-import ShopList from './components/ShopList';
 import ShopReviews from './components/ShopReviews'
 import SearchForm from './components/SearchForm';
 import LocationSearchButton from './components/LocationSearchButton';
-
-const initialState = { name: '', page: 1 , lat: 35.6809591, lng: 139.7673068 }
 
 export default function Shops() {
   const [focus, setFocus] = useState({id: 0 });
