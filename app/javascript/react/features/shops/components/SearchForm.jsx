@@ -11,7 +11,7 @@ export default function SearchForm({ useSearch }) {
   return (
     <form className='mb-3' onSubmit={submitHandler}>
       <div className='input-group'>
-        <input type="text" className='form-control' placeholder='店舗名から探す' value={name} onChange={(e) => setName(e.target.value)} />
+        <input type="text" className='form-control' placeholder='店舗名から探す' value={name} onChange={(e) => setName(e.target.value)} required />
         <button className='btn btn-secondary'>検索</button>
       </div>
     </form>
