@@ -7,39 +7,39 @@ RSpec.describe 'Shops', type: :request do
     end
 
     context 'クエリパラメータを渡さなかったとき' do
-      let(:req_params) { { content_type: 'application/json' } }
+      let(:req_params) { { CONTENT_TYPE: 'application/json' } }
       let!(:shop) { create(:shop, latitude: 35.68092355014058, longitude: 139.77024742311355) }
 
       it '東京駅から3キロ以内の店舗のリストが返されること' do
         get shops_path, params: req_params
         expect(body.count).to eq(1)
-        expect(body[0]['name']).to eq shop.name
+        expect(body['data'][0]['attributes']['name']).to eq shop.name
         expect(response).to be_successful
         expect(response).to have_http_status(:ok)
       end
     end
 
     context '緯度経度を渡したとき' do
-      let(:req_params) { { content_type: 'application/json', lat: 34.70641804203578, lng: 135.49941056177767 } }
+      let(:req_params) { { CONTENT_TYPE: 'application/json', lat: 34.70641804203578, lng: 135.49941056177767 } }
       let!(:shop) { create(:shop, latitude: 34.702348344096755, longitude: 135.4955697611847) }
 
       it '指定した座標から10キロ以内の店舗のリストが返されること' do
         get shops_path, params: req_params
-        expect(body.count).to eq(1)
-        expect(body[0]['name']).to eq shop.name
+        expect(body['data'].count).to eq(1)
+        expect(body['data'][0]['attributes']['name']).to eq shop.name
         expect(response).to be_successful
         expect(response).to have_http_status(:ok)
       end
     end
 
     context '文字列を渡したとき' do
-      let(:req_params) { { content_type: 'application/json', q: { name_cont: 'search_target' } } }
+      let(:req_params) { { CONTENT_TYPE: 'application/json', q: { name_cont: 'search_target' } } }
       let!(:shop) { create(:shop, name: 'search_target') }
 
       it '店舗名に渡した文字列が含まれる店舗のリストが返されること' do
         get shops_path, params: req_params
         expect(body.count).to eq(1)
-        expect(body[0]['name']).to eq shop.name
+        expect(body['data'][0]['attributes']['name']).to eq shop.name
         expect(response).to be_successful
         expect(response).to have_http_status(:ok)
       end
@@ -55,7 +55,7 @@ RSpec.describe 'Shops', type: :request do
       it '指定した店舗のレビューが返されること' do
         get reviews_shop_path(shop)
         expect(body.count).to eq(1)
-        expect(body[0]['title']).to eq review.title
+        expect(body['data'][0]['attributes']['title']).to eq review.title
         expect(response).to be_successful
         expect(response).to have_http_status(:ok)
       end
