@@ -35,7 +35,7 @@ export default function ShopsMap({ searchCondition, setFocus }) {
       let shops;
       const { AdvancedMarkerElement, PinElement } = await loader.importLibrary("marker");
       try {
-        const params = new URLSearchParams(searchCondition);
+        const params = new URLSearchParams(Object.keys(searchCondition).length ? searchCondition : location.search);
         const response = await fetch(`/shops?CONTENT_TYPE=application/json&${params.toString()}`)
 
         if (response.ok) {
@@ -85,12 +85,14 @@ export default function ShopsMap({ searchCondition, setFocus }) {
           map.setZoom(10);
           map.setCenter(newMarkers[0].position);
         }
-      }
-
-      if('lat' in searchCondition) {
+      } else if('lat' in searchCondition) {
         setExplanation('現在地周辺の店舗')
         map.setZoom(13);
         map.setCenter({ lat: searchCondition["lat"], lng: searchCondition["lng"] })
+      } else if(new URLSearchParams(location.search).get('q[place_id_eq]')) {
+        setExplanation(shops[0].attributes.name)
+        map.setZoom(17)
+        map.setCenter(newMarkers[0].position)
       }
     })()
   },[searchCondition]);
