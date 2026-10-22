@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/slim-template/html2slim.git
-  revision: 6a08e416e4cd0e1b0804bfda5a9296ff7371e549
+  revision: 4c3526d36c5bcc2de37a04603ee90c374bff3e99
   specs:
     html2slim (0.2.0)
-      hpricot
+      nokogiri
 
 GEM
   remote: https://rubygems.org/
@@ -244,7 +244,6 @@ GEM
       railties (>= 5.1, < 7.2)
     hashie (5.1.0)
       logger
-    hpricot (0.8.6)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     image_processing (1.14.0)
@@ -622,7 +621,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.2.2p53
+   ruby 3.4.11p137
 
 BUNDLED WITH
-   2.4.10
+   2.6.9
