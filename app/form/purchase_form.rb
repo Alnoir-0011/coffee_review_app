@@ -15,7 +15,12 @@ class PurchaseForm
     validates :shop_name, :bean_name, :store_roast_option, :store_grind_option, :purchase_at
   end
 
-  delegate :persisted?, to: :purchase
+  delegate :persisted?, :to_key, :to_param, to: :purchase
+
+  # to_model で Purchase を返すと Rails 7.1 の form_with が Purchase を参照し、検証エラーが表示されなくなる
+  def self.model_name
+    ActiveModel::Name.new(self, nil, 'Purchase')
+  end
 
   validate :product_does_not_exist
   validate :shop_does_not_exist
@@ -64,10 +69,6 @@ class PurchaseForm
     true
   rescue StandardError
     false
-  end
-
-  def to_model
-    purchase
   end
 
   private

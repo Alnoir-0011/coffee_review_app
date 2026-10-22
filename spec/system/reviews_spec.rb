@@ -105,8 +105,9 @@ RSpec.describe 'Reviews', type: :system do
           fill_in '内容', with: 'testcontent'
           attach_file '画像', Rails.root.join('public/images/noimage.jpg').to_s
           click_button '登録する'
-          expect(page).to have_content 'を入力してください'
+          expect(page).to have_css '#review_brewing_method_id:focus'
           expect(page).to have_current_path new_purchase_review_path(purchase), ignore_query: true
+          expect(Review.where(title: 'testtitle')).not_to exist
         end
       end
 
