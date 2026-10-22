@@ -21,6 +21,8 @@ Rails.application.config.sorcery.configure do |config|
   #
   # config.save_return_to_url =
 
+  config.use_redirect_back_or_to_by_rails = true
+
   # Set domain option for cookies; Useful for remember_me submodule.
   # Default: `nil`
   #
