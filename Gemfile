@@ -105,6 +105,9 @@ gem 'matrix', '~> 0.4.2'
 
 gem 'factory_bot_rails'
 
+# Rails 7.0 の ActiveSupport が json 3 で削除された quirks_mode を渡すため
+gem 'json', '< 3'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
@@ -131,11 +134,12 @@ group :development do
   # gem "spring"
   gem 'letter_opener_web'
 
-  gem 'rubocop', require: false
+  # rubocop 1.64 以降は rubocop-rspec 2.x が読み込めず、3.x では新規の違反が出るため別 PR で上げる
+  gem 'rubocop', '~> 1.63.0', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
-  gem 'rubocop-rspec', require: false
-  gem 'rubocop-capybara', require: false
+  gem 'rubocop-rspec', '~> 2.0', require: false
+  gem 'rubocop-capybara', '~> 2.0', require: false
   gem 'rubocop-factory_bot', require: false
 end
 
