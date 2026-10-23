@@ -102,6 +102,7 @@ RSpec.describe 'Purchases', type: :system do
           fill_in '店名', with: shop.name
           find("li[data-autocomplete-label='#{shop.name}']").click
           fill_in '商品名', with: bean.name
+          expect(page).to have_css "li[data-autocomplete-label='#{bean.name}']"
           select 'ミディアム', from: '焙煎'
           select '粉砕前', from: '挽き方'
           fill_in '購入日', with: Date.yesterday

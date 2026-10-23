@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
 
     if @user
       flash[:success] = t('.success')
-      redirect_back_or_to root_path
+      redirect_to_before_login_path root_path
     else
       flash.now[:danger] = t('.fail')
       render :new, status: :unprocessable_entity

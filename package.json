@@ -1,10 +1,13 @@
 {
   "name": "app",
   "private": "true",
+  "engines": {
+    "node": "24.x"
+  },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.6",
     "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo-rails": "^7.3.0",
+    "@hotwired/turbo-rails": "^8.0.23",
     "@popperjs/core": "^2.11.8",
     "autoprefixer": "^10.4.15",
     "bootstrap": "^5.3.1",

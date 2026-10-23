@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :authentications
 
-  enum role: { general: 0, admin: 10 }
+  enum :role, { general: 0, admin: 10 }
 
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

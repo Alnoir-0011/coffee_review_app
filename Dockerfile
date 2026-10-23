@@ -1,6 +1,11 @@
-FROM ruby:3.2.2
+FROM ruby:3.4.11
+# apt の nodejs は 18 系で、最新の sass や nodemon が要求する Node 20 以上を満たさないため公式イメージから取り込む
+COPY --from=node:24-bookworm-slim /usr/local/bin/node /usr/local/bin/node
+COPY --from=node:24-bookworm-slim /usr/local/lib/node_modules /usr/local/lib/node_modules
+RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
+ && ln -s /usr/local/lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx
 RUN apt-get update -qq \
- && apt-get install -y nodejs postgresql-client npm vim \
+ && apt-get install -y postgresql-client vim \
  && rm -rf /var/lib/apt/lists/* \
  && npm install --global yarn
 RUN mkdir /myapp

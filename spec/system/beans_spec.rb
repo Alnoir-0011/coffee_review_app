@@ -268,8 +268,9 @@ RSpec.describe 'Beans', type: :system do
             click_button '登録する'
           end
           expect(page).to have_css '.modal'
-          expect(page).to have_content 'を入力してください'
+          expect(page).to have_css '#bean_region_id:focus'
           expect(page).not_to have_content 'コーヒー豆を登録しました'
+          expect(Bean.where(name: 'testbean')).not_to exist
         end
       end
     end
