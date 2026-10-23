@@ -163,8 +163,8 @@ GEM
     drb (2.2.3)
     enum_help (0.0.20)
       activesupport (>= 3.0.0)
-    erb (2.2.3)
-      cgi
+    erb (4.0.4.1)
+      cgi (>= 0.3.3)
     erubi (1.13.1)
     excon (1.6.0)
       logger
@@ -555,6 +555,7 @@ DEPENDENCIES
   dotenv-rails
   draper
   enum_help
+  erb (= 4.0.4.1)
   factory_bot_rails
   fog-aws
   geocoder

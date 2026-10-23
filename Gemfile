@@ -108,6 +108,9 @@ gem 'factory_bot_rails'
 # Rails 7.1 の ActiveSupport も json 3 で削除された quirks_mode を渡すため
 gem 'json', '< 3'
 
+# Gemfile.lock だけの固定では bundle update で Ruby 同梱版と異なる erb に解決され、bundle exec なしの rspec が already activated で落ちるため
+gem 'erb', '4.0.4.1'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
