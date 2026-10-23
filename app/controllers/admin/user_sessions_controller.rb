@@ -9,7 +9,7 @@ class Admin::UserSessionsController < Admin::BaseController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_back_or_to admin_root_path, success: 'Login successful'
+      redirect_to_before_login_path admin_root_path, success: 'Login successful'
     else
       render :new, status: :unprocessable_entity
     end

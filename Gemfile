@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.2'
+ruby '3.4.11'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.7'
+gem 'rails', '~> 8.1.0'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -13,7 +13,7 @@ gem 'sprockets-rails'
 gem 'pg', '~> 1.1'
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '~> 5.0'
+gem 'puma', '>= 6.0'
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem 'jsbundling-rails'
@@ -105,6 +105,9 @@ gem 'matrix', '~> 0.4.2'
 
 gem 'factory_bot_rails'
 
+# Gemfile.lock だけの固定では bundle update で Ruby 同梱版と異なる erb に解決され、bundle exec なしの rspec が already activated で落ちるため
+gem 'erb', '4.0.4.1'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
@@ -131,11 +134,12 @@ group :development do
   # gem "spring"
   gem 'letter_opener_web'
 
-  gem 'rubocop', require: false
+  # rubocop 1.64 以降は rubocop-rspec 2.x が読み込めず、3.x では新規の違反が出るため別 PR で上げる
+  gem 'rubocop', '~> 1.63.0', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
-  gem 'rubocop-rspec', require: false
-  gem 'rubocop-capybara', require: false
+  gem 'rubocop-rspec', '~> 2.0', require: false
+  gem 'rubocop-capybara', '~> 2.0', require: false
   gem 'rubocop-factory_bot', require: false
 end
 

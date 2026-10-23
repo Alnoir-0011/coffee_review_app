@@ -9,7 +9,10 @@ Bundler.require(*Rails.groups)
 module Myapp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 8.1
+
+    # 7.2 の既定は有効だが、本番 Dyno のメモリへの影響を確認できていないため無効にする
+    config.yjit = false
 
     # Configuration for the application, engines, and railties goes here.
     #
