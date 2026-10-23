@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.4.11'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 8.0.0'
+gem 'rails', '~> 8.1.0'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -104,9 +104,6 @@ gem 'meta-tags', '~> 2.11'
 gem 'matrix', '~> 0.4.2'
 
 gem 'factory_bot_rails'
-
-# Rails 7.1 の ActiveSupport も json 3 で削除された quirks_mode を渡すため
-gem 'json', '< 3'
 
 # Gemfile.lock だけの固定では bundle update で Ruby 同梱版と異なる erb に解決され、bundle exec なしの rspec が already activated で落ちるため
 gem 'erb', '4.0.4.1'
