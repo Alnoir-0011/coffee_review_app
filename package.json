@@ -1,6 +1,9 @@
 {
   "name": "app",
   "private": "true",
+  "engines": {
+    "node": "24.x"
+  },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.6",
     "@hotwired/stimulus": "^3.2.2",
