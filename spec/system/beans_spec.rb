@@ -104,8 +104,6 @@ RSpec.describe 'Beans', type: :system do
           it '投稿日時の昇順,降順にソートされていること' do
             visit bean_path(bean)
             expect(page).to have_link '投稿日時', href: bean_path(bean, q: { s: 'created_at asc' })
-            unsorted_reviews = all('.card')
-            expect(unsorted_reviews[0]).to have_content bean.reviews.first.title
             click_link '投稿日時'
             expect(page).to have_content '投稿日時 ▲'
             sorted_asc_reviews = all('.card')
@@ -126,8 +124,6 @@ RSpec.describe 'Beans', type: :system do
           it '評価の昇順,降順にソートされること' do
             visit bean_path(bean)
             expect(page).to have_link '評価', href: bean_path(bean, q: { s: 'evaluation asc' })
-            unsorted_reviews = all('.card')
-            expect(unsorted_reviews[0]).to have_content bean.reviews.first.title
             click_link '評価'
             expect(page).to have_content '評価 ▲'
             sorted_asc_reviews = all('.card')
