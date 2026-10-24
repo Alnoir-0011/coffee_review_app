@@ -134,13 +134,7 @@ group :development do
   # gem "spring"
   gem 'letter_opener_web'
 
-  # rubocop 1.64 以降は rubocop-rspec 2.x が読み込めず、3.x では新規の違反が出るため別 PR で上げる
-  gem 'rubocop', '~> 1.63.0', require: false
-  gem 'rubocop-performance', require: false
-  gem 'rubocop-rails', require: false
-  gem 'rubocop-rspec', '~> 2.0', require: false
-  gem 'rubocop-capybara', '~> 2.0', require: false
-  gem 'rubocop-factory_bot', require: false
+  gem 'rubocop-rails-omakase', require: false
 end
 
 group :test do

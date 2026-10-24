@@ -1,16 +1,7 @@
-inherit_from: .rubocop_todo.yml
-
-require:
-  - rubocop-rails
-  - rubocop-rspec
-  - rubocop-performance
-  - rubocop-rspec_rails
-  - rubocop-capybara
-  - rubocop-factory_bot
+inherit_gem:
+  rubocop-rails-omakase: rubocop.yml
 
 AllCops:
-  TargetRubyVersion: 3.2
-  TargetRailsVersion: 7.0
   Exclude:
     - 'vendor/**/*'
     - 'bin/**/*'
@@ -18,84 +9,8 @@ AllCops:
     - 'tmp/**/*'
     - 'node_modules/**/*'
 
-Rails:
-  Enabled: true
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
 
-Rails/FilePath:
-  Exclude:
-    - 'spec/rails_helper.rb'
-
-Style/AndOr:
-  Enabled: false
-
-## 日本語コメントを許可します。
-Style/AsciiComments:
-  Enabled: false
-
-Style/BlockComments:
-  Exclude:
-    - 'spec/spec_helper.rb'
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Layout/LineLength:
-  Exclude:
-    - 'config/initializers/**.rb'
-
-Style/GlobalStdStream:
-  Exclude:
-    - 'config/environments/**.rb'
-
-ClassAndModuleChildren:
-  EnforcedStyle: compact
-  Exclude:
-    - 'config/application.rb'
-    - 'app/channels/application_cable/**.rb'
-
-Metrics/BlockLength:
-  CountComments: false
-  Exclude:
-    - 'config/**/*'
-    - 'lib/tasks/**.rake'
-    - 'spec/**/*'
-
-Metrics/AbcSize:
-  Enabled: false
-
-Metrics/MethodLength:
-  CountComments: false
-  Max: 20
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-
-Style/Documentation:
-  Enabled: false
-
-Rails/UniqueValidationWithoutIndex:
-  Exclude:
-    - 'app/models/user.rb'
-
-Bundler/OrderedGems:
-  Enabled: false
-
-RSpec/ContextWording:
-  Enabled: false
-
-RSpec/ExampleLength:
-  Exclude:
-    - 'spec/system/**.rb'
-
-RSpec/MultipleExpectations:
-  Enabled: false
-
-RSpec/MultipleMemoizedHelpers:
-  Enabled: false
-
-RSpec/NestedGroups:
-  Exclude:
-    - 'spec/system/**.rb'
-
-Lint/AssignmentInCondition:
-  Exclude:
-    - 'app/controllers/oauths_controller.rb'
+Layout/SpaceInsideArrayLiteralBrackets:
+  EnforcedStyle: no_space
