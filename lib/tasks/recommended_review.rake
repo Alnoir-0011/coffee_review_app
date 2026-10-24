@@ -74,11 +74,12 @@ def create_vector(sample, target)
   array = []
 
   sample.each do |id|
-    array << if target.include?(id)
-               1
-             else
-               0
-             end
+    array <<
+      if target.include?(id)
+        1
+      else
+        0
+      end
   end
   Vector.elements(array)
 end
@@ -87,11 +88,12 @@ def create_purchase_vector(sample, target)
   array = []
 
   sample.each do |id|
-    array << if target.key?(id)
-               target[id]
-             else
-               0
-             end
+    array <<
+      if target.key?(id)
+        target[id]
+      else
+        0
+      end
   end
   Vector.elements(array)
 end
