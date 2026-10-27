@@ -12,6 +12,11 @@ services:
     # 無くても動くが指定しておくとコンテナ停止時にサービスが再起動してくれる
     # https://docs.docker.jp/v19.03/config/container/start-containers-automatically.html
     restart: always
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 5s
+      timeout: 5s
+      retries: 10
   web:
     build: .
     # tmp/pids/server.pidが残ってたら `A server is already running. ~~` のエラーでrailsを起動できないので事前に消してから、`rails sever` する
@@ -21,8 +26,6 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
-      CAPYBARA_SERVER_HOST: rails
-      CAPYBARA_APP_HOST: http://rails
     # ホストのカレントディレクトリ(.)とイメージ内の/myappディレクトリを同期させている
     volumes:
       - .:/myapp
@@ -32,9 +35,11 @@ services:
     tty: true # 疑似ターミナル (pseudo-TTY) を割り当て。https://docs.docker.jp/compose/compose-file/index.html#tty
     stdin_open: true # サービス コンテナに標準入力を割り当てて実行するよう設定(https://docs.docker.jp/compose/compose-file/index.html#stdin-open)。
     depends_on:
-      - db
+      db:
+        condition: service_healthy
   selenium_chrome:
-    image: seleniarm/standalone-chromium:4.17.0
+    # latest だとイメージを取り直すたびに Chrome が変わり、system spec が突然落ちることがあるため固定する
+    image: selenium/standalone-chromium:155.0
     ports:
       - '4444:4444'
 volumes:

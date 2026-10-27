@@ -1,6 +1,9 @@
 require 'capybara/rspec'
 require 'selenium-webdriver'
 
+# モーダルの表示アニメーション中は Bootstrap の hide() が無視され、送信が速いと閉じないため、各例に待機を足さずアニメーションごと無効にする
+Capybara.disable_animation = true
+
 # カスタムドライバーの定義
 Capybara.register_driver :remote_chrome do |app|
   url = ENV['SELENIUM_DRIVER_URL']
@@ -10,7 +13,7 @@ Capybara.register_driver :remote_chrome do |app|
   options.add_argument('disable-gpu')
   options.add_argument('disable-dev-shm-usage')
   options.add_argument('remote-debugging-port=9222')
-  options.add_argument('window-size=1000, 800')
+  options.add_argument('window-size=1000,800')
 
   Capybara::Selenium::Driver.new(app,
                                  browser: :remote,
