@@ -15,6 +15,19 @@ RSpec.describe 'UserSessions', type: :system do
       end
     end
 
+    context 'ログインが必要なページに未ログインでアクセス' do
+      it 'ログイン後にアクセスしようとしたページへ遷移する' do
+        visit new_purchase_path
+        expect(page).to have_content 'ログインしてください'
+        expect(page).to have_current_path login_path, ignore_query: true
+        fill_in 'メールアドレス', with: user.email
+        fill_in 'パスワード', with: 'password'
+        click_button 'ログイン'
+        expect(page).to have_content 'ログインしました'
+        expect(page).to have_current_path new_purchase_path, ignore_query: true
+      end
+    end
+
     context 'メールアドレスが未入力' do
       it 'ログイン処理が失敗する' do
         visit login_path
