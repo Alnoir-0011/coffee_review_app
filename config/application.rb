@@ -11,9 +11,6 @@ module Myapp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1
 
-    # 7.2 の既定は有効だが、本番 Dyno のメモリへの影響を確認できていないため無効にする
-    config.yjit = false
-
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
