@@ -73,7 +73,7 @@ RSpec.describe 'Beans', type: :system do
         end
       end
 
-      xdescribe 'ソート機能' do # rubocop:disable RSpec/EmptyExampleGroup
+      xdescribe 'ソート機能' do
         context '名前をクリック'
 
         context '評価をクリック'
